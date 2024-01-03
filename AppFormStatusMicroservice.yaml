@@ -60,7 +60,7 @@ paths:
 components:
   schemas:
     FetchAppformstatusResponse:
-      type: object
+      type: array
       properties:
         appFormStatusId: 
           type: number
