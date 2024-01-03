@@ -40,7 +40,7 @@ paths:
       parameters:
         - $ref: '#/components/parameters/ApplicationFormStatusid'
       requestBody:
-          $ref: '#/components/requestBodies/UpdateAppFormStatusRequest'
+          $ref: '#/components/requestBodies/CreateAppFormStatusRequest'
       responses:
         '200':
           $ref: '#/components/responses/UpdateAppFormStatusResponse'
@@ -68,7 +68,7 @@ components:
         progress:
           type: number
           format: integer
-    UpdateAppFormStatusRequest:
+    CreateAppFormStatusRequest:
       type: object
       properties:
         progress:
@@ -109,12 +109,12 @@ components:
         type: string
         
   requestBodies:
-    UpdateAppFormStatusRequest:
-        description: UpdateAppFormStatusRequest
+    CreateAppFormStatusRequest:
+        description: CreateAppFormStatusRequest
         content:
           application/json:
             schema:
-                $ref: '#/components/schemas/UpdateAppFormStatusRequest'  
+                $ref: '#/components/schemas/CreateAppFormStatusRequest'  
   responses:
     FetchAppformstatusResponse:
         description: fetchExecuetiveManagement
