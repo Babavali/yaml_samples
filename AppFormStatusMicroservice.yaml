@@ -77,7 +77,7 @@ components:
     UpdateAppFormStatusResponse:
       type: object
       properties: 
-        applicationFormStatusid:
+        ApplicationFormStatusid:
           type: number
           format: integer
         
@@ -101,35 +101,35 @@ components:
       required: true
       schema:
         type: string
-    applicationFormStatusid:
-      name: applicationFormStatusid
+    ApplicationFormStatusid:
+      name: ApplicationFormStatusid
       in: path
       required: true
       schema:
         type: string
         
   requestBodies:
-    updateAppFormStatusRequest:
-        description: updateAppFormStatusRequest
+    UpdateAppFormStatusRequest:
+        description: UpdateAppFormStatusRequest
         content:
           application/json:
             schema:
-                $ref: '#/components/schemas/updateAppFormStatusRequest'  
+                $ref: '#/components/schemas/UpdateAppFormStatusRequest'  
   responses:
-    fetchAppformstatusResponse:
+    FetchAppformstatusResponse:
         description: fetchExecuetiveManagement
         content:
           application/json:
             schema:
               type: array
               items:
-                $ref: '#/components/schemas/fetchAppformstatusResponse' 
-    updateAppFormStatusResponse:
+                $ref: '#/components/schemas/FetchAppformstatusResponse' 
+    UpdateAppFormStatusResponse:
         description: fetchExecuetiveManagement
         content:
           application/json:
             schema:
-                $ref: '#/components/schemas/updateAppFormStatusResponse' 
+                $ref: '#/components/schemas/UpdateAppFormStatusResponse' 
         
     BadRequest:
       description: BadRequest
