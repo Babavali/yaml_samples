@@ -34,16 +34,16 @@ paths:
     post:
       tags:
         - App Form Status
-      summary:  Update an App Form Status
-      description: update an App Form Status
-      operationId: updateAppFormStatus
+      summary:  Create an App Form Status
+      description: Create an App Form Status
+      operationId: CreateAppFormStatus
       parameters:
         - $ref: '#/components/parameters/ApplicationFormStatusid'
       requestBody:
           $ref: '#/components/requestBodies/CreateAppFormStatusRequest'
       responses:
         '200':
-          $ref: '#/components/responses/UpdateAppFormStatusResponse'
+          $ref: '#/components/responses/CreateAppFormStatusResponse'
         '400':
           $ref: '#/components/responses/BadRequest'
         '401':
@@ -74,7 +74,7 @@ components:
         progress:
           type: number
           format: integer
-    UpdateAppFormStatusResponse:
+    CreateAppFormStatusResponse:
       type: object
       properties: 
         ApplicationFormStatusid:
@@ -124,12 +124,12 @@ components:
               type: array
               items:
                 $ref: '#/components/schemas/FetchAppformstatusResponse' 
-    UpdateAppFormStatusResponse:
+    CreateAppFormStatusResponse:
         description: fetchExecuetiveManagement
         content:
           application/json:
             schema:
-                $ref: '#/components/schemas/UpdateAppFormStatusResponse' 
+                $ref: '#/components/schemas/CreateAppFormStatusResponse' 
         
     BadRequest:
       description: BadRequest
