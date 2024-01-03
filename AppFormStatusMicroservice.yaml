@@ -59,7 +59,7 @@ paths:
 
 components:
   schemas:
-    fetchAppformstatusResponse:
+    FetchAppformstatusResponse:
       type: object
       properties:
         appFormStatusId: 
@@ -68,13 +68,13 @@ components:
         progress:
           type: number
           format: integer
-    updateAppFormStatusRequest:
+    UpdateAppFormStatusRequest:
       type: object
       properties:
         progress:
           type: number
           format: integer
-    updateAppFormStatusResponse:
+    UpdateAppFormStatusResponse:
       type: object
       properties: 
         applicationFormStatusid:
