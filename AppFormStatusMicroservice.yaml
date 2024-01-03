@@ -1,0 +1,169 @@
+openapi: 3.0.1
+info:
+  title: App Form Status
+  description: APIs for App Form Status
+  version: 1.0.0
+paths:
+  
+  /appFormStatus/caseId:
+    get:
+      tags:
+        - App Form Status
+      summary:  Fetch an App Form Status
+      description: Fetch an App Form Status
+      operationId: fetchAppFormStatus
+      parameters:
+        - $ref: '#/components/parameters/caseId'
+      responses:
+        '200':
+          $ref: '#/components/responses/FetchAppformstatusResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+  
+  /appFormStatus/{applicationFormStatusid}:
+    put:
+      tags:
+        - App Form Status
+      summary:  Update an App Form Status
+      description: update an App Form Status
+      operationId: updateAppFormStatus
+      parameters:
+        - $ref: '#/components/parameters/ApplicationFormStatusid'
+      requestBody:
+          $ref: '#/components/requestBodies/UpdateAppFormStatusRequest'
+      responses:
+        '200':
+          $ref: '#/components/responses/UpdateAppFormStatusResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+
+components:
+  schemas:
+    fetchAppformstatusResponse:
+      type: object
+      properties:
+        appFormStatusId: 
+          type: number
+          format: integer
+        progress:
+          type: number
+          format: integer
+    updateAppFormStatusRequest:
+      type: object
+      properties:
+        progress:
+          type: number
+          format: integer
+    updateAppFormStatusResponse:
+      type: object
+      properties: 
+        applicationFormStatusid:
+          type: number
+          format: integer
+        
+    HTTPError:
+      type: object
+      properties:
+        status_code:
+          type: string
+          format: string
+        status:
+          type: string
+          format: string
+        message:
+          type: string
+          format: string
+    
+  parameters:
+    caseId:
+      name: caseId
+      in: query
+      required: true
+      schema:
+        type: string
+    applicationFormStatusid:
+      name: applicationFormStatusid
+      in: path
+      required: true
+      schema:
+        type: string
+        
+  requestBodies:
+    updateAppFormStatusRequest:
+        description: updateAppFormStatusRequest
+        content:
+          application/json:
+            schema:
+                $ref: '#/components/schemas/updateAppFormStatusRequest'  
+  responses:
+    fetchAppformstatusResponse:
+        description: fetchExecuetiveManagement
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/fetchAppformstatusResponse' 
+    updateAppFormStatusResponse:
+        description: fetchExecuetiveManagement
+        content:
+          application/json:
+            schema:
+                $ref: '#/components/schemas/updateAppFormStatusResponse' 
+        
+    BadRequest:
+      description: BadRequest
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/HTTPError'
+    Unauthorized:
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/HTTPError'
+    Forbidden:
+      description: Forbidden
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/HTTPError'
+    NotFound:
+      description: NotFound
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/HTTPError'
+    TooManyRequests:
+      description: TooManyRequests
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/HTTPError'
+    InternalServerError:
+      description: InternalServerError
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/HTTPError'
