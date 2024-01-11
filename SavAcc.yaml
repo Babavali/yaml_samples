@@ -1010,6 +1010,10 @@ components:
     DepositsandWithdrawals:
       type: object
       properties:
+        TransactionReference:
+              type: string
+              description: "\n"
+              format: string
         TransactionType:
               type: string
               description: "\n"
@@ -1018,10 +1022,6 @@ components:
               type: string
               description: "\n"
               format: string
-        TransactionSourceReference:
-              type: string
-              description: "\n"
-              format: object
         TransactionDescription:
               type: string
               description: "\n"
@@ -1135,7 +1135,7 @@ components:
           description: Reference to the savings account product instance
           format: object
         SavingsAccountNumber:
-          type: string
+          type: integer
           description: The associated account number in any suitable format (e.g. IBAN)
           format: string
         CustomerReference:
@@ -1345,9 +1345,9 @@ components:
               description: "\n"
               format: object
             SavingsAccountNumber:
-              type: string
+              type: integer
               description: "\n"
-              format: string
+              format: number
             AccountCurrency:
               $ref: '#/components/schemas/currencycode'
             EntitlementOptionDefinition:
@@ -1394,9 +1394,9 @@ components:
               description: "\n"
               format: object
             SavingsAccountNumber:
-              type: string
+              type: integer
               description: "\n"
-              format: string
+              format: number
             CustomerReference:
               type: string
               description: "\n"
@@ -1511,9 +1511,9 @@ components:
               description: "\n"
               format: object
             SavingsAccountNumber:
-              type: string
+              type: integer
               description: "\n"
-              format: string
+              format: number
             CustomerReference:
               type: string
               description: "\n"
@@ -1628,9 +1628,9 @@ components:
               description: "\n"
               format: object
             SavingsAccountNumber:
-              type: string
+              type: integer
               description: "\n"
-              format: string
+              format: number
             CustomerReference:
               type: string
               description: "\n"
@@ -1790,9 +1790,9 @@ components:
               description: "\n"
               format: object
             SavingsAccountNumber:
-              type: string
+              type: integer
               description: "\n"
-              format: string
+              format: number
             AccountType:
               type: string
               description: "\n"
@@ -2061,9 +2061,9 @@ components:
               description: "\n"
               format: object
             SavingsAccountNumber:
-              type: string
+              type: integer
               description: "\n"
-              format: string
+              format: number
             CustomerReference:
               type: string
               description: "\n"
@@ -2314,9 +2314,9 @@ components:
               description: "\n"
               format: object
             SavingsAccountNumber:
-              type: string
+              type: integer
               description: "\n"
-              format: string
+              format: number
             CustomerReference:
               type: string
               description: "\n"
@@ -2486,9 +2486,9 @@ components:
               description: "\n"
               format: object
             SavingsAccountNumber:
-              type: string
+              type: integer
               description: "\n"
-              format: string
+              format: number
             CustomerReference:
               type: string
               description: "\n"
@@ -2543,6 +2543,10 @@ components:
         SavingsAccountFacility:
           type: object
           properties:
+            TransactionReference:
+              type: string
+              description: "\n"
+              format: string
             PositionLimitValue:
               type: string
               description: "\n"
@@ -2558,6 +2562,10 @@ components:
         DepositsandWithdrawals:
           type: object
           properties:
+            TransactionReference:
+              type: string
+              description: "\n"
+              format: string
             TransactionType:
               type: string
               description: "\n"
@@ -2566,10 +2574,6 @@ components:
               type: string
               description: "\n"
               format: string
-            TransactionSourceReference:
-              type: string
-              description: "\n"
-              format: object
             TransactionDescription:
               type: string
               description: "\n"
@@ -2588,11 +2592,11 @@ components:
         DepositsandWithdrawals:
           type: object
           properties:
-            DepositTransactionDate:
+            TransactionReference:
               type: string
               description: "\n"
               format: string
-            WithdrawalTransactionDate:
+            DepositTransactionDate:
               type: string
               description: "\n"
               format: string
@@ -2603,6 +2607,10 @@ components:
         DepositsandWithdrawals:
           type: object
           properties:
+            TransactionReference:
+              type: string
+              description: "\n"
+              format: string
             TransactionType:
               type: string
               description: "\n"
@@ -2611,10 +2619,6 @@ components:
               type: string
               description: "\n"
               format: string
-            TransactionSourceReference:
-              type: string
-              description: "\n"
-              format: object
             TransactionDescription:
               type: string
               description: "\n"
@@ -2638,9 +2642,9 @@ components:
               description: "\n"
               format: object
             SavingsAccountNumber:
-              type: string
+              type: integer
               description: "\n"
-              format: string
+              format: number
             CustomerReference:
               type: string
               description: "\n"
@@ -3125,9 +3129,9 @@ components:
               description: "\n"
               format: object
             SavingsAccountNumber:
-              type: string
+              type: integer
               description: "\n"
-              format: string
+              format: number
             CustomerReference:
               type: string
               description: "\n"
@@ -3549,7 +3553,7 @@ components:
       required: true
       style: simple
       schema:
-        type: string
+        type: integer
     interestid:
       name: interestid
       in: path
