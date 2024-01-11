@@ -1135,7 +1135,7 @@ components:
           description: Reference to the savings account product instance
           format: object
         SavingsAccountNumber:
-          type: integer
+          type: string
           description: The associated account number in any suitable format (e.g. IBAN)
           format: string
         CustomerReference:
@@ -1345,9 +1345,9 @@ components:
               description: "\n"
               format: object
             SavingsAccountNumber:
-              type: integer
+              type: string
               description: "\n"
-              format: number
+              format: string
             AccountCurrency:
               $ref: '#/components/schemas/currencycode'
             EntitlementOptionDefinition:
@@ -1394,9 +1394,9 @@ components:
               description: "\n"
               format: object
             SavingsAccountNumber:
-              type: integer
+              type: string
               description: "\n"
-              format: number
+              format: string
             CustomerReference:
               type: string
               description: "\n"
@@ -1511,9 +1511,9 @@ components:
               description: "\n"
               format: object
             SavingsAccountNumber:
-              type: integer
+              type: string
               description: "\n"
-              format: number
+              format: string
             CustomerReference:
               type: string
               description: "\n"
@@ -1628,9 +1628,9 @@ components:
               description: "\n"
               format: object
             SavingsAccountNumber:
-              type: integer
+              type: string
               description: "\n"
-              format: number
+              format: string
             CustomerReference:
               type: string
               description: "\n"
@@ -1790,9 +1790,9 @@ components:
               description: "\n"
               format: object
             SavingsAccountNumber:
-              type: integer
+              type: string
               description: "\n"
-              format: number
+              format: string
             AccountType:
               type: string
               description: "\n"
@@ -2061,9 +2061,9 @@ components:
               description: "\n"
               format: object
             SavingsAccountNumber:
-              type: integer
+              type: string
               description: "\n"
-              format: number
+              format: string
             CustomerReference:
               type: string
               description: "\n"
@@ -2314,9 +2314,9 @@ components:
               description: "\n"
               format: object
             SavingsAccountNumber:
-              type: integer
+              type: string
               description: "\n"
-              format: number
+              format: string
             CustomerReference:
               type: string
               description: "\n"
@@ -2486,9 +2486,9 @@ components:
               description: "\n"
               format: object
             SavingsAccountNumber:
-              type: integer
+              type: string
               description: "\n"
-              format: number
+              format: string
             CustomerReference:
               type: string
               description: "\n"
@@ -2642,9 +2642,9 @@ components:
               description: "\n"
               format: object
             SavingsAccountNumber:
-              type: integer
+              type: string
               description: "\n"
-              format: number
+              format: string
             CustomerReference:
               type: string
               description: "\n"
@@ -3129,9 +3129,9 @@ components:
               description: "\n"
               format: object
             SavingsAccountNumber:
-              type: integer
+              type: string
               description: "\n"
-              format: number
+              format: string
             CustomerReference:
               type: string
               description: "\n"
