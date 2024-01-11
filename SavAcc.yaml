@@ -3553,7 +3553,7 @@ components:
       required: true
       style: simple
       schema:
-        type: integer
+        type: string
     interestid:
       name: interestid
       in: path
