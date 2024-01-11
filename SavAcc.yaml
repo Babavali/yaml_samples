@@ -1010,66 +1010,30 @@ components:
     DepositsandWithdrawals:
       type: object
       properties:
-        DepositType:
-          type: string
-          description: 'The type of deposit transaction that can be applied to the account (e.g. customer deposit, internal credit)'
-          format: string
-        WithdrawalType:
-          type: string
-          description: 'The type of withdrawal transaction that can be applied to the account (e.g. customer withdrawal, internal service charge, disbursement)'
-          format: string
+        TransactionType:
+              type: string
+              description: "\n"
+              format: string
         AccountLimitBreachResponse:
-          type: string
-          description: The handling options if a withdrawal results in a breach of an account limit
-          format: string
-        DepositTransaction:
-          type: string
-          description: The collection of applicable rates
-          format: string
-        DepositTransactionSourceReference:
-          type: string
-          description: Identifies the source of the deposit
-          format: object
-        DepositTransactionDepositType:
-          type: string
-          description: The type of deposit made with the transaction
-          format: string
-        DepositTransactionDescription:
-          type: string
-          description: Any necessary details describing the purpose or reference properties of the deposit
-          format: string
-        DepositTransactionAmount:
               type: string
               description: "\n"
               format: string
-        DepositTransactionDate:
+        TransactionSourceReference:
+              type: string
+              description: "\n"
+              format: object
+        TransactionDescription:
               type: string
               description: "\n"
               format: string
-        WithdrawalTransaction:
-          type: string
-          description: The record of applied interest
-          format: string
-        WithdrawalTransactionSourceReference:
-          type: string
-          description: Identifies the target for the withdrawal
-          format: object
-        WithdrawalTransactionWithdrawalType:
-          type: string
-          description: The type of withdrawal made with the transaction
-          format: string
-        WithdrawalTransactionDescription:
-          type: string
-          description: Any necessary details describing the purpose or reference properties of the withdrawal
-          format: string
-        WithdrawalTransactionAmount:
-          type: string
-          description: "\n"
-          format: string
-        WithdrawalTransactionDate:
-          type: string
-          description: "\n"
-          format: string
+        TransactionAmount:
+              type: string
+              description: "\n"
+              format: string
+        TransactionDate:
+              type: string
+              description: "\n"
+              format: string
       description: ''
     Payments:
       type: object
@@ -2594,53 +2558,30 @@ components:
         DepositsandWithdrawals:
           type: object
           properties:
-            DepositTransaction:
+            TransactionType:
               type: string
               description: "\n"
               format: string
-            DepositTransactionSourceReference:
+            AccountLimitBreachResponse:
+              type: string
+              description: "\n"
+              format: string
+            TransactionSourceReference:
               type: string
               description: "\n"
               format: object
-            DepositTransactionDepositType:
+            TransactionDescription:
               type: string
               description: "\n"
               format: string
-            DepositTransactionDescription:
+            TransactionAmount:
               type: string
               description: "\n"
               format: string
-            DepositTransactionAmount:
+            TransactionDate:
               type: string
               description: "\n"
               format: string
-            DepositTransactionDate:
-              type: string
-              description: "\n"
-              format: string
-            WithdrawalTransaction:
-              type: string
-              description: "\n"
-              format: string
-            WithdrawalTransactionSourceReference:
-              type: string
-              description: "\n"
-              format: object
-            WithdrawalTransactionWithdrawalType:
-              type: string
-              description: "\n"
-              format: string
-            WithdrawalTransactionDescription:
-              type: string
-              description: "\n"
-              format: string
-            WithdrawalTransactionAmount:
-              $ref: '#/components/schemas/amount'
-            WithdrawalTransactionDate:
-              type: string
-              description: "\n"
-              format: string
-      description: 'Input: ExBQ Execute a deposit or withdrawal transaction'
     ExecuteDepositsandWithdrawalsResponse:
       type: object
       properties:
