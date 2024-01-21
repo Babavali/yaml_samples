@@ -2504,7 +2504,7 @@ components:
     InitiateDepositRequest:
       type: object
       properties:
-        SavingsAccountFacility:
+        SavingsAccountsFacility:
           type: object
           properties:
             ProductInstanceReference:
@@ -2572,7 +2572,7 @@ components:
     InitiateWithdrawalRequest:
       type: object
       properties:
-        SavingsAccountFacility:
+        SavingsAccountsFacility:
           type: object
           properties:
             ProductInstanceReference:
