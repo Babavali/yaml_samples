@@ -2478,7 +2478,7 @@ components:
     InitiateDepositsandWithdrawalsRequest:
       type: object
       properties:
-        SavingsAccountFacility:
+        SavingsAccountsFacility:
           type: object
           properties:
             ProductInstanceReference:
@@ -2529,6 +2529,10 @@ components:
               description: "\n"
               format: string
             TransactionAmount:
+              type: string
+              description: "\n"
+              format: string
+            TransactionDescription:
               type: string
               description: "\n"
               format: string
