@@ -372,18 +372,17 @@ paths:
           $ref: '#/components/responses/TooManyRequests'
         '500':
           $ref: '#/components/responses/InternalServerError'
-  '/SavingsAccount/{savingsaccountid}/DepositsandWithdrawals/{depositsandwithdrawalsid}/Initiate':
+  '/SavingsAccount/{savingsaccountid}/Deposits/Initiate':
     post:
       tags:
         - BQ - DepositsandWithdrawals
-      summary: InBQ Initialize deposit or withdrawal transaction
-      description: InBQ Initialize deposit or withdrawal transaction
-      operationId: InitiateDepositsandWithdrawals
+      summary: InBQ Initialize deposit transaction
+      description: InBQ Initialize deposit transaction
+      operationId: InitiateDepositsTransaction
       parameters:
         - $ref: '#/components/parameters/savingsaccountid'
-        - $ref: '#/components/parameters/depositsandwithdrawalsid'
       requestBody:
-        $ref: '#/components/requestBodies/InitiateDepositsandWithdrawalsRequest'
+        $ref: '#/components/requestBodies/InitiateDepositRequest'
       responses:
         '200':
           $ref: '#/components/responses/InitiateDepositsandWithdrawalsResponse'
@@ -399,6 +398,33 @@ paths:
           $ref: '#/components/responses/TooManyRequests'
         '500':
           $ref: '#/components/responses/InternalServerError'
+  '/SavingsAccount/{savingsaccountid}/withdrawal/Initiate':
+    post:
+      tags:
+        - BQ - DepositsandWithdrawals
+      summary: InBQ Initialize withdrawal transaction
+      description: InBQ Initialize withdrawal transaction
+      operationId: InitiateWithdrawals
+      parameters:
+        - $ref: '#/components/parameters/savingsaccountid'
+      requestBody:
+        $ref: '#/components/requestBodies/InitiateWithdrawalRequest'
+      responses:
+        '200':
+          $ref: '#/components/responses/InitiateDepositsandWithdrawalsResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+
   '/SavingsAccount/{savingsaccountid}/DepositsandWithdrawals/{depositsandwithdrawalsid}/Update':
     put:
       tags:
@@ -2475,10 +2501,10 @@ components:
             AccountSweepExecutionDate:
               $ref: '#/components/schemas/date'
       description: 'Output: ReBQ Retrieve details about a sweep facility or specific sweep transaction'
-    InitiateDepositsandWithdrawalsRequest:
+    InitiateDepositRequest:
       type: object
       properties:
-        SavingsAccountsFacility:
+        SavingsAccountFacility:
           type: object
           properties:
             ProductInstanceReference:
@@ -2486,9 +2512,9 @@ components:
               description: "\n"
               format: object
             SavingsAccountNumber:
-              type: string
               description: "\n"
               format: string
+              type: integer
             CustomerReference:
               type: string
               description: "\n"
@@ -2528,6 +2554,8 @@ components:
               type: string
               description: "\n"
               format: string
+              enum:
+                - Deposit
             TransactionAmount:
               type: string
               description: "\n"
@@ -2541,6 +2569,74 @@ components:
               description: "\n"
               format: string
       description: 'Input: InBQ Initialize deposit or withdrawal transaction'
+    InitiateWithdrawalRequest:
+      type: object
+      properties:
+        SavingsAccountFacility:
+          type: object
+          properties:
+            ProductInstanceReference:
+              type: string
+              description: "\n"
+              format: object
+            SavingsAccountNumber:
+              description: "\n"
+              format: string
+              type: integer
+            CustomerReference:
+              type: string
+              description: "\n"
+              format: object
+            BankBranchLocationReference:
+              type: string
+              description: "\n"
+              format: object
+            AccountType:
+              type: string
+              description: "\n"
+              format: string
+            AccountCurrency:
+              type: string
+              description: "\n"
+              format: string
+            EntitlementOptionSetting:
+              type: string
+              description: "\n"
+              format: string
+            RestrictionOptionSetting:
+              type: string
+              description: "\n"
+              format: string
+            PositionLimitType:
+              type: string
+              description: "\n"
+              format: string
+            TransactionDateType:
+              type: string
+              description: "\n"
+              format: string
+        DepositsandWithdrawals:
+          type: object
+          properties:
+            TransactionType:
+              type: string
+              description: "\n"
+              format: string
+              enum:
+                - Withdrawal
+            TransactionAmount:
+              type: string
+              description: "\n"
+              format: string
+            TransactionDescription:
+              type: string
+              description: "\n"
+              format: string
+            AccountLimitBreachResponse:
+              type: string
+              description: "\n"
+              format: string
+
     InitiateDepositsandWithdrawalsResponse:
       type: object
       properties:
@@ -3662,11 +3758,16 @@ components:
           schema:
             $ref: '#/components/schemas/ExecuteAccountSweepRequest'
       required: true
-    InitiateDepositsandWithdrawalsRequest:
+    InitiateWithdrawalRequest:
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/InitiateDepositsandWithdrawalsRequest'
+            $ref: '#/components/schemas/InitiateWithdrawalRequest'
+    InitiateDepositRequest:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/InitiateDepositRequest'
       required: true
     DepositsandWithdrawals:
       content:
