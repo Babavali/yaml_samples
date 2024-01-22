@@ -2656,7 +2656,7 @@ components:
     InitiateDepositsandWithdrawalsResponse:
       type: object
       properties:
-        SavingsAccountFacility:
+        SavingsAccountFacilityResponse:
           type: object
           properties:
             TransactionReference:
