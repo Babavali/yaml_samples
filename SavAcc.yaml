@@ -1273,6 +1273,21 @@ components:
           description: The statement content
           format: string
       description: 'Fulfill any scheduled and ad-hoc obligations under a service arrangement, most typically for a financial product or facility within Savings Account. '
+    SavingsAccountFacilityResponse:
+      type: object
+      properties:
+        TransactionReference:
+          type: string
+          description: "\n"
+          format: string
+        PositionLimitValue:
+          type: string
+          description: "\n"
+          format: string
+        DateType:
+          type: string
+          description: "\n"
+          format: string
     InitiateSavingsAccountFacilityRequest:
       type: object
       properties:
