@@ -1177,7 +1177,9 @@ components:
           description: 'The type of savings account (e.g. checking, student, small business)'
           format: string
         AccountCurrency:
-          $ref: '#/components/schemas/currencycode'
+          type: string
+          description: 'The type of savings account (e.g. checking, student, small business)'
+          format: string
         TaxReference:
           type: string
           description: Reference identifier linking the account to appropriate tax handling
@@ -1290,7 +1292,9 @@ components:
               description: "\n"
               format: string
             AccountCurrency:
-              $ref: '#/components/schemas/currencycode'
+              type: string
+              description: 'The type of savings account (e.g. checking, student, small business)'
+              format: string
             TaxReference:
               type: string
               description: "\n"
@@ -1375,7 +1379,9 @@ components:
               description: "\n"
               format: string
             AccountCurrency:
-              $ref: '#/components/schemas/currencycode'
+              type: string
+              description: 'The type of savings account (e.g. checking, student, small business)'
+              format: string
             EntitlementOptionDefinition:
               type: string
               description: "\n"
@@ -1436,7 +1442,9 @@ components:
               description: "\n"
               format: string
             AccountCurrency:
-              $ref: '#/components/schemas/currencycode'
+              type: string
+              description: 'The type of savings account (e.g. checking, student, small business)'
+              format: string
             TaxReference:
               type: string
               description: "\n"
@@ -1553,7 +1561,9 @@ components:
               description: "\n"
               format: string
             AccountCurrency:
-              $ref: '#/components/schemas/currencycode'
+              type: string
+              description: 'The type of savings account (e.g. checking, student, small business)'
+              format: string
             TaxReference:
               type: string
               description: "\n"
@@ -1670,7 +1680,9 @@ components:
               description: "\n"
               format: string
             AccountCurrency:
-              $ref: '#/components/schemas/currencycode'
+              type: string
+              description: 'The type of savings account (e.g. checking, student, small business)'
+              format: string
             TaxReference:
               type: string
               description: "\n"
@@ -1824,7 +1836,9 @@ components:
               description: "\n"
               format: string
             AccountCurrency:
-              $ref: '#/components/schemas/currencycode'
+              type: string
+              description: 'The type of savings account (e.g. checking, student, small business)'
+              format: string
             TaxReference:
               type: string
               description: "\n"
@@ -2356,7 +2370,9 @@ components:
               description: "\n"
               format: string
             AccountCurrency:
-              $ref: '#/components/schemas/currencycode'
+              type: string
+              description: 'The type of savings account (e.g. checking, student, small business)'
+              format: string
             TaxReference:
               type: string
               description: "\n"
@@ -2758,7 +2774,9 @@ components:
               description: "\n"
               format: string
             AccountCurrency:
-              $ref: '#/components/schemas/currencycode'
+              type: string
+              description: 'The type of savings account (e.g. checking, student, small business)'
+              format: string
             EntitlementOptionSetting:
               type: string
               description: "\n"
@@ -3245,7 +3263,9 @@ components:
               description: "\n"
               format: string
             AccountCurrency:
-              $ref: '#/components/schemas/currencycode'
+              type: string
+              description: 'The type of savings account (e.g. checking, student, small business)'
+              format: string
             EntitlementOptionSetting:
               type: string
               description: "\n"
