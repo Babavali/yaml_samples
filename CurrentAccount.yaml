@@ -32,7 +32,7 @@ paths:
           $ref: '#/components/responses/InternalServerError'
 components:
   schemas:
-    CreateCurrentAccountRequest:
+    InitiateCurrentAccountFacilityRequest:
       type: object
       properties:
         ProductInstanceReference:
@@ -40,13 +40,19 @@ components:
           properties:
             CurrentAccountAgreement:
               type: string
+              description: "\n"
+              format: string
         CurrentAccountNumber:
           type: object
           properties:
             Account:
               type: string
+              description: "\n"
+              format: string
             Name:
               type: string
+              description: "\n"
+              format: string
         CustomerReference:
           type: object
           properties:
@@ -55,6 +61,8 @@ components:
               properties:
                 Identification:
                   type: string
+                  description: "\n"
+                  format: string
         BankBranchLocationReference:
           type: object
           properties:
@@ -63,11 +71,14 @@ components:
               properties:
                 Identifier:
                   type: string
+                  description: "\n"
+                  format: string
             BranchAddress:
               type: object
               properties:
                 AddressType:
                   type: string
+                  description: "\n"
                   format: string
                   enum:
                     - Postal Address
@@ -77,10 +88,15 @@ components:
                     - ElectronicAddress"
                 Address:
                   type: string
+                  description: "\n"
+                  format: string
             BranchName:
               type: string
+              description: "\n"
+              format: string
         AccountType:
           type: string
+          description: "\n"
           format: string
           enum:
             - CurrentAccount
@@ -94,9 +110,12 @@ components:
             - LoanAccount
         AccountCurrency:
           type: string
+          description: "\n"
+          format: string
         AccountDateType:
           type: string
-          format: date
+          description: "\n"
+          format: string
           enum: 
             - OpeningDate
             - ClosingDate
@@ -105,15 +124,20 @@ components:
             - LiveDate
         AccountDate:
           type: string
+          description: "\n"
+          format: string
         CurrentAccountProductName:
           type: string
+          description: "\n"
+          format: string
         CurrentAccountProductType:
           type: string
+          description: "\n"
           format: string
           enum:
             - BusinessCurrentAccount
             - PersonalCurrentAccount
-    CreateCurrentAccountResponse:
+    InitiateCurrentAccountFacilityResponse:
       type: object
       properties:
         ProductInstanceReference:
@@ -121,13 +145,19 @@ components:
           properties:
             CurrentAccountAgreement:
               type: string
+              description: "\n"
+              format: string
         CurrentAccountNumber:
           type: object
           properties:
             Account:
               type: string
+              description: "\n"
+              format: string
             Name:
               type: string
+              description: "\n"
+              format: string
         CustomerReference:
           type: object
           properties:
@@ -136,6 +166,8 @@ components:
               properties:
                 Identification:
                   type: string
+                  description: "\n"
+                  format: string
         BankBranchLocationReference:
           type: object
           properties:
@@ -144,11 +176,14 @@ components:
               properties:
                 Identifier:
                   type: string
+                  description: "\n"
+                  format: string
             BranchAddress:
               type: object
               properties:
                 AddressType:
                   type: string
+                  description: "\n"
                   format: string
                   enum:
                     - Postal Address
@@ -158,10 +193,15 @@ components:
                     - ElectronicAddress"
                 Address:
                   type: string
+                  description: "\n"
+                  format: string
             BranchName:
               type: string
+              description: "\n"
+              format: string
         AccountType:
           type: string
+          description: "\n"
           format: string
           enum:
             - CurrentAccount
@@ -175,9 +215,12 @@ components:
             - LoanAccount
         AccountCurrency:
           type: string
+          description: "\n"
+          format: string
         AccountDateType:
           type: string
-          format: date
+          description: "\n"
+          format: string
           enum: 
             - OpeningDate
             - ClosingDate
@@ -186,10 +229,15 @@ components:
             - LiveDate
         AccountDate:
           type: string
+          description: "\n"
+          format: string
         CurrentAccountProductName:
           type: string
+          description: "\n"
+          format: string
         CurrentAccountProductType:
           type: string
+          description: "\n"
           format: string
           enum:
             - BusinessCurrentAccount
@@ -199,12 +247,15 @@ components:
       properties:
         status_code:
           type: string
+          description: "\n"
           format: string
         status:
           type: string
+          description: "\n"
           format: string
         message:
           type: string
+          description: "\n"
           format: string
   requestBodies:
     InitiateCurrentAccountFacilityRequest:
@@ -212,14 +263,14 @@ components:
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/CreateCurrentAccountRequest'
+            $ref: '#/components/schemas/InitiateCurrentAccountFacilityRequest'
   responses:
     InitiateCurrentAccountFacilityResponse:
         description: fetchAccountUser
         content:
           application/json:
             schema:
-                $ref: '#/components/schemas/CreateCurrentAccountResponse'
+                $ref: '#/components/schemas/InitiateCurrentAccountFacilityResponse'
     BadRequest:
       description: BadRequest
       content:
