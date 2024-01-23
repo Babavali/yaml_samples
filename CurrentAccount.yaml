@@ -30,7 +30,6 @@ paths:
           $ref: '#/components/responses/TooManyRequests'
         '500':
           $ref: '#/components/responses/InternalServerError'
-
 components:
   schemas:
     CreateCurrentAccountRequest:
@@ -207,8 +206,6 @@ components:
         message:
           type: string
           format: string
-
-
   requestBodies:
     InitiateCurrentAccountFacilityRequest:
       description: CurrentAccountFacilityInitiate
