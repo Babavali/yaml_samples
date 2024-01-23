@@ -105,9 +105,23 @@ components:
       type: object
       properties:
         ProductInstanceReference:
-          $ref: '#/components/schemas/ProductInstanceReference'
+          type: object
+          properties:
+            CurrentAccountAgreement:
+              type: string
+              description: "\n"
+              format: string
         CurrentAccountNumber:
-          $ref: '#/components/schemas/CurrentAccountNumber'
+          type: object
+          properties:
+            Account:
+              type: string
+              description: "\n"
+              format: string
+            Name:
+              type: string
+              description: "\n"
+              format: string
         CustomerReference:
           type: object
           properties:
