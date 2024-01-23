@@ -70,6 +70,20 @@ components:
                   type: string
                   description: "\n"
                   format: string
+    BranchIdentification:
+              type: object
+              properties:
+                Identifier:
+                  type: string
+                  description: "\n"
+                  format: string
+    PartyReference:
+              type: object
+              properties:
+                Identification:
+                  type: string
+                  description: "\n"
+                  format: string
     BranchAddress:
               type: object
               properties:
