@@ -32,17 +32,14 @@ paths:
           $ref: '#/components/responses/InternalServerError'
 components:
   schemas:
-    InitiateCurrentAccountFacilityRequest:
-      type: object
-      properties:
-        ProductInstanceReference:
+    ProductInstanceReference:
           type: object
           properties:
             CurrentAccountAgreement:
               type: string
               description: "\n"
               format: string
-        CurrentAccountNumber:
+    CurrentAccountNumber:
           type: object
           properties:
             Account:
@@ -53,6 +50,50 @@ components:
               type: string
               description: "\n"
               format: string
+    CustomerReference:
+          type: object
+          properties:
+            PartyReference:
+              type: object
+              properties:
+                Identification:
+                  type: string
+                  description: "\n"
+                  format: string
+    BankBranchLocationReference:
+          type: object
+          properties:
+            BranchIdentification:
+              type: object
+              properties:
+                Identifier:
+                  type: string
+                  description: "\n"
+                  format: string
+    BranchAddress:
+              type: object
+              properties:
+                AddressType:
+                  type: string
+                  description: "\n"
+                  format: string
+                  enum:
+                    - Postal Address
+                    - GeolocationAddress
+                    - LatitudeAddress
+                    - LongitudeAddress
+                    - ElectronicAddress"
+                Address:
+                  type: string
+                  description: "\n"
+                  format: string
+    InitiateCurrentAccountFacilityRequest:
+      type: object
+      properties:
+        ProductInstanceReference:
+          $ref: '#/components/schemas/ProductInstanceReference'
+        CurrentAccountNumber:
+          $ref: '#/components/schemas/CurrentAccountNumber'
         CustomerReference:
           type: object
           properties:
