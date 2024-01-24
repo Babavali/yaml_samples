@@ -61,15 +61,36 @@ components:
                   description: "\n"
                   format: string
     BankBranchLocationReference:
+      type: object
+      properties:
+        BranchIdentification:
           type: object
           properties:
-            BranchIdentification:
-              type: object
-              properties:
-                Identifier:
-                  type: string
-                  description: "\n"
-                  format: string
+            Identifier:
+              type: string
+              description: "\n"
+              format: string
+        BranchAddress:
+          type: object
+          properties:
+            AddressType:
+              type: string
+              description: "\n"
+              format: string
+              enum:
+                - Postal Address
+                - GeolocationAddress
+                - LatitudeAddress
+                - LongitudeAddress
+                - ElectronicAddress"
+            Address:
+              type: string
+              description: "\n"
+              format: string
+        BranchName:
+          type: string
+          description: "\n"
+          format: string
     BranchIdentification:
               type: object
               properties:
