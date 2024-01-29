@@ -29,8 +29,7 @@ paths:
         '429':
           $ref: '#/components/responses/TooManyRequests'
         '500':
-          $ref: '#/components/responses/InternalServerError'
-          
+          $ref: '#/components/responses/InternalServerError'          
 components:
   schemas:
     ProductInstanceReference:
