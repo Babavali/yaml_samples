@@ -58,8 +58,6 @@ components:
               description: "\n"
               format: string
         CdtTrfTxInf:
-          type: array
-          items:
             type: object
             properties:
               Cdtr:
@@ -107,8 +105,6 @@ components:
                 description: "\n"
                 format: string
         SplmtryData:
-          type: array
-          items:
             type: object
             properties:
               Envlp:
@@ -142,8 +138,7 @@ components:
           FinInstnId:
             type: string
             description: "\n"
-            format: string
-                            
+            format: string                 
     IntrBkSttlmAmt:
         type: object
         properties:
@@ -170,8 +165,6 @@ components:
             description: "\n"
             format: string
     CdtTrfTxInf:
-        type: array
-        items:
           type: object
           properties:
             Cdtr:
@@ -219,8 +212,6 @@ components:
                   description: "\n"
                   format: string
     SplmtryData:
-      type: array
-      items:
         type: object
         properties:
           Envlp:
@@ -256,8 +247,6 @@ components:
                       description: "\n"
                       format: string
                 CdtTrfTxInf:
-                  type: array
-                  items:
                     type: object
                     properties:
                       Cdtr:
@@ -305,8 +294,6 @@ components:
                         description: "\n"
                         format: string
                 SplmtryData:
-                  type: array
-                  items:
                     type: object
                     properties:
                       Envlp:
@@ -345,8 +332,6 @@ components:
                       description: "\n"
                       format: string
                 CdtTrfTxInf:
-                  type: array
-                  items:
                     type: object
                     properties:
                       Cdtr:
@@ -394,8 +379,6 @@ components:
                         description: "\n"
                         format: string
                 SplmtryData:
-                  type: array
-                  items:
                     type: object
                     properties:
                       Envlp:
@@ -434,8 +417,6 @@ components:
                       description: "\n"
                       format: string
                 CdtTrfTxInf:
-                  type: array
-                  items:
                     type: object
                     properties:
                       Cdtr:
@@ -483,8 +464,6 @@ components:
                         description: "\n"
                         format: string
                 SplmtryData:
-                  type: array
-                  items:
                     type: object
                     properties:
                       Envlp:
