@@ -33,19 +33,85 @@ paths:
 components:
   schemas:
     FIToFICstmrCdtTrf:
-        type: object
-        properties:
-          GrpHdr:
+      type: object
+      properties:
+        GrpHdr:
+          type: object
+          properties:
+            CreDtTm:
+              type: string
+              description: "\n"
+              format: string
+            SttlmInf:
+              type: object
+              properties:
+                SttlmMtd:
+                  type: string
+                  description: "\n"
+                  format: string
+            NbOfTxs:
+              type: string
+              description: "\n"
+              format: string
+            MsgId:
+              type: string
+              description: "\n"
+              format: string
+        CdtTrfTxInf:
+          type: array
+          items:
             type: object
             properties:
-              CreDtTm:
+              Cdtr:
                 type: string
                 description: "\n"
                 format: string
-          SttlmInf:
+              CdtrAgt:
+                type: object
+                properties:
+                  FinInstnId:
+                    type: string
+                    description: "\n"
+                    format: string
+              IntrBkSttlmAmt:
+                type: object
+                properties:
+                  Ccy:
+                    type: string
+                    description: "\n"
+                    format: string
+                  content:
+                    type: string
+                    description: "\n"
+                    format: string
+              PmtId:
+                type: object
+                properties:
+                  EndToEndId:
+                    type: string
+                    description: "\n"
+                    format: string
+              DbtrAgt:
+                type: object
+                properties:
+                  FinInstnId:
+                    type: string
+                    description: "\n"
+                    format: string
+              ChrgBr:
+                type: string
+                description: "\n"
+                format: string
+              Dbtr:
+                type: string
+                description: "\n"
+                format: string
+        SplmtryData:
+          type: array
+          items:
             type: object
             properties:
-              SttlmMtd:
+              Envlp:
                 type: string
                 description: "\n"
                 format: string
