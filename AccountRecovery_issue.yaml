@@ -393,18 +393,6 @@ components:
           description: Processing record for the negotiation task within the account recovery process
           format: string
       description: "The main worsteps to be followed in th eexecution of the procedure\n\nExamples: Invoice generation"
-    Planning:
-      type: object
-      properties:
-        AccountRecoveryPlan:
-          type: string
-          description: Recovery tasks and targets added to the Account Recovery Case Resolution Schedule
-          format: string
-        AccountRecoveryCasePlanningTaskRecord:
-          type: string
-          description: Processing record for the planning task within the account recovery process
-          format: string
-      description: "The main worsteps to be followed in th eexecution of the procedure\n\nExamples: Invoice generation"
     currencycode:
       type: object
       properties:
