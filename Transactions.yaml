@@ -19,7 +19,7 @@ paths:
         - $ref: '#/components/parameters/endDate'
       responses:
         '200':
-          $ref: '#/components/responses/retrieveTransactionListResponse'
+          $ref: '#/components/responses/RetrieveTransactionListResponse'
         '400':
           $ref: '#/components/responses/BadRequest'
         '401':
@@ -75,7 +75,7 @@ components:
                   $ref: '#/components/schemas/transactionDate'
               insertionDate:
                   $ref: '#/components/schemas/insertionDate'
-    retrieveTransactionListResponse:
+    RetrieveTransactionListResponse:
       type: object
       properties:
         totalDeposit:
@@ -135,12 +135,12 @@ components:
       schema:
         type: string
   responses:
-    retrieveTransactionListResponse:
+    RetrieveTransactionListResponse:
         description: fetchTransactionList
         content:
           application/json:
             schema:
-                $ref: '#/components/schemas/retrieveTransactionListResponse'
+                $ref: '#/components/schemas/RetrieveTransactionListResponse'
     BadRequest:
       description: BadRequest
       content:
