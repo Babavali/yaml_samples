@@ -4,294 +4,294 @@ info:
   description: BIAN Service Domain Packaged Business Capability (PCB) | DDD Bounded Context Party
   version: 11.0.0
 servers:
-- url: 'https://app.swaggerhub.com/apis/BIAN-3/CurrentAccount/11.0.0#/servers'
+  - url: "https://app.swaggerhub.com/apis/BIAN-3/CurrentAccount/11.0.0#/servers"
 paths:
-   /Party/Initiate:
+  /Party/Initiate:
     post:
       tags:
-          - Party
+        - Party
       summary: InCR Initiate A new party
       description: InCR Initiate A party
       operationId: Initiate
       requestBody:
-        $ref: '#/components/requestBodies/InitiatePartyRequest'
+        $ref: "#/components/requestBodies/InitiatePartyRequest"
       responses:
-        '200':
-          $ref: '#/components/responses/InitiatePartyResponse'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-   /Party/{Status}/Retrieve:
+        "200":
+          $ref: "#/components/responses/InitiatePartyResponse"
+        "400":
+          $ref: "#/components/responses/BadRequest"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "403":
+          $ref: "#/components/responses/Forbidden"
+        "404":
+          $ref: "#/components/responses/NotFound"
+        "429":
+          $ref: "#/components/responses/TooManyRequests"
+        "500":
+          $ref: "#/components/responses/InternalServerError"
+  /Party/{Status}/Retrieve:
     get:
       tags:
-          - Party
+        - Party
       summary: ReCR Retrieve list of customers
       description: ReCR Retrieve list of customers
       operationId: Retrieve
       parameters:
-        - $ref: '#/components/parameters/Status'
+        - $ref: "#/components/parameters/Status"
       responses:
-        '200':
-          $ref: '#/components/responses/RetrievePartiesResponse'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
+        "200":
+          $ref: "#/components/responses/RetrievePartiesResponse"
+        "400":
+          $ref: "#/components/responses/BadRequest"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "403":
+          $ref: "#/components/responses/Forbidden"
+        "404":
+          $ref: "#/components/responses/NotFound"
+        "429":
+          $ref: "#/components/responses/TooManyRequests"
+        "500":
+          $ref: "#/components/responses/InternalServerError"
 components:
   schemas:
     PartyRoleType:
-                  type: object
-                  properties:
-                    Text:
-                      type: string
-                      description: "\n"
-                      format: string
+      type: object
+      properties:
+        Text:
+          type: string
+          description: "\n"
+          format: string
     PartyRoleName:
-                  type: object
-                  properties:
-                    Name:
-                      type: string
-                      description: "\n"
-                      format: string
+      type: object
+      properties:
+        Name:
+          type: string
+          description: "\n"
+          format: string
     PartyRoleValidityPeriod:
-                  type: object
-                  properties:
-                    FromDateTime:
-                      $ref: '#/components/schemas/FromDateTime'
-                    ToDateTime:
-                      $ref: '#/components/schemas/ToDateTime'
+      type: object
+      properties:
+        FromDateTime:
+          $ref: "#/components/schemas/FromDateTime"
+        ToDateTime:
+          $ref: "#/components/schemas/ToDateTime"
     FromDateTime:
-                      type: object
-                      properties:
-                        DateTimeContent:
-                          type: string
-                          description: "\n"
-                          format: string
-                        TimeZoneCode:
-                          type: string
-                          description: "\n"
-                          format: string
-                        DaylightSavingIndicator:
-                          type: string
-                          description: "\n"
-                          format: string
+      type: object
+      properties:
+        DateTimeContent:
+          type: string
+          description: "\n"
+          format: string
+        TimeZoneCode:
+          type: string
+          description: "\n"
+          format: string
+        DaylightSavingIndicator:
+          type: string
+          description: "\n"
+          format: string
     ToDateTime:
-                      type: object
-                      properties:
-                        DateTimeContent:
-                          type: string
-                          description: "\n"
-                          format: string
-                        TimeZoneCode:
-                          type: string
-                          description: "\n"
-                          format: string
-                        DaylightSavingIndicator:
-                          type: string
-                          description: "\n"
-                          format: string                      
+      type: object
+      properties:
+        DateTimeContent:
+          type: string
+          description: "\n"
+          format: string
+        TimeZoneCode:
+          type: string
+          description: "\n"
+          format: string
+        DaylightSavingIndicator:
+          type: string
+          description: "\n"
+          format: string
     PartyInvolvement:
-              type: object
-              properties:
-                PartyRoleType:
-                  $ref: '#/components/schemas/PartyRoleType'
-                PartyRoleName:
-                  $ref: '#/components/schemas/PartyRoleName'
-                PartyRoleValidityPeriod:
-                  $ref: '#/components/schemas/PartyRoleValidityPeriod'
-                PartyInvolvementType:
-                  type: string
-                  description: "\n"
-                  format: string
+      type: object
+      properties:
+        PartyRoleType:
+          $ref: "#/components/schemas/PartyRoleType"
+        PartyRoleName:
+          $ref: "#/components/schemas/PartyRoleName"
+        PartyRoleValidityPeriod:
+          $ref: "#/components/schemas/PartyRoleValidityPeriod"
+        PartyInvolvementType:
+          type: string
+          description: "\n"
+          format: string
     PartyName:
-                  type: object
-                  properties:
-                    FirstName:
-                      type: string
-                      description: "\n"
-                      format: string
-                    MiddleName:
-                      type: string
-                      description: "\n"
-                      format: string
-                    LastName:
-                      type: string
-                      description: "\n"
-                      format: string
+      type: object
+      properties:
+        FirstName:
+          type: string
+          description: "\n"
+          format: string
+        MiddleName:
+          type: string
+          description: "\n"
+          format: string
+        LastName:
+          type: string
+          description: "\n"
+          format: string
     PartyDateTime:
-                  type: object
-                  properties:
-                    DateTimeContent:
-                      type: string
-                      description: "\n"
-                      format: string
-                    TimeZoneCode:
-                      type: string
-                      description: "\n"
-                      format: string
-                    DaylightSavingIndicator:
-                      type: string
-                      description: "\n"
-                      format: string
+      type: object
+      properties:
+        DateTimeContent:
+          type: string
+          description: "\n"
+          format: string
+        TimeZoneCode:
+          type: string
+          description: "\n"
+          format: string
+        DaylightSavingIndicator:
+          type: string
+          description: "\n"
+          format: string
     IdentifierStartDate:
-                        type: object
-                        properties:
-                          DateTimeContent:
-                            type: string
-                            description: "\n"
-                            format: string
-                          TimeZoneCode:
-                            type: string
-                            description: "\n"
-                            format: string
-                          DaylightSavingIndicator:
-                            type: string
-                            description: "\n"
-                            format: string
+      type: object
+      properties:
+        DateTimeContent:
+          type: string
+          description: "\n"
+          format: string
+        TimeZoneCode:
+          type: string
+          description: "\n"
+          format: string
+        DaylightSavingIndicator:
+          type: string
+          description: "\n"
+          format: string
     IdentifierEndDate:
-                        type: object
-                        properties:
-                          DateTimeContent:
-                            type: string
-                            description: "\n"
-                            format: string
-                          TimeZoneCode:
-                            type: string
-                            description: "\n"
-                            format: string
-                          DaylightSavingIndicator:
-                            type: string
-                            description: "\n"
-                            format: string
+      type: object
+      properties:
+        DateTimeContent:
+          type: string
+          description: "\n"
+          format: string
+        TimeZoneCode:
+          type: string
+          description: "\n"
+          format: string
+        DaylightSavingIndicator:
+          type: string
+          description: "\n"
+          format: string
     PartyIdentification:
-                    type: object
-                    properties:
-                      PartyIdentificationType:
-                        type: string
-                        description: "\n"
-                        format: string
-                      PartyIdentification:
-                        type: string
-                        description: "\n"
-                        format: string
-                      IdentifierStartDate:
-                        $ref: '#/components/schemas/IdentifierStartDate'
-                      IdentifierEndDate:
-                        $ref: '#/components/schemas/IdentifierEndDate'
+      type: object
+      properties:
+        PartyIdentificationType:
+          type: string
+          description: "\n"
+          format: string
+        PartyIdentification:
+          type: string
+          description: "\n"
+          format: string
+        IdentifierStartDate:
+          $ref: "#/components/schemas/IdentifierStartDate"
+        IdentifierEndDate:
+          $ref: "#/components/schemas/IdentifierEndDate"
     ElectronicAddressType:
-                  type: object
-                  properties:
-                    ElectronicAddressTypeValue:
-                      type: string
-                      description: "\n"
-                      format: string
-                      enum:
-                        - EmailAddress
-                    AddressDescription:
-                      type: string
-                      description: "\n"
-                      format: string
+      type: object
+      properties:
+        ElectronicAddressTypeValue:
+          type: string
+          description: "\n"
+          format: string
+          enum:
+            - EmailAddress
+        AddressDescription:
+          type: string
+          description: "\n"
+          format: string
     PhoneAddressType:
-                    type: object
-                    properties:
-                      PhoneTypeValue:
-                        type: string
-                        description: "\n"
-                        format: string
-                        enum:
-                          - MobileNumber
-                          - HomePhoneNumber
-                      PhoneNumber:
-                        type: string
-                        description: "\n"
-                        format: string
+      type: object
+      properties:
+        PhoneTypeValue:
+          type: string
+          description: "\n"
+          format: string
+          enum:
+            - MobileNumber
+            - HomePhoneNumber
+        PhoneNumber:
+          type: string
+          description: "\n"
+          format: string
     PartyReference:
-              type: object
-              properties:
-                PartyName:
-                  $ref: '#/components/schemas/PartyName'
-                Title:
-                  type: string
-                  description: "\n"
-                  format: string
-                BirthDate:
-                  type: string
-                  description: "\n"
-                  format: string
-                Gender:
-                  type: string
-                  description: "\n"
-                  format: string
-                Nationality:
-                  type: string
-                  description: "\n"
-                  format: string
-                Residence:
-                  type: string
-                  description: "\n"
-                  format: string
-                TaxCountry:
-                  type: string
-                  description: "\n"
-                  format: string
-                ElectronicAddressType:
-                  $ref: '#/components/schemas/ElectronicAddressType'
-                PhoneAddressType:
-                  $ref: '#/components/schemas/PhoneAddressType'
-                PartyType:
-                  type: string
-                  description: "\n"
-                  format: string
-                PartyDateTime:
-                  $ref: '#/components/schemas/PartyDateTime'
-                PartyIdentification:
-                  $ref: '#/components/schemas/PartyIdentification'
+      type: object
+      properties:
+        PartyName:
+          $ref: "#/components/schemas/PartyName"
+        Title:
+          type: string
+          description: "\n"
+          format: string
+        BirthDate:
+          type: string
+          description: "\n"
+          format: string
+        Gender:
+          type: string
+          description: "\n"
+          format: string
+        Nationality:
+          type: string
+          description: "\n"
+          format: string
+        Residence:
+          type: string
+          description: "\n"
+          format: string
+        TaxCountry:
+          type: string
+          description: "\n"
+          format: string
+        ElectronicAddressType:
+          $ref: "#/components/schemas/ElectronicAddressType"
+        PhoneAddressType:
+          $ref: "#/components/schemas/PhoneAddressType"
+        PartyType:
+          type: string
+          description: "\n"
+          format: string
+        PartyDateTime:
+          $ref: "#/components/schemas/PartyDateTime"
+        PartyIdentification:
+          $ref: "#/components/schemas/PartyIdentification"
     Party:
-          type: object
-          properties:
-            PartyReference:
-              $ref: '#/components/schemas/PartyReference'
-            PartyInvolvement:
-              $ref: '#/components/schemas/PartyInvolvement'
+      type: object
+      properties:
+        PartyReference:
+          $ref: "#/components/schemas/PartyReference"
+        PartyInvolvement:
+          $ref: "#/components/schemas/PartyInvolvement"
     Parties:
-        type: object
-        properties:
-            PartyReference:
-              $ref: '#/components/schemas/PartyReference'
-            PartyInvolvement:
-              $ref: '#/components/schemas/PartyInvolvement'
+      type: object
+      properties:
+        PartyReference:
+          $ref: "#/components/schemas/PartyReference"
+        PartyInvolvement:
+          $ref: "#/components/schemas/PartyInvolvement"
     InitiatePartyRequest:
       type: object
       properties:
-        Party: 
-          $ref: '#/components/schemas/Party'
+        Party:
+          $ref: "#/components/schemas/Party"
     InitiatePartyResponse:
       type: object
       properties:
-        Party: 
-          $ref: '#/components/schemas/Party'
+        Party:
+          $ref: "#/components/schemas/Party"
     RetrievePartiesResponse:
       type: object
       properties:
-        Parties: 
-          $ref: '#/components/schemas/Parties'
+        Parties:
+          $ref: "#/components/schemas/Parties"
     HTTPError:
       type: object
       properties:
@@ -320,53 +320,53 @@ components:
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/InitiatePartyRequest'
+            $ref: "#/components/schemas/InitiatePartyRequest"
   responses:
     InitiatePartyResponse:
-        description: fetchAccountUser
-        content:
-          application/json:
-            schema:
-                $ref: '#/components/schemas/InitiatePartyResponse'
+      description: fetchAccountUser
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/InitiatePartyResponse"
     RetrievePartiesResponse:
-        description: fetchAccountUser
-        content:
-          application/json:
-            schema:
-                $ref: '#/components/schemas/RetrievePartiesResponse'
+      description: fetchAccountUser
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/RetrievePartiesResponse"
     BadRequest:
       description: BadRequest
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/HTTPError'
+            $ref: "#/components/schemas/HTTPError"
     Unauthorized:
       description: Unauthorized
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/HTTPError'
+            $ref: "#/components/schemas/HTTPError"
     Forbidden:
       description: Forbidden
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/HTTPError'
+            $ref: "#/components/schemas/HTTPError"
     NotFound:
       description: NotFound
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/HTTPError'
+            $ref: "#/components/schemas/HTTPError"
     TooManyRequests:
       description: TooManyRequests
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/HTTPError'
+            $ref: "#/components/schemas/HTTPError"
     InternalServerError:
       description: InternalServerError
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/HTTPError'
+            $ref: "#/components/schemas/HTTPError"
