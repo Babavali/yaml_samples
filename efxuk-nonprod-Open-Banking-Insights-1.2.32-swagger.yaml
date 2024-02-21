@@ -40,6 +40,7 @@ paths:
     get:
       tags:
         - "COMMERCIAL"
+      summary: BusinessHealthCharacteristicsData
       operationId: BusinessHealthCharacteristicsData
       description:
         "Equifax Business Health Characteristics uses current account transaction\
@@ -75,6 +76,7 @@ paths:
     get:
       tags:
         - "CONSUMER"
+      summary: FinancialHealthIndexV1
       operationId: FinancialHealthIndexV1
       description:
         "Financial Health Index is a single metric that summarises a customer’\
@@ -112,6 +114,7 @@ paths:
     get:
       tags:
         - "CONSUMER"
+      summary: FinancialHealthIndexV2
       operationId: FinancialHealthIndexV2
       description:
         "Financial Health Index V2 is an improved version of the Financial\
@@ -138,6 +141,7 @@ paths:
     get:
       tags:
         - "CONSUMER"
+      summary: AutomatedIncomeVerificationV1
       operationId: AutomatedIncomeVerificationV1
       description:
         "<p>Automated Income Verification enables real-time, digital income\
@@ -170,6 +174,7 @@ paths:
     get:
       tags:
         - "CONSUMER"
+      summary: AutomatedIncomeVerificationV2
       operationId: AutomatedIncomeVerificationV2
       description:
         "Automated Income Verification V2 is an improved version of the Automated\
