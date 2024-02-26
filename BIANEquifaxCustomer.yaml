@@ -1,0 +1,458 @@
+openapi: 3.0.1
+info:
+  title: BIANEquifaxCustomer
+  description: This specification covers the APIs for the Equifax Open Banking Insights Product. .
+  version: 1.2.32
+servers:
+- url: "https://api.sandbox.equifax.co.uk/open-banking-insights/v1"
+paths:
+  /general/customer/transactions/categorised:
+    get:
+      tags:
+          - GENERAL
+      summary: "Customer Categorised Transactions"
+      description: "This API returns a full list of categorised transactions for a\
+        \ given account shared through open banking."
+      operationId: RetrieveCustomerCategorisedTransactions
+      parameters:
+        - $ref: "#/components/parameters/CustomerIdParam"
+        - $ref: "#/components/parameters/StartYearParam"
+        - $ref: "#/components/parameters/StartMonthParam"
+        - $ref: "#/components/parameters/EndYearParam"
+        - $ref: "#/components/parameters/EndMonthParam"
+        - $ref: "#/components/parameters/EfxClientCorrelationIdParam"
+      responses:
+        '200':
+          $ref: '#/components/responses/RetrieveCustomerCategorisedTransactionsResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+  /general/customer/account/transactions/categorised:
+    get:
+      tags:
+          - GENERAL
+      summary: Customer Account Categorised Transactions
+      description: "This API returns a full list of categorised transactions for a\
+        \ given account shared through open banking - at account level. The  AccountId\
+        \ can be retrieved either from the AllData endpoint or CustomerAccounts endpoint."
+      operationId: RetrieveCustomerAccountCategorisedTransactions
+      parameters:
+        - $ref: "#/components/parameters/CustomerIdParam"
+        - $ref: "#/components/parameters/AccountIdParam"
+        - $ref: "#/components/parameters/StartYearParam"
+        - $ref: "#/components/parameters/StartMonthParam"
+        - $ref: "#/components/parameters/EndYearParam"
+        - $ref: "#/components/parameters/EndMonthParam"
+        - $ref: "#/components/parameters/EfxClientCorrelationIdParam"
+      responses:
+        '200':
+          $ref: '#/components/responses/RetrieveCustomerCategorisedTransactionsResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+  /consumer/getCustomer:
+    get:
+      tags:
+          - CONSUMER
+      summary: Get Customer
+      description: The Get Customer API provides all account details based on a specific Customer Id
+      operationId: RetrieveGetCustomer
+      parameters:
+        - $ref: "#/components/parameters/CustomerIdParam"
+        - $ref: "#/components/parameters/StartYearParam"
+        - $ref: "#/components/parameters/StartMonthParam"
+        - $ref: "#/components/parameters/EndYearParam"
+        - $ref: "#/components/parameters/EndMonthParam"
+        - $ref: "#/components/parameters/EfxClientCorrelationIdParam"
+      responses:
+        '200':
+          $ref: '#/components/responses/RetrieveGetCustomerResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+components:
+  schemas:
+    DepositsandWithdrawals:
+      type: object
+      properties:
+        TransactionReference:
+          type: string
+          description: "\n"
+          format: string
+        TransactionType:
+          type: string
+          description: "\n"
+          format: string
+        TransactionDescription:
+          type: string
+          description: "\n"
+          format: string
+        TransactionAmount:
+          type: string
+          description: "\n"
+          format: string
+        TransactionDate:
+          type: string
+          description: "\n"
+          format: string
+        AccountReferrence:
+          type: string
+          description: "\n"
+          format: string
+        PrimaryCategoryDescription:
+          type: string
+          description: "\n"
+          format: string
+        SubCategoryDescription:
+          type: string
+          description: "\n"
+          format: string
+        VendorDescription:
+          type: string
+        primaryCategoryId:
+          type: string
+          description: "\n"
+          format: string
+        subCategoryId:
+          type: string
+          description: "\n"
+          format: string
+        recurrenceEventId:
+          type: string
+          description: "\n"
+          format: string
+        recurrenceType:
+          type: string
+          description: "\n"
+          format: string
+        vendorId:
+          type: string
+          description: "\n"
+          format: string
+        hash:
+          type: string
+          description: "\n"
+          format: string
+        runningBalance:
+          type: string
+          description: "\n"
+          format: string
+        transactionIdx:
+          type: string
+          description: "\n"
+          format: string
+        currencyCode:
+          type: string
+          description: "\n"
+          format: string
+        proprietaryBankTransactionCode:
+          type: string
+          description: "\n"
+          format: string
+        proprietaryBankTransactionCodeIssuer:
+          type: string
+          description: "\n"
+          format: string
+    StatusReason:
+      type: object
+      properties:
+        Text:
+          type: string
+          description: "\n"
+          format: string
+    AccountDate:
+      type: object
+      properties:
+        DateTimeContent:
+          type: string
+          description: "\n"
+          format: string
+    LinkedAccounts:
+      type: object
+      properties:
+        AccountReference:
+          type: string
+          description: "\n"
+          format: string
+        AccountDate:
+          $ref: '#/components/schemas/AccountDate'
+        AccountHolder:
+          type: string
+          description: "\n"
+          format: string
+        AccountNumber:
+          type: string
+          description: "\n"
+          format: string
+        SortCode:
+          type: string
+          description: "\n"
+          format: string
+        StatusReason:
+          $ref: '#/components/schemas/StatusReason'
+        AccountIdentification:
+          $ref: '#/components/schemas/AccountIdentification'
+        AccountBalance:
+          $ref: '#/components/schemas/AccountBalance'
+        AccountBalanceDate:
+          $ref: '#/components/schemas/AccountBalanceDate'
+        AccountDescription:
+          $ref: '#/components/schemas/AccountDescription'
+    IdentifierValue:
+      type: object
+      properties:
+        Value:
+          type: string
+          description: "\n"
+          format: string
+    AccountIdentification:
+      type: object
+      properties:
+        AccountIdentificationType:
+          type: string
+          description: "\n"
+          format: string
+        IdentifierValue:
+            $ref: '#/components/schemas/IdentifierValue'
+    AmountCurrency:
+      type: object
+      properties:
+        CurrencyCode:
+          type: string
+          description: "\n"
+          format: string
+    AccountBalance:
+      type: object
+      properties:
+        AmountValue:
+          type: string
+          description: "\n"
+          format: string
+        AmountCurrency:
+          $ref: '#/components/schemas/AmountCurrency'
+    AccountBalanceDate:
+      type: object
+      properties:
+        DateTimeContent:
+          type: string
+          description: "\n"
+          format: string
+    AccountDescription:
+      type: object
+      properties:
+        Text:
+          type: string
+          description: "\n"
+          format: string
+    RetrieveGetCustomerResponse:
+      type: object
+      properties:
+        CustomerReference:
+          type: string
+          description: "\n"
+          format: string
+        LinkedAccounts:
+          type: array
+          items:
+            $ref: '#/components/schemas/LinkedAccounts'
+    RetrieveCustomerCategorisedTransactionsResponse:
+      type: object
+      properties:
+        DepositsandWithdrawals:
+          $ref: '#/components/schemas/DepositsandWithdrawals'
+    RetrieveCustomerAccountCategorisedTransactionsResponse:
+      type: array
+      items:
+        type: object
+        properties:
+          DepositsandWithdrawals:
+            $ref: '#/components/schemas/DepositsandWithdrawals'
+    HTTPError:
+      type: object
+      properties:
+        logref:
+          type: string
+          description: "\n"
+          format: string
+        message:
+          type: string
+          description: "\n"
+          format: string
+  parameters:
+    CustomerIdParam:
+      name: customerId
+      description: "Internal Id of the customer. This can be retrieved from the /general/lookup/customerId\
+        \ endpoint when providing an external client reference."
+      in: query
+      required: true
+      schema:
+        type: string
+    AccountIdParam:
+      name: accountId
+      description: "The accountId provided must be a valid GUID type."
+      in: query
+      required: true
+      schema:
+        type: string
+    NumberOfMonths1361224Param:
+      name: numberOfMonths
+      description: "1, 3, 6, 12 or 24 months of transaction data to be utilised in\
+        \ the response calculation."
+      in: query
+      required: true
+      schema:
+        type: integer
+    NumberOfMonths3612Param:
+      name: numberOfMonths
+      description: 3, 6 or 12 months for transaction data to be provided in the response.
+      in: query
+      required: true
+      schema:
+        type: integer
+    NumberOfMonth3612Param:
+      name: numberOfMonth
+      description: "An array of integers, containing either 3, 6 or 12 months for\
+        \ transaction data to be provided in the response."
+      in: query
+      required: false
+      schema:
+        type: integer
+    NumberOfMonth1361224Param:
+      name: numberOfMonth
+      description: "An array of integers, containing either 3, 6 or 12 months for\
+        \ transaction data to be provided in the response."
+      in: query
+      required: false
+      schema:
+        type: integer
+    GrossAnnualSalaryParam:
+      name: grossAnnualSalary
+      description:  "The value provided in this parameter will be used to override\
+        \ the value provided during the customer application process."
+      in: query
+      required: false
+      schema:
+        type: integer
+    StartYearParam:
+      name: startYear
+      description:  "The year provided must be between 1900 and 3000."
+      in: query
+      required: false
+      schema:
+        type: integer
+        default: 1900
+    StartMonthParam:
+      name: startMonth
+      description:  "The month provided must be between 1 and 12."
+      in: query
+      required: false
+      schema:
+        type: integer
+        default: 1
+    EndYearParam:
+      name: endYear
+      description:  "The year provided must be between 1900 and 3000. End year must\
+        \ not be less than startYear."
+      in: query
+      required: false
+      schema:
+        type: integer
+        default: 3000
+    EndMonthParam:
+      name: endMonth
+      description:  "The month provided must be between 1 and 12. If startYear and\
+        \ endYear are the same then endMonth must not be less than startMonth."
+      in: query
+      required: false
+      schema:
+        type: integer
+        default: 1
+    EfxClientCorrelationIdParam:
+      name: efx-client-correlation-id
+      description: "This is a client reference ID, which is returned in the response.\
+        \ This can be used by clients for their own reference and logging purposes."
+      in: header
+      schema:
+        type: string
+  responses:
+    RetrieveCustomerCategorisedTransactionsResponse:
+      description: fetchFhiScore
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/RetrieveCustomerCategorisedTransactionsResponse'
+    RetrieveCustomerAccountCategorisedTransactionsResponse:
+      description: fetchFhiScore
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/RetrieveCustomerAccountCategorisedTransactionsResponse'
+    RetrieveGetCustomerResponse:
+      description: fetchFhiScore
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/RetrieveGetCustomerResponse'
+    BadRequest:
+      description: BadRequest
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/HTTPError'
+    Unauthorized:
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/HTTPError'
+    Forbidden:
+      description: Forbidden
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/HTTPError'
+    NotFound:
+      description: NotFound
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/HTTPError'
+    TooManyRequests:
+      description: TooManyRequests
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/HTTPError'
+    InternalServerError:
+      description: InternalServerError
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/HTTPError'
