@@ -424,7 +424,6 @@ paths:
           $ref: '#/components/responses/TooManyRequests'
         '500':
           $ref: '#/components/responses/InternalServerError'
-
   '/SavingsAccount/{savingsaccountid}/DepositsandWithdrawals/{depositsandwithdrawalsid}/Update':
     put:
       tags:
@@ -528,7 +527,6 @@ paths:
           $ref: '#/components/responses/TooManyRequests'
         '500':
           $ref: '#/components/responses/InternalServerError'
-
   '/SavingsAccount/{savingsaccountid}/Payments/{paymentsid}/Initiate':
     post:
       tags:
@@ -2667,7 +2665,6 @@ components:
               type: string
               description: "\n"
               format: string
-
     InitiateDepositsandWithdrawalsResponse:
       type: object
       properties:
