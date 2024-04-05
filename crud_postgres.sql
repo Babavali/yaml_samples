@@ -3,7 +3,9 @@ USE `postgres`;
 -- public.id_proof definition
 
 -- Drop table
-
+DROP TABLE IF EXISTS `address`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `address` (
   `id` varchar(255) NOT NULL,
   `address_line1` varchar(255) DEFAULT NULL,
