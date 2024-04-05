@@ -1,10 +1,12 @@
+CREATE DATABASE  IF NOT EXISTS `postgres` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
+USE `postgres`;
 -- public.id_proof definition
 
 -- Drop table
 
--- DROP TABLE public.id_proof;
+DROP TABLE IF EXISTS `id_proof`;
 
-CREATE TABLE public.id_proof (
+CREATE TABLE 'id_proof' (
 	id varchar(255) NOT NULL,
 	typ varchar(255) NULL,
 	value varchar(255) NULL,
@@ -16,9 +18,9 @@ CREATE TABLE public.id_proof (
 
 -- Drop table
 
--- DROP TABLE public.test_user;
+DROP TABLE IF EXISTS `test_user`;
 
-CREATE TABLE public.test_user (
+CREATE TABLE 'test_user' (
 	id int4 NOT NULL,
 	city varchar(255) NULL,
 	email varchar(255) NULL,
