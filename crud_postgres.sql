@@ -22,10 +22,9 @@ CREATE TABLE public.test_user (
 	id int4 NOT NULL,
 	city varchar(255) NULL,
 	email varchar(255) NULL,
-	"name" varchar(255) NULL,
+	name varchar(255) NULL,
 	id_proof_id varchar(255) NULL,
-	CONSTRAINT test_user_pkey PRIMARY KEY (id)
-,
+	CONSTRAINT test_user_pkey PRIMARY KEY (id),
 	CONSTRAINT uk_7ob33qsu9iy3il49s0674vyho UNIQUE (id_proof_id)
 );
 
