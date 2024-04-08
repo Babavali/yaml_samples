@@ -38,7 +38,7 @@ CREATE TABLE 'id_proof' (
 	`type` varchar(255) NULL,
 	`value` varchar(255) NULL,
 	CONSTRAINT `id_proof_pkey` PRIMARY KEY (`id`)
-);
+)
 
 -- public.test_user definition
 
@@ -54,7 +54,7 @@ CREATE TABLE 'user' (
 	`id_proof_id` varchar(255) NULL,
 	CONSTRAINT `test_user_pkey` PRIMARY KEY (`id`),
 	CONSTRAINT `uk_7ob33qsu9iy3il49s0674vyho` UNIQUE (`id_proof_id`)
-);
+)
 
 
 -- public.test_user foreign keys
