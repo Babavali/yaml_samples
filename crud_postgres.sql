@@ -3,10 +3,10 @@ USE `postgres`;
 -- public.id_proof definition
 
 -- Drop table
-DROP TABLE IF EXISTS `address`;
+DROP TABLE IF EXISTS `address_postgres`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `address` (
+CREATE TABLE `address_postgres` (
   `id` varchar(255) NOT NULL,
   `address_line1` varchar(255) DEFAULT NULL,
   `address_line2` varchar(255) DEFAULT NULL,
@@ -17,10 +17,10 @@ CREATE TABLE `address` (
   PRIMARY KEY (`id`)
 )
 
-DROP TABLE IF EXISTS `employee`;
+DROP TABLE IF EXISTS `employee_postgres`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `employee` (
+CREATE TABLE `employee_postgres` (
   `id` int NOT NULL,
   `city` varchar(255) DEFAULT NULL,
   `email` varchar(255) DEFAULT NULL,
@@ -28,7 +28,7 @@ CREATE TABLE `employee` (
   `address_id` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `uk_hayqfjiruee1h6gs8jpcnjkmh` (`address_id`),
-  CONSTRAINT `fklm8wihj7bmjdv4lyk18e9j814` FOREIGN KEY (`address_id`) REFERENCES `address` (`id`)
+  CONSTRAINT `fklm8wihj7bmjdv4lyk18e9j814` FOREIGN KEY (`address_id`) REFERENCES `address_postgres` (`id`)
 )
 
 DROP TABLE IF EXISTS `id_proof`;
