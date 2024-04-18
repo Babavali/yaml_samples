@@ -4,44 +4,36 @@ info:
   description: This specification covers the APIs for the Equifax Open Banking Insights Product. .
   version: 1.2.32
 servers:
-  - url: "https://api.sandbox.equifax.co.uk/open-banking-insights/v1"
+- url: "https://api.sandbox.equifax.co.uk/open-banking-insights/v1"
 paths:
-  /commercial/businessHealthCharacteristics:
+  /consumer/financialHealthIndex/months:
     get:
       tags:
-        - CONSUMER
-      summary: Business Health Characteristics Data
-      description:
-        "Equifax Business Health Characteristics uses current account transaction\
-        \ data to offer you a more complete picture of a company's financial health,\
-        \ helping you make more accurate lending decisions. Because it uses transaction\
-        \ data, it doesn’t rely on your business customers having a history of credit,\
-        \ in order to determine their ability to pay back a loan, invoice finance\
-        \ or asset finance agreement.<p>This means that you can more accurately assess\
-        \ the creditworthiness and affordability of UK businesses who are applying\
-        \ to the CBILS scheme with characteristics that show turnover and payments\
-        \ such as Tax and Salary. Characteristics are available over 1,3,6, 12 and\
-        \ 24 months and cover pre-COVID (pre March 1 2020), post-COVID (post March\
-        \ 1 2020) and rolling periods (crossing the ‘COVID’ date) in addition to chars\
-        \ that cover loans and other borrowing taken during the COVID period.</p>"
-      operationId: Retrieve
+          - CONSUMER
+      summary: Financial Health Index (V2)
+      description: "Financial Health Index V2 is an improved version of the Financial\
+        \ Health Index V1 where all data can be returned in the output, e.g. 3, 6\
+        \ and 12 months of data." 
+      operationId: RetrieveFinancialHealthIndex(V2)
       parameters:
-        - $ref: "#/components/parameters/CustomerIdParam"
+          - $ref: "#/components/parameters/CustomerIdParam"
+          - $ref: "#/components/parameters/NumberOfMonth1361224Param"
+          - $ref: "#/components/parameters/EfxClientCorrelationIdParam"
       responses:
-        "200":
-          $ref: "#/components/responses/RetrieveFhiScoreResponse"
-        "400":
-          $ref: "#/components/responses/BadRequest"
-        "401":
-          $ref: "#/components/responses/Unauthorized"
-        "403":
-          $ref: "#/components/responses/Forbidden"
-        "404":
-          $ref: "#/components/responses/NotFound"
-        "429":
-          $ref: "#/components/responses/TooManyRequests"
-        "500":
-          $ref: "#/components/responses/InternalServerError"
+        '200':
+          $ref: '#/components/responses/RetrieveFinancialHealthIndexMonthsResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
 components:
   schemas:
     flags:
@@ -61,17 +53,19 @@ components:
             type: string
             description: "\n"
             format: string
-    FhiScoreResponse:
+    RetrieveFinancialHealthIndexMonthsResponse:
       type: object
       properties:
-        fhiScore:
-          type: string
+        numberOfMonths:
+          type: integer
           description: "\n"
-          format: string
+          format: integer
+        fhiScore:
+          type: integer
+          description: "\n"
+          format: integer
         flags:
-          $ref: "#/components/schemas/flags"
-    RetrieveFhiScoreResponse:
-      $ref: "#/components/schemas/FhiScoreResponse"
+          $ref: '#/components/schemas/flags'
     HTTPError:
       type: object
       properties:
@@ -86,50 +80,67 @@ components:
   parameters:
     CustomerIdParam:
       name: customerId
+      description: "Internal Id of the customer. This can be retrieved from the /general/lookup/customerId\
+        \ endpoint when providing an external client reference."
       in: query
       required: true
       schema:
         type: string
+    NumberOfMonth1361224Param:
+      name: numberOfMonth
+      description: "An array of integers, containing either 3, 6 or 12 months for\
+        \ transaction data to be provided in the response."
+      in: query
+      required: false
+      schema:
+        type: integer
+    EfxClientCorrelationIdParam:
+      name: efx-client-correlation-id
+      description: "This is a client reference ID, which is returned in the response.\
+        \ This can be used by clients for their own reference and logging purposes."
+      in: header
+      schema:
+        type: string
   responses:
-    RetrieveFhiScoreResponse:
+    RetrieveFinancialHealthIndexMonthsResponse:
       description: fetchFhiScore
       content:
         application/json:
           schema:
-            $ref: "#/components/schemas/RetrieveFhiScoreResponse"
+            $ref: '#/components/schemas/RetrieveFinancialHealthIndexMonthsResponse'
     BadRequest:
       description: BadRequest
       content:
         application/json:
           schema:
-            $ref: "#/components/schemas/HTTPError"
+            $ref: '#/components/schemas/HTTPError'
     Unauthorized:
       description: Unauthorized
       content:
         application/json:
           schema:
-            $ref: "#/components/schemas/HTTPError"
+            $ref: '#/components/schemas/HTTPError'
     Forbidden:
       description: Forbidden
       content:
         application/json:
           schema:
-            $ref: "#/components/schemas/HTTPError"
+            $ref: '#/components/schemas/HTTPError'
     NotFound:
       description: NotFound
       content:
         application/json:
           schema:
-            $ref: "#/components/schemas/HTTPError"
+            $ref: '#/components/schemas/HTTPError'
     TooManyRequests:
       description: TooManyRequests
       content:
         application/json:
           schema:
-            $ref: "#/components/schemas/HTTPError"
+            $ref: '#/components/schemas/HTTPError'
     InternalServerError:
       description: InternalServerError
       content:
         application/json:
           schema:
-            $ref: "#/components/schemas/HTTPError"
+            $ref: '#/components/schemas/HTTPError'
