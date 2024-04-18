@@ -11,8 +11,7 @@ paths:
       tags:
           - GENERAL
       summary: "Customer Categorised Transactions"
-      description: "This API returns a full list of categorised transactions for a\
-        \ given account shared through open banking."
+      description: "This API returns a full list of categorised transactions for a given account shared through open banking."
       operationId: RetrieveCustomerCategorisedTransactions
       parameters:
         - $ref: "#/components/parameters/CustomerIdParam"
@@ -42,9 +41,7 @@ paths:
       - "GENERAL"
       summary: "Get All Data"
       operationId: RetrieveAllData
-      description: "This is the new version of the All Data endpoint. This APIs returns\
-        \ all categorised data and events from all accounts held against a customer\
-        \ record in a single call."
+      description: "This is the new version of the All Data endpoint. This APIs returns all categorised data and events from all accounts held against a customer  record in a single call."
       parameters:
       - $ref: "#/components/parameters/CustomerIdParam"
       - $ref: "#/components/parameters/EfxClientCorrelationIdParam"
@@ -68,9 +65,7 @@ paths:
       tags:
           - GENERAL
       summary: Customer Account Categorised Transactions
-      description: "This API returns a full list of categorised transactions for a\
-        \ given account shared through open banking - at account level. The  AccountId\
-        \ can be retrieved either from the AllData endpoint or CustomerAccounts endpoint."
+      description: "This API returns a full list of categorised transactions for a given account shared through open banking - at account level. The  AccountId can be retrieved either from the AllData endpoint or CustomerAccounts endpoint."
       operationId: RetrieveCustomerAccountCategorisedTransactions
       parameters:
         - $ref: "#/components/parameters/CustomerIdParam"
