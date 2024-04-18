@@ -741,7 +741,7 @@ components:
   parameters:
     CustomerIdParam:
       name: customerId
-      description: "Internal Id of the customer. This can be retrieved from the /general/lookup/customerId endpoint when providing an external client reference."
+      description: "Internal Id of the customer. This can be retrieved from the general lookup customerId endpoint when providing an external client reference."
       in: query
       required: true
       schema:
