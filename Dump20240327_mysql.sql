@@ -2,8 +2,6 @@ CREATE DATABASE  IF NOT EXISTS `rest_db` /*!40100 DEFAULT CHARACTER SET utf8mb4 
 USE `rest_db`;
 
 DROP TABLE IF EXISTS `address_map`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `address_map` (
   `id` varchar(255) NOT NULL,
   `address_line1` varchar(255) DEFAULT NULL,
@@ -14,11 +12,8 @@ CREATE TABLE `address_map` (
   `state` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
 
 DROP TABLE IF EXISTS `employee_map`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `employee_map` (
   `id` int NOT NULL,
   `city` varchar(255) DEFAULT NULL,
