@@ -31,33 +31,3 @@ CREATE TABLE `employee_postgres` (
   CONSTRAINT `fklm8wihj7bmjdv4lyk18e9j814` FOREIGN KEY (`address_id`) REFERENCES `address_postgres` (`id`)
 )
 
-DROP TABLE IF EXISTS `id_proof`;
-
-CREATE TABLE 'id_proof' (
-	`id` varchar(255) NOT NULL,
-	`type` varchar(255) NULL,
-	`value` varchar(255) NULL,
-	CONSTRAINT `id_proof_pkey` PRIMARY KEY (`id`)
-)
-
--- public.test_user definition
-
--- Drop table
-
-DROP TABLE IF EXISTS `user`;
-
-CREATE TABLE 'user' (
-	`id` int4 NOT NULL,
-	`city` varchar(255) NULL,
-	`email` varchar(255) NULL,
-	`name` varchar(255) NULL,
-	`id_proof_id` varchar(255) NULL,
-	CONSTRAINT `test_user_pkey` PRIMARY KEY (`id`),
-	CONSTRAINT `uk_7ob33qsu9iy3il49s0674vyho` UNIQUE (`id_proof_id`)
-)
-
-
--- public.test_user foreign keys
-
-ALTER TABLE ,`test_user` ADD CONSTRAINT `fksju7i3axjy7lr8vkln3ewknbc` FOREIGN KEY (`id_proof_id`) REFERENCES id_proof(`id`)
-;
