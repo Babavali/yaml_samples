@@ -3,6 +3,7 @@ USE `postgres`;
 
 DROP TABLE IF EXISTS `FINX_CA_ENTITES_SCAN`;
 CREATE TABLE `FINX_CA_ENTITES_SCAN` (
+    'ID' BIGSERIAL PRIMARY KEY
     `CA_workflow_instance_identifier` VARCHAR(500) NOT NULL,
     `CA_screening_configuration_identifier` VARCHAR(500) NOT NULL,
     `MSD_entity_id` VARCHAR(255),
