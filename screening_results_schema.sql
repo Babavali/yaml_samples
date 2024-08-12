@@ -3,7 +3,7 @@ USE `postgres`;
 -- public.id_proof definition
 
 DROP TABLE IF EXISTS `screening_results`;
-CREATE TABLE screening_results (
+CREATE TABLE `screening_results` (
     `CA_workflow_instance_identifier` VARCHAR(500) NOT NULL,
     `CA_screening_configuration_identifier` VARCHAR(500) NOT NULL,
     `MSD_entity_id` VARCHAR(255),
