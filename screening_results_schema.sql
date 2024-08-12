@@ -4,7 +4,6 @@ USE `postgres`;
 
 DROP TABLE IF EXISTS `screening_results`;
 CREATE TABLE screening_results (
-    `ID SERIAL` PRIMARY KEY,
     `CA_workflow_instance_identifier` VARCHAR(500) NOT NULL UNIQUE,
     `CA_screening_configuration_identifier` VARCHAR(500) NOT NULL,
     `MSD_entity_id` VARCHAR(255),
@@ -15,6 +14,7 @@ CREATE TABLE screening_results (
     `Finx_status_from_method` VARCHAR(500),
     `scan_initiated_on` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     `scan_status_updated_on` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    `CA_Webhook_configuration_identifier` VARCHAR(500)
+    `CA_Webhook_configuration_identifier` VARCHAR(500),
+    PRIMARY KEY (`ID SERIAL`),
 );
 
