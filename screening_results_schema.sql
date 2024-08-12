@@ -1,6 +1,5 @@
-CREATE DATABASE  IF NOT EXISTS `postgres` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
+CREATE DATABASE  IF NOT EXISTS `postgres`
 USE `postgres`;
--- public.id_proof definition
 
 DROP TABLE IF EXISTS `screening_results`;
 CREATE TABLE `screening_results` (
@@ -17,4 +16,16 @@ CREATE TABLE `screening_results` (
     `CA_Webhook_configuration_identifier` VARCHAR(500),
     PRIMARY KEY (`ID SERIAL`),
 );
+
+DROP TABLE IF EXISTS `address_postgres`;
+CREATE TABLE `address_postgres` (
+  `id` varchar(255) NOT NULL,
+  `address_line1` varchar(255) DEFAULT NULL,
+  `address_line2` varchar(255) DEFAULT NULL,
+  `city` varchar(255) DEFAULT NULL,
+  `country` varchar(255) DEFAULT NULL,
+  `pincode` varchar(255) DEFAULT NULL,
+  `state` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+)
 
