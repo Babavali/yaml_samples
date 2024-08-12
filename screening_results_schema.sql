@@ -4,7 +4,7 @@ USE `postgres`;
 
 DROP TABLE IF EXISTS `screening_results`;
 CREATE TABLE screening_results (
-    `CA_workflow_instance_identifier` VARCHAR(500) NOT NULL UNIQUE,
+    `CA_workflow_instance_identifier` VARCHAR(500) NOT NULL,
     `CA_screening_configuration_identifier` VARCHAR(500) NOT NULL,
     `MSD_entity_id` VARCHAR(255),
     `MSD_entity_type` VARCHAR(100),
