@@ -472,7 +472,7 @@ components:
     InitiatePartyResponse:
       type: object
       properties:
-        Party:
+        PartyResponse:
           $ref: '#/components/schemas/PartyResponse'
     RetrievePartyResponse:
       type: object
