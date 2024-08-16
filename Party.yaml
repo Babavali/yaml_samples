@@ -180,7 +180,7 @@ components:
                 type: string
                 description: "\n"
                 format: string
-              PartyIdentificationData:
+              PartyIdentification:
                 type: string
                 description: "\n"
                 format: string
