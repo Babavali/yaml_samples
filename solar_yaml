@@ -353,6 +353,10 @@ components:
               type: string
               description: "\n"
               format: string
+            plantDetailsId:
+              type: string
+              description: "\n"
+              format: string
             country:
               type: string
               description: "\n"
@@ -378,6 +382,10 @@ components:
               description: "\n"
               format: string
             yieldToday:
+              type: string
+              description: "\n"
+              format: string
+            totalYield:
               type: string
               description: "\n"
               format: string
@@ -417,6 +425,14 @@ components:
           description: "\n"
           format: string
         noofDevices:
+          type: string
+          description: "\n"
+          format: string
+        customerName:
+          type: string
+          description: "\n"
+          format: string
+        emails:
           type: string
           description: "\n"
           format: string
@@ -475,6 +491,10 @@ components:
           type: string
           description: "\n"
           format: string
+        plantDetailsId:
+          type: string
+          description: "\n"
+          format: string
         country:
           type: string
           description: "\n"
@@ -512,6 +532,10 @@ components:
           description: "\n"
           format: string
         PlantType:
+          type: string
+          description: "\n"
+          format: string
+        totalYield:
           type: string
           description: "\n"
           format: string
@@ -542,6 +566,10 @@ components:
           type: string
           description: "\n"
           format: string
+        plantDetailsId:
+          type: string
+          description: "\n"
+          format: string
         country:
           type: string
           description: "\n"
@@ -579,6 +607,10 @@ components:
           description: "\n"
           format: string
         PlantType:
+          type: string
+          description: "\n"
+          format: string
+        totalYield:
           type: string
           description: "\n"
           format: string
@@ -800,6 +832,10 @@ components:
           type: string
           description: "\n"
           format: string
+        plantDetailsId:
+          type: string
+          description: "\n"
+          format: string
         deviceName:
           type: string
           description: "\n"
@@ -825,6 +861,98 @@ components:
           description: "\n"
           format: string
         associatedPlant:
+          type: string
+          description: "\n"
+          format: string
+        totalStringCapacity:
+          type: string
+          description: "\n"
+          format: string
+        yield:
+          type: string
+          description: "\n"
+          format: string
+        totalYield:
+          type: string
+          description: "\n"
+          format: string
+        specificEnergy:
+          type: string
+          description: "\n"
+          format: string
+        peakAcPower:
+          type: string
+          description: "\n"
+          format: string
+        gridConnectionDuration:
+          type: string
+          description: "\n"
+          format: string
+        panelArea:
+          type: string
+          description: "\n"
+          format: string
+        solarIrradiance:
+          type: string
+          description: "\n"
+          format: string
+        efficiency:
+          type: string
+          description: "\n"
+          format: string
+        hourOfSunLight:
+          type: string
+          description: "\n"
+          format: string
+        numberOfPanels:
+          type: string
+          description: "\n"
+          format: string
+        ratedPowerPerPanels:
+          type: string
+          description: "\n"
+          format: string
+        watt:
+          type: string
+          description: "\n"
+          format: string
+        theoreticalEnergyOutput:
+          type: string
+          description: "\n"
+          format: string
+        actualEnergyOutput:
+          type: string
+          description: "\n"
+          format: string
+        energyProduced:
+          type: string
+          description: "\n"
+          format: string
+        emissiaonFactor:
+          type: string
+          description: "\n"
+          format: string
+        tress:
+          type: string
+          description: "\n"
+          format: string
+        yearCO2Reduction:
+          type: string
+          description: "\n"
+          format: string
+        energyContentOfCoal:
+          type: string
+          description: "\n"
+          format: string
+        energyProducedBySolar:
+          type: string
+          description: "\n"
+          format: string
+        totalEnergy:
+          type: string
+          description: "\n"
+          format: string
+        ratedPower:
           type: string
           description: "\n"
           format: string
