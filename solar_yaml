@@ -417,6 +417,94 @@ components:
               type: string
               description: "\n"
               format: string
+    InitiatePlantDetailsRequest:
+      type: object
+      properties:
+        plantName:
+          type: string
+          description: "\n"
+          format: string
+        noofDevices:
+          type: string
+          description: "\n"
+          format: string
+        customerName:
+          type: string
+          description: "\n"
+          format: string
+        emails:
+          type: string
+          description: "\n"
+          format: string
+        location:
+          type: string
+          description: "\n"
+          format: string
+        revenue:
+          type: string
+          description: "\n"
+          format: string
+        images:
+          type: array
+         items:
+          type: any
+        videos:
+          type: array
+         items:
+          type: any
+        devices:
+         type: array
+        items:
+         type: object
+      properties:
+        deviceId:
+         type: string
+         description: "\n"
+          format: string
+    InitiatePlantDetailsRespose:
+      type: object
+      properties:
+        plantName:
+          type: string
+          description: "\n"
+          format: string
+        noofDevices:
+          type: string
+          description: "\n"
+          format: string
+        customerName:
+          type: string
+          description: "\n"
+          format: string
+        emails:
+          type: string
+          description: "\n"
+          format: string
+        location:
+          type: string
+          description: "\n"
+          format: string
+        revenue:
+          type: string
+          description: "\n"
+          format: string
+        images:
+          type: array
+         items:
+          type: any
+        videos:
+          type: array
+         items:
+          type: any
+        devices:
+         type: array
+        items:
+         type: object
+      properties:
+        deviceId:
+         type: string
+         description: "\n"
+          format: string
     RetrievePlantDetails:
       type: object
       properties:
@@ -447,11 +535,11 @@ components:
         images:
           type: array
          items:
-          type: string
+          type: any
         videos:
           type: array
          items:
-          type: string
+          type: any
         devices:
          type: array
         items:
