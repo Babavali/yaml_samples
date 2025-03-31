@@ -76,6 +76,30 @@ paths:
           $ref: '#/components/responses/TooManyRequests'
         '500':
           $ref: '#/components/responses/InternalServerError'
+  /Solar/MigrationDetails/Initiate:
+    post:
+      tags:
+        - Solar
+      summary:  Initiate a new MmigrationDetails
+      description: Initiate a new migrationDetails
+      operationId: InitiateMigrationDetails
+      requestBody:
+          $ref: '#/components/requestBodies/InitiateMigrationDetailsRequest'
+      responses:
+        '200':
+          $ref: '#/components/responses/InitiateMigrationDetailsResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
   /Solar/PlantMigration/{plantId}/Retrieve:
     get:
       tags:
@@ -1400,6 +1424,68 @@ components:
           type: string
           description: "\n"
           format: string
+    InitiateMigrationDetailsRequest:
+      type: object
+      properties:
+        status:
+          type: string
+          description: "\n"
+          format: string
+        creationTime:
+          type: string
+          description: "\n"
+          format: string
+        originalCompany:
+          type: string
+          description: "\n"
+          format: string
+        targetCompany:
+          type: string
+          description: "\n"
+          format: string
+        createdBy:
+          type: string
+          description: "\n"
+          format: string
+        approvalDeadline:
+          type: string
+          description: "\n"
+          format: string
+        operation:
+          type: string
+          description: "\n"
+          format: string
+    InitiateMigrationDetailsRespose:
+      type: object
+      properties:
+        status:
+          type: string
+          description: "\n"
+          format: string
+        creationTime:
+          type: string
+          description: "\n"
+          format: string
+        originalCompany:
+          type: string
+          description: "\n"
+          format: string
+        targetCompany:
+          type: string
+          description: "\n"
+          format: string
+        createdBy:
+          type: string
+          description: "\n"
+          format: string
+        approvalDeadline:
+          type: string
+          description: "\n"
+          format: string
+        operation:
+          type: string
+          description: "\n"
+          format: string
     InitiateDeviceResponse:
       type: object
       properties:
@@ -1738,6 +1824,12 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/InitiatePlantDetailsRequest'
+    InitiateMigrationDetailsRequest:
+      description: Success response for Migration Details initiation
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/InitiateMigrationDetailsRequest'
   responses:
     RetrievePlants:
         description: RetrievePlants
@@ -1751,6 +1843,12 @@ components:
         application/json:
           schema:
                $ref: '#/components/schemas/InitiatePlantDetailsRespose'
+    InitiateMigrationDetailsResponse:
+      description: Success response for Migration details initiation
+      content:
+        application/json:
+          schema:
+               $ref: '#/components/schemas/InitiateMigrationDetailsRespose'
     RetrievePlantDetails:
         description: RetrievePlantDetails
         content:
