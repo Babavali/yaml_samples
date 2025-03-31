@@ -124,6 +124,34 @@ paths:
           $ref: '#/components/responses/TooManyRequests'
         '500':
           $ref: '#/components/responses/InternalServerError'
+  /Solar/PlantDetails/Initiate:
+    post:
+      tags:
+        - Solar
+      summary:  Initiate a new plant details
+      description: Initiate a new plant details
+      operationId: InitiatePlantDetails
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/InitiatePlantDetailsRequest'
+        required: true
+      responses:
+        '200':
+          $ref: '#/components/responses/InitiatePlantDetailsResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
   /Solar/OverViewReports/Initiate:
     post:
       tags:
@@ -1704,6 +1732,12 @@ components:
           application/json:
             schema:
                 $ref: '#/components/schemas/InitiateAlertRequest'
+    InitiatePlantDetailsRequest:
+      description: Success response for plant details initiation
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/InitiatePlantDetailsRequest'
   responses:
     RetrievePlants:
         description: RetrievePlants
@@ -1711,6 +1745,12 @@ components:
           application/json:
             schema:
                 $ref: '#/components/schemas/RetrievePlants'
+    InitiatePlantDetailsResponse:
+      description: Success response for plant details initiation
+      content:
+        application/json:
+          schema:
+               $ref: '#/components/schemas/InitiatePlantDetailsRespose'
     RetrievePlantDetails:
         description: RetrievePlantDetails
         content:
