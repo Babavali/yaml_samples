@@ -28,6 +28,28 @@ paths:
           $ref: '#/components/responses/TooManyRequests'
         '500':
           $ref: '#/components/responses/InternalServerError'
+  /Solar/PlantsDetails/Retrieve:
+    get:
+      tags:
+        - Solar
+      summary:  Retrieve the plants details
+      description: Retrieve the plants details
+      operationId: RetrievePlantsDetails
+      responses:
+        '200':
+          $ref: '#/components/responses/RetrievePlantsDetails'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
   /Solar/Plants/{plantId}/Retrieve:
     get:
       tags:
@@ -39,7 +61,7 @@ paths:
         - $ref: '#/components/parameters/plantId'
       responses:
         '200':
-          $ref: '#/components/responses/RetrievePlantDetails'
+          $ref: '#/components/responses/RetrievePlantsDetails'
         '400':
           $ref: '#/components/responses/BadRequest'
         '401':
@@ -543,7 +565,7 @@ components:
               deviceId:
                 type: string
                 description: "\n"
-    RetrievePlantDetails:
+    RetrievePlantsDetails:
       type: object
       properties:
         plantName:
@@ -1849,12 +1871,12 @@ components:
         application/json:
           schema:
                $ref: '#/components/schemas/InitiateMigrationDetailsRespose'
-    RetrievePlantDetails:
-        description: RetrievePlantDetails
+    RetrievePlantsDetails:
+        description: RetrievePlantsDetails
         content:
           application/json:
             schema:
-                $ref: '#/components/schemas/RetrievePlantDetails'
+                $ref: '#/components/schemas/RetrievePlantsDetails'
     InitiatePlantResponse:
         description: InitiatePlantResponse
         content:
