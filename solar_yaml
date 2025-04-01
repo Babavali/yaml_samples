@@ -50,6 +50,64 @@ paths:
           $ref: '#/components/responses/TooManyRequests'
         '500':
           $ref: '#/components/responses/InternalServerError'
+  /Solar/PlantsDetails/Initiate/update/{id}:
+    put:
+      tags:
+        - Solar
+      summary:  Update the plants details
+      description: Update the plants details
+      operationId: UpdatePlantsDetails
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: The ID of the plant to update
+          schema:
+            type: string
+      responses:
+        '200':
+          $ref: '#/components/responses/UpdatePlantsDetails'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+  /Solar/Device/Initiate/update/{id}:
+    put:
+      tags:
+        - Solar
+      summary:  Update the device
+      description: Update the device
+      operationId: UpdateDevice
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: The ID of the device to update
+          schema:
+            type: string
+      responses:
+        '200':
+          $ref: '#/components/responses/UpdateDevice'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
   /Solar/Plants/{plantId}/Retrieve:
     get:
       tags:
@@ -528,6 +586,43 @@ components:
               deviceId:
                 type: string
                 description: "\n"  
+    UpdatePlantsDetails:
+      type: object
+      properties:
+        plantName:
+          type: string
+          description: "\n"
+        noofDevices:
+          type: string
+          description: "\n"
+        customerName:
+          type: string
+          description: "\n"
+        emails:
+          type: string
+          description: "\n"
+        location:
+          type: string
+          description: "\n"
+        revenue:
+          type: string
+          description: "\n"
+        images:
+          type: array
+          items:
+            type: string  
+        videos:
+          type: array
+          items:
+            type: string    
+        devices:
+          type: array
+          items:
+            type: object
+            properties:
+              deviceId:
+                type: string
+                description: "\n" 
     InitiatePlantDetailsRespose:
       type: object
       properties:
@@ -1040,6 +1135,141 @@ components:
               description: "\n"
               format: string
     RetrieveDeviceResponse:
+      type: object
+      properties:
+        status:
+          type: string
+          description: "\n"
+          format: string
+        plantName:
+          type: string
+          description: "\n"
+          format: string
+        plantDetailsId:
+          type: string
+          description: "\n"
+          format: string
+        deviceName:
+          type: string
+          description: "\n"
+          format: string
+        deviceModel:
+          type: string
+          description: "\n"
+          format: string
+        deviceS/N:
+          type: string
+          description: "\n"
+          format: string
+        nominalPower:
+          type: string
+          description: "\n"
+          format: string
+        realTimePower:
+          type: string
+          description: "\n"
+          format: string
+        dailyYield:
+          type: string
+          description: "\n"
+          format: string
+        associatedPlant:
+          type: string
+          description: "\n"
+          format: string
+        totalStringCapacity:
+          type: string
+          description: "\n"
+          format: string
+        yield:
+          type: string
+          description: "\n"
+          format: string
+        totalYield:
+          type: string
+          description: "\n"
+          format: string
+        specificEnergy:
+          type: string
+          description: "\n"
+          format: string
+        peakAcPower:
+          type: string
+          description: "\n"
+          format: string
+        gridConnectionDuration:
+          type: string
+          description: "\n"
+          format: string
+        panelArea:
+          type: string
+          description: "\n"
+          format: string
+        solarIrradiance:
+          type: string
+          description: "\n"
+          format: string
+        efficiency:
+          type: string
+          description: "\n"
+          format: string
+        hourOfSunLight:
+          type: string
+          description: "\n"
+          format: string
+        numberOfPanels:
+          type: string
+          description: "\n"
+          format: string
+        ratedPowerPerPanels:
+          type: string
+          description: "\n"
+          format: string
+        watt:
+          type: string
+          description: "\n"
+          format: string
+        theoreticalEnergyOutput:
+          type: string
+          description: "\n"
+          format: string
+        actualEnergyOutput:
+          type: string
+          description: "\n"
+          format: string
+        energyProduced:
+          type: string
+          description: "\n"
+          format: string
+        emissiaonFactor:
+          type: string
+          description: "\n"
+          format: string
+        tress:
+          type: string
+          description: "\n"
+          format: string
+        yearCO2Reduction:
+          type: string
+          description: "\n"
+          format: string
+        energyContentOfCoal:
+          type: string
+          description: "\n"
+          format: string
+        energyProducedBySolar:
+          type: string
+          description: "\n"
+          format: string
+        totalEnergy:
+          type: string
+          description: "\n"
+          format: string
+        ratedPower:
+          type: string
+          description: "\n"
+          format: string
+    UpdateDevice:
       type: object
       properties:
         status:
@@ -1919,6 +2149,18 @@ components:
           application/json:
             schema:
                 $ref: '#/components/schemas/RetrieveDeviceResponse'
+    UpdatePlantsDetails:
+        description: UpdatePlantsDetails
+        content:
+          application/json:
+            schema:
+                $ref: '#/components/schemas/UpdatePlantsDetails'
+    UpdateDevice:
+        description: UpdatePlantsDetails
+        content:
+          application/json:
+            schema:
+                $ref: '#/components/schemas/UpdateDevice'
     RetrieveAllDeviceResponse:
         description: RetrieveAllDeviceResponse
         content:
