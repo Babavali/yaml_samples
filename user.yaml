@@ -1,29 +1,26 @@
 openapi: 3.0.1
 info:
-  title: User Management API
-  description: APIs for managing users
-  version: 1.0.0
+  title: User Management 
+  description: managing users
+  contact:
+    name: BIAN
+    url: https://bian.org
+  version: 11.0.0
+servers:
+  - url: https://api.example.com/v1
 paths:
-  /users/{userId}:
+  /users/{userId}/Retrieve:
     get:
       tags:
-        - Users
+        - CR - Users
       summary: Get user by ID
       description: Returns user details for a specific user ID
-      operationId: getUserById
+      operationId: Retrieve
       parameters:
-        - name: userId
-          in: path
-          required: true
-          schema:
-            type: string
+        - $ref: '#/components/parameters/userId'
       responses:
         '200':
-          description: User details retrieved successfully
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/User'
+          $ref: '#/components/responses/RetrieveUserResponse'
         '400':
           $ref: '#/components/responses/BadRequest'
         '401':
@@ -33,26 +30,18 @@ paths:
         '500':
           $ref: '#/components/responses/InternalServerError'
 
-  /users:
+  /users/Initiate:
     post:
       tags:
-        - Users
-      summary: Add a new user
-      description: Creates a new user with the provided details
-      operationId: addUser
+        - CR - Users
+      summary: Initiate a new user
+      description: Initiate a new user with the provided details
+      operationId: Initiate
       requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/NewUser'
+        $ref: '#/components/requestBodies/InitiateUserRequest'
       responses:
         '201':
-          description: User created successfully
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/User'
+          $ref: '#/components/responses/InitiateUserResponse'
         '400':
           $ref: '#/components/responses/BadRequest'
         '401':
@@ -62,12 +51,21 @@ paths:
 
 components:
   schemas:
-    User:
+    HTTPError:
       type: object
       properties:
-        id:
+        status_code:
+          type: integer
+          format: int32
+        status:
           type: string
-          description: The unique identifier for the user
+        message:
+          type: string
+      description: Status Attributes
+
+    RetrieveUserResponse:
+      type: object
+      properties:
         name:
           type: string
           description: The full name of the user
@@ -90,7 +88,7 @@ components:
           format: date-time
           description: The timestamp when the user was last updated
 
-    NewUser:
+    InitiateUserRequest:
       type: object
       properties:
         fullName:
@@ -110,16 +108,25 @@ components:
           type: string
           description: The permissions assigned to the user
 
-    HTTPError:
+    InitiateUserResponse:
       type: object
       properties:
-        status_code:
-          type: integer
-          format: int32
-        status:
+        fullName:
           type: string
-        message:
+          description: The full name of the user
+        mobileNumber:
           type: string
+          description: The mobile number of the user
+        email:
+          type: string
+          format: email
+          description: The email address of the user
+        role:
+          type: string
+          description: The role of the user
+        permissions:
+          type: string
+          description: The permissions assigned to the user
 
   responses:
     BadRequest:
@@ -146,3 +153,32 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/HTTPError'
+    InitiateUserResponse:
+      description: InitiateUserResponse
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/InitiateUserResponse'
+    RetrieveUserResponse:
+      description: RetrieveUserResponse
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/RetrieveUserResponse'
+
+  parameters:
+    userId:
+      name: userId
+      in: path
+      required: true
+      style: simple
+      schema:
+        type: string
+
+  requestBodies:
+    InitiateUserRequest:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/InitiateUserRequest'
+      required: true
