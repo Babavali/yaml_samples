@@ -1,0 +1,148 @@
+openapi: 3.0.1
+info:
+  title: User Management API
+  description: APIs for managing users
+  version: 1.0.0
+paths:
+  /users/{userId}:
+    get:
+      tags:
+        - Users
+      summary: Get user by ID
+      description: Returns user details for a specific user ID
+      operationId: getUserById
+      parameters:
+        - name: userId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: User details retrieved successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+
+  /users:
+    post:
+      tags:
+        - Users
+      summary: Add a new user
+      description: Creates a new user with the provided details
+      operationId: addUser
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NewUser'
+      responses:
+        '201':
+          description: User created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+
+components:
+  schemas:
+    User:
+      type: object
+      properties:
+        id:
+          type: string
+          description: The unique identifier for the user
+        name:
+          type: string
+          description: The full name of the user
+        mobileNumber:
+          type: string
+          description: The mobile number of the user
+        email:
+          type: string
+          format: email
+          description: The email address of the user
+        role:
+          type: string
+          description: The role of the user
+        createdAt:
+          type: string
+          format: date-time
+          description: The timestamp when the user was created
+        updatedAt:
+          type: string
+          format: date-time
+          description: The timestamp when the user was last updated
+
+    NewUser:
+      type: object
+      properties:
+        fullName:
+          type: string
+          description: The full name of the user
+        mobileNumber:
+          type: string
+          description: The mobile number of the user
+        email:
+          type: string
+          format: email
+          description: The email address of the user
+        role:
+          type: string
+          description: The role of the user
+        permissions:
+          type: string
+          description: The permissions assigned to the user
+
+    HTTPError:
+      type: object
+      properties:
+        status_code:
+          type: integer
+          format: int32
+        status:
+          type: string
+        message:
+          type: string
+
+  responses:
+    BadRequest:
+      description: Bad Request
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/HTTPError'
+    Unauthorized:
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/HTTPError'
+    NotFound:
+      description: Not Found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/HTTPError'
+    InternalServerError:
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/HTTPError'
