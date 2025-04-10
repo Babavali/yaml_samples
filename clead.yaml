@@ -1,15 +1,15 @@
 openapi: 3.0.1
 info:
-  title: Doctor Performance API
-  description: APIs for Doctor Performance Metrics
+  title: Clead Performance API
+  description: APIs for clead Performance Metrics
   version: 1.0.0
 paths:
-  /doctor/{doctorId}/listing-wise-performance:
+  /clead/{doctorId}/listing-wise-performance:
     get:
       tags:
-        - Doctor Performance
-      summary: Get listing-wise performance metrics for a doctor
-      description: Returns listing-wise performance metrics for a specific doctor
+        - clead Performance
+      summary: Get listing-wise performance metrics for a clead
+      description: Returns listing-wise performance metrics for a specific clead
       operationId: getListingWisePerformance
       parameters:
         - name: doctorId
@@ -33,12 +33,12 @@ paths:
         '500':
           $ref: '#/components/responses/InternalServerError'
 
-  /doctor/{doctorId}/profile-page-performance:
+  /clead/{doctorId}/profile-page-performance:
     get:
       tags:
-        - Doctor Performance
-      summary: Get profile page performance metrics for a doctor
-      description: Returns profile page performance metrics for a specific doctor
+        - clead Performance
+      summary: Get profile page performance metrics for a clead
+      description: Returns profile page performance metrics for a specific clead
       operationId: getProfilePagePerformance
       parameters:
         - name: doctorId
@@ -62,12 +62,12 @@ paths:
         '500':
           $ref: '#/components/responses/InternalServerError'
 
-  /doctor/{doctorId}/status:
+  /clead/{doctorId}/status:
     get:
       tags:
-        - Doctor Performance
+        - clead Performance
       summary: Get status metrics for a doctor
-      description: Returns status metrics for a specific doctor
+      description: Returns status metrics for a specific clead
       operationId: getStatusMetrics
       parameters:
         - name: doctorId
@@ -91,12 +91,12 @@ paths:
         '500':
           $ref: '#/components/responses/InternalServerError'
 
-  /doctor/{doctorId}/lead-source:
+  /clead/{doctorId}/lead-source:
     get:
       tags:
-        - Doctor Performance
-      summary: Get lead source metrics for a doctor
-      description: Returns lead source metrics for a specific doctor
+        - clead Performance
+      summary: Get lead source metrics for a clead
+      description: Returns lead source metrics for a specific clead
       operationId: getLeadSourceMetrics
       parameters:
         - name: doctorId
@@ -120,12 +120,12 @@ paths:
         '500':
           $ref: '#/components/responses/InternalServerError'
 
-  /doctor/{doctorId}/overall-leads:
+  /clead/{doctorId}/overall-leads:
     get:
       tags:
-        - Doctor Performance
-      summary: Get overall leads metrics for a doctor
-      description: Returns overall leads metrics for a specific doctor
+        - clead Performance
+      summary: Get overall leads metrics for a clead
+      description: Returns overall leads metrics for a specific clead
       operationId: getOverallLeadsMetrics
       parameters:
         - name: doctorId
