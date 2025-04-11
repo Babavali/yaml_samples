@@ -1,10 +1,10 @@
 openapi: 3.0.1
 info:
-  title: Clead Performance API
-  description: APIs for clead Performance Metrics
-  version: 1.0.0
+  title: Clead Performance 
+  description:  clead Performance Metrics
+  version: 11.0.0
 paths:
-  /clead/{doctorId}/listing-wise-performance:
+  /clead/{doctorId}/listingWisePerformance/Retrieve:
     get:
       tags:
         - clead Performance
@@ -12,18 +12,10 @@ paths:
       description: Returns listing-wise performance metrics for a specific clead
       operationId: getListingWisePerformance
       parameters:
-        - name: doctorId
-          in: path
-          required: true
-          schema:
-            type: string
+        - $ref: '#/components/parameters/doctorId'
       responses:
         '200':
-          description: Listing-wise performance metrics retrieved successfully
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ListingWisePerformance'
+          $ref: '#/components/responses/RetrieveListingWisePerformanceResponse'
         '400':
           $ref: '#/components/responses/BadRequest'
         '401':
@@ -33,7 +25,7 @@ paths:
         '500':
           $ref: '#/components/responses/InternalServerError'
 
-  /clead/{doctorId}/profile-page-performance:
+  /clead/{doctorId}/profilePagePerformance/Retrieve:
     get:
       tags:
         - clead Performance
@@ -41,18 +33,10 @@ paths:
       description: Returns profile page performance metrics for a specific clead
       operationId: getProfilePagePerformance
       parameters:
-        - name: doctorId
-          in: path
-          required: true
-          schema:
-            type: string
+        - $ref: '#/components/parameters/doctorId'
       responses:
         '200':
-          description: Profile page performance metrics retrieved successfully
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProfilePagePerformance'
+          $ref: '#/components/responses/RetrieveProfilePagePerformanceResponse'
         '400':
           $ref: '#/components/responses/BadRequest'
         '401':
@@ -62,7 +46,7 @@ paths:
         '500':
           $ref: '#/components/responses/InternalServerError'
 
-  /clead/{doctorId}/status:
+  /clead/{doctorId}/status/Retrieve:
     get:
       tags:
         - clead Performance
@@ -70,18 +54,10 @@ paths:
       description: Returns status metrics for a specific clead
       operationId: getStatusMetrics
       parameters:
-        - name: doctorId
-          in: path
-          required: true
-          schema:
-            type: string
+        - $ref: '#/components/parameters/doctorId'
       responses:
         '200':
-          description: Status metrics retrieved successfully
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/StatusMetrics'
+          $ref: '#/components/responses/RetrieveStatusMetricsResponse'
         '400':
           $ref: '#/components/responses/BadRequest'
         '401':
@@ -91,7 +67,7 @@ paths:
         '500':
           $ref: '#/components/responses/InternalServerError'
 
-  /clead/{doctorId}/lead-source:
+  /clead/{doctorId}/leadSource/Retrieve:
     get:
       tags:
         - clead Performance
@@ -99,18 +75,10 @@ paths:
       description: Returns lead source metrics for a specific clead
       operationId: getLeadSourceMetrics
       parameters:
-        - name: doctorId
-          in: path
-          required: true
-          schema:
-            type: string
+        - $ref: '#/components/parameters/doctorId'
       responses:
         '200':
-          description: Lead source metrics retrieved successfully
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/LeadSourceMetrics'
+          $ref: '#/components/responses/RetrieveLeadSourceMetricsResponse'
         '400':
           $ref: '#/components/responses/BadRequest'
         '401':
@@ -120,7 +88,7 @@ paths:
         '500':
           $ref: '#/components/responses/InternalServerError'
 
-  /clead/{doctorId}/overall-leads:
+  /clead/{doctorId}/overallLeads/Retrieve:
     get:
       tags:
         - clead Performance
@@ -128,18 +96,10 @@ paths:
       description: Returns overall leads metrics for a specific clead
       operationId: getOverallLeadsMetrics
       parameters:
-        - name: doctorId
-          in: path
-          required: true
-          schema:
-            type: string
+        - $ref: '#/components/parameters/doctorId'
       responses:
         '200':
-          description: Overall leads metrics retrieved successfully
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/OverallLeadsMetrics'
+          $ref: '#/components/responses/RetrieveOverallLeadsMetricsResponse'
         '400':
           $ref: '#/components/responses/BadRequest'
         '401':
@@ -230,16 +190,14 @@ components:
           description: Number of closed cases (with percentage)
 
     LeadSourceMetrics:
-      type: array
-      items:
-        type: object
-        properties:
-          Source:
-            type: string
-            description: The source of the lead
-          count:
-            type: number
-            description: Number of leads from this source
+      type: object
+      properties:
+        Source:
+          type: string
+          description: The source of the lead
+        count:
+          type: number
+          description: Number of leads from this source
 
     OverallLeadsMetrics:
       type: object
@@ -271,6 +229,36 @@ components:
         message:
           type: string
 
+    RetrieveListingWisePerformanceResponse:
+      type: object
+      properties:
+        ListingWisePerformance:
+          $ref: '#/components/schemas/ListingWisePerformance'
+
+    RetrieveProfilePagePerformanceResponse:
+      type: object
+      properties:
+        ProfilePagePerformance:
+          $ref: '#/components/schemas/ProfilePagePerformance'
+
+    RetrieveStatusMetricsResponse:
+      type: object
+      properties:
+        StatusMetrics:
+          $ref: '#/components/schemas/StatusMetrics'
+
+    RetrieveLeadSourceMetricsResponse:
+      type: object
+      properties:
+        LeadSourceMetrics:
+          $ref: '#/components/schemas/LeadSourceMetrics'
+
+    RetrieveOverallLeadsMetricsResponse:
+      type: object
+      properties:
+        OverallLeadsMetrics:
+          $ref: '#/components/schemas/OverallLeadsMetrics'
+
   responses:
     BadRequest:
       description: Bad Request
@@ -296,3 +284,47 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/HTTPError'
+
+    RetrieveListingWisePerformanceResponse:
+      description: ListingWisePerformance
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/RetrieveListingWisePerformanceResponse'
+
+    RetrieveProfilePagePerformanceResponse:
+      description: ProfilePagePerformance
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/RetrieveProfilePagePerformanceResponse'
+
+    RetrieveStatusMetricsResponse:
+      description: StatusMetrics
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/RetrieveStatusMetricsResponse'
+
+    RetrieveLeadSourceMetricsResponse:
+      description: LeadSourceMetrics
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/RetrieveLeadSourceMetricsResponse'
+
+    RetrieveOverallLeadsMetricsResponse:
+      description: OverallLeadsMetrics
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/RetrieveOverallLeadsMetricsResponse'
+
+  parameters:
+    doctorId:
+      name: doctorId
+      in: path
+      required: true
+      style: simple
+      schema:
+        type: string
