@@ -2,7 +2,7 @@ openapi: 3.0.1
 info:
   title: rbac
   description: API for managing database records.
-  version: 1.0.0
+  version: 11.0.0
 servers:
   - url: http://api.example.com/v1
 paths:
