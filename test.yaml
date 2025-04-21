@@ -6,7 +6,7 @@ info:
 servers:
   - url: http://api.example.com/v1
 paths:
-  /rbac/clients/Initiate:
+  /clients/Initiate:
     post:
       tags:
         - BQ - clients
@@ -30,7 +30,7 @@ paths:
           $ref: '#/components/responses/TooManyRequests'
         '500':
           $ref: '#/components/responses/InternalServerError'
-  /rbac/{clientsid}/clients/Retrieve:
+  /clients/{clientsid}/Retrieve:
     get:
       tags:
         - BQ - clients
@@ -54,7 +54,7 @@ paths:
           $ref: '#/components/responses/TooManyRequests'
         '500':
           $ref: '#/components/responses/InternalServerError'
-  /rbac/{clientsid}/clients/Initiate:
+  /clients/{clientsid}/Update:
     put:
       tags:
         - BQ - clients
@@ -80,7 +80,7 @@ paths:
           $ref: '#/components/responses/TooManyRequests'
         '500':
           $ref: '#/components/responses/InternalServerError'
-  /rbac/clients/Retrieve:
+  /clients/Retrieve:
     get:
       tags:
         - BQ - clients
@@ -102,7 +102,7 @@ paths:
           $ref: '#/components/responses/TooManyRequests'
         '500':
           $ref: '#/components/responses/InternalServerError'
-  /rbac/subjects/Initiate:
+  /subjects/Initiate:
     post:
       tags:
         - BQ - subjects
@@ -126,7 +126,7 @@ paths:
           $ref: '#/components/responses/TooManyRequests'
         '500':
           $ref: '#/components/responses/InternalServerError'
-  /rbac/{subjectsid}/subjects/Retrieve:
+  /subjects/{subjectsid}/Retrieve:
     get:
       tags:
         - BQ - subjects
@@ -150,7 +150,7 @@ paths:
           $ref: '#/components/responses/TooManyRequests'
         '500':
           $ref: '#/components/responses/InternalServerError'
-  /rbac/{subjectsid}/subjects/Initiate:
+  /subjects/{subjectsid}/Update:
     put:
       tags:
         - BQ - subjects
@@ -176,7 +176,7 @@ paths:
           $ref: '#/components/responses/TooManyRequests'
         '500':
           $ref: '#/components/responses/InternalServerError'
-  /rbac/subjects/Retrieve:
+  /subjects/Retrieve:
     get:
       tags:
         - BQ - subjects
@@ -198,7 +198,7 @@ paths:
           $ref: '#/components/responses/TooManyRequests'
         '500':
           $ref: '#/components/responses/InternalServerError'
-  /rbac/contexts/Initiate:
+  /contexts/Initiate:
     post:
       tags:
         - BQ - contexts
@@ -222,7 +222,7 @@ paths:
           $ref: '#/components/responses/TooManyRequests'
         '500':
           $ref: '#/components/responses/InternalServerError'
-  /rbac/{contextsid}/contexts/Retrieve:
+  /contexts/{contextsid}/Retrieve:
     get:
       tags:
         - BQ - contexts
@@ -246,7 +246,7 @@ paths:
           $ref: '#/components/responses/TooManyRequests'
         '500':
           $ref: '#/components/responses/InternalServerError'
-  /rbac/{contextsid}/contexts/Initiate:
+  /contexts/{contextsid}/Update:
     put:
       tags:
         - BQ - contexts
@@ -272,7 +272,7 @@ paths:
           $ref: '#/components/responses/TooManyRequests'
         '500':
           $ref: '#/components/responses/InternalServerError'
-  /rbac/contexts/Retrieve:
+  /contexts/Retrieve:
     get:
       tags:
         - BQ - contexts
@@ -294,7 +294,7 @@ paths:
           $ref: '#/components/responses/TooManyRequests'
         '500':
           $ref: '#/components/responses/InternalServerError'
-  /rbac/resources/Initiate:
+  /resources/Initiate:
     post:
       tags:
         - BQ - resources
@@ -318,7 +318,7 @@ paths:
           $ref: '#/components/responses/TooManyRequests'
         '500':
           $ref: '#/components/responses/InternalServerError'
-  /rbac/{resourcesid}/resources/Retrieve:
+  /resources/{resourcesid}/Retrieve:
     get:
       tags:
         - BQ - resources
@@ -342,7 +342,7 @@ paths:
           $ref: '#/components/responses/TooManyRequests'
         '500':
           $ref: '#/components/responses/InternalServerError'
-  /rbac/{resourcesid}/resources/Initiate:
+  /resources/{resourcesid}/Update:
     put:
       tags:
         - BQ - resources
@@ -368,7 +368,7 @@ paths:
           $ref: '#/components/responses/TooManyRequests'
         '500':
           $ref: '#/components/responses/InternalServerError'
-  /rbac/resources/Retrieve:
+  /resources/Retrieve:
     get:
       tags:
         - BQ - resources
@@ -390,7 +390,7 @@ paths:
           $ref: '#/components/responses/TooManyRequests'
         '500':
           $ref: '#/components/responses/InternalServerError'
-  /rbac/actions/Initiate:
+  /actions/Initiate:
     post:
       tags:
         - BQ - actions
@@ -414,7 +414,7 @@ paths:
           $ref: '#/components/responses/TooManyRequests'
         '500':
           $ref: '#/components/responses/InternalServerError'
-  /rbac/{actionsid}/actions/Retrieve:
+  /actions/{actionsid}/Retrieve:
     get:
       tags:
         - BQ - actions
@@ -438,7 +438,7 @@ paths:
           $ref: '#/components/responses/TooManyRequests'
         '500':
           $ref: '#/components/responses/InternalServerError'
-  /rbac/{actionsid}/actions/Initiate:
+  /actions/{actionsid}/Update:
     put:
       tags:
         - BQ - actions
@@ -464,7 +464,7 @@ paths:
           $ref: '#/components/responses/TooManyRequests'
         '500':
           $ref: '#/components/responses/InternalServerError'
-  /rbac/actions/Retrieve:
+  /actions/Retrieve:
     get:
       tags:
         - BQ - actions
@@ -486,7 +486,7 @@ paths:
           $ref: '#/components/responses/TooManyRequests'
         '500':
           $ref: '#/components/responses/InternalServerError'
-  /rbac/policies/Initiate:
+  /policies/Initiate:
     post:
       tags:
         - BQ - policies
@@ -510,7 +510,7 @@ paths:
           $ref: '#/components/responses/TooManyRequests'
         '500':
           $ref: '#/components/responses/InternalServerError'
-  /rbac/{policiesid}/policies/Retrieve:
+  /policies/{policiesid}/Retrieve:
     get:
       tags:
         - BQ - policies
@@ -534,7 +534,7 @@ paths:
           $ref: '#/components/responses/TooManyRequests'
         '500':
           $ref: '#/components/responses/InternalServerError'
-  /rbac/{policiesid}/policies/Initiate:
+  /policies/{policiesid}/Update:
     put:
       tags:
         - BQ - policies
@@ -560,7 +560,7 @@ paths:
           $ref: '#/components/responses/TooManyRequests'
         '500':
           $ref: '#/components/responses/InternalServerError'
-  /rbac/policies/Retrieve:
+  /policies/Retrieve:
     get:
       tags:
         - BQ - policies
