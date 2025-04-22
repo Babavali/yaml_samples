@@ -6,7 +6,7 @@ info:
 servers:
   - url: http://api.example.com/v1
 paths:
-  /clients/Initiate:
+  /rbac/clients/Initiate:
     post:
       tags:
         - BQ - clients
@@ -30,57 +30,7 @@ paths:
           $ref: '#/components/responses/TooManyRequests'
         '500':
           $ref: '#/components/responses/InternalServerError'
-  /clients/{clientsid}/Retrieve:
-    get:
-      tags:
-        - BQ - clients
-      summary: Retrieve clients details
-      description: Retrieve clients details
-      operationId: Retrieveclients
-      parameters:
-        - $ref: '#/components/parameters/clientsid'
-      responses:
-        '200':
-          $ref: '#/components/responses/RetrieveclientsResponse'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  /clients/{clientsid}/Update:
-    put:
-      tags:
-        - BQ - clients
-      summary: Update clients record
-      description: Update clients record
-      operationId: Updateclients
-      parameters:
-        - $ref: '#/components/parameters/clientsid'
-      requestBody:
-        $ref: '#/components/requestBodies/UpdateclientsRequest'
-      responses:
-        '200':
-          $ref: '#/components/responses/UpdateclientsResponse'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  /clients/Retrieve:
+  /rbac/getAllclients/Retrieve:
     get:
       tags:
         - BQ - clients
@@ -102,7 +52,7 @@ paths:
           $ref: '#/components/responses/TooManyRequests'
         '500':
           $ref: '#/components/responses/InternalServerError'
-  /subjects/Initiate:
+  /rbac/subjects/Initiate:
     post:
       tags:
         - BQ - subjects
@@ -126,57 +76,7 @@ paths:
           $ref: '#/components/responses/TooManyRequests'
         '500':
           $ref: '#/components/responses/InternalServerError'
-  /subjects/{subjectsid}/Retrieve:
-    get:
-      tags:
-        - BQ - subjects
-      summary: Retrieve subjects details
-      description: Retrieve subjects details
-      operationId: Retrievesubjects
-      parameters:
-        - $ref: '#/components/parameters/subjectsid'
-      responses:
-        '200':
-          $ref: '#/components/responses/RetrievesubjectsResponse'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  /subjects/{subjectsid}/Update:
-    put:
-      tags:
-        - BQ - subjects
-      summary: Update subjects record
-      description: Update subjects record
-      operationId: Updatesubjects
-      parameters:
-        - $ref: '#/components/parameters/subjectsid'
-      requestBody:
-        $ref: '#/components/requestBodies/UpdatesubjectsRequest'
-      responses:
-        '200':
-          $ref: '#/components/responses/UpdatesubjectsResponse'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  /subjects/Retrieve:
+  /rbac/getAllsubjects/Retrieve:
     get:
       tags:
         - BQ - subjects
@@ -198,7 +98,7 @@ paths:
           $ref: '#/components/responses/TooManyRequests'
         '500':
           $ref: '#/components/responses/InternalServerError'
-  /contexts/Initiate:
+  /rbac/contexts/Initiate:
     post:
       tags:
         - BQ - contexts
@@ -222,57 +122,7 @@ paths:
           $ref: '#/components/responses/TooManyRequests'
         '500':
           $ref: '#/components/responses/InternalServerError'
-  /contexts/{contextsid}/Retrieve:
-    get:
-      tags:
-        - BQ - contexts
-      summary: Retrieve contexts details
-      description: Retrieve contexts details
-      operationId: Retrievecontexts
-      parameters:
-        - $ref: '#/components/parameters/contextsid'
-      responses:
-        '200':
-          $ref: '#/components/responses/RetrievecontextsResponse'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  /contexts/{contextsid}/Update:
-    put:
-      tags:
-        - BQ - contexts
-      summary: Update contexts record
-      description: Update contexts record
-      operationId: Updatecontexts
-      parameters:
-        - $ref: '#/components/parameters/contextsid'
-      requestBody:
-        $ref: '#/components/requestBodies/UpdatecontextsRequest'
-      responses:
-        '200':
-          $ref: '#/components/responses/UpdatecontextsResponse'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  /contexts/Retrieve:
+  /rbac/getAllcontexts/Retrieve:
     get:
       tags:
         - BQ - contexts
@@ -294,7 +144,7 @@ paths:
           $ref: '#/components/responses/TooManyRequests'
         '500':
           $ref: '#/components/responses/InternalServerError'
-  /resources/Initiate:
+  /rbac/resources/Initiate:
     post:
       tags:
         - BQ - resources
@@ -318,57 +168,7 @@ paths:
           $ref: '#/components/responses/TooManyRequests'
         '500':
           $ref: '#/components/responses/InternalServerError'
-  /resources/{resourcesid}/Retrieve:
-    get:
-      tags:
-        - BQ - resources
-      summary: Retrieve resources details
-      description: Retrieve resources details
-      operationId: Retrieveresources
-      parameters:
-        - $ref: '#/components/parameters/resourcesid'
-      responses:
-        '200':
-          $ref: '#/components/responses/RetrieveresourcesResponse'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  /resources/{resourcesid}/Update:
-    put:
-      tags:
-        - BQ - resources
-      summary: Update resources record
-      description: Update resources record
-      operationId: Updateresources
-      parameters:
-        - $ref: '#/components/parameters/resourcesid'
-      requestBody:
-        $ref: '#/components/requestBodies/UpdateresourcesRequest'
-      responses:
-        '200':
-          $ref: '#/components/responses/UpdateresourcesResponse'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  /resources/Retrieve:
+  /rbac/getAllresources/Retrieve:
     get:
       tags:
         - BQ - resources
@@ -390,7 +190,7 @@ paths:
           $ref: '#/components/responses/TooManyRequests'
         '500':
           $ref: '#/components/responses/InternalServerError'
-  /actions/Initiate:
+  /rbac/actions/Initiate:
     post:
       tags:
         - BQ - actions
@@ -414,57 +214,7 @@ paths:
           $ref: '#/components/responses/TooManyRequests'
         '500':
           $ref: '#/components/responses/InternalServerError'
-  /actions/{actionsid}/Retrieve:
-    get:
-      tags:
-        - BQ - actions
-      summary: Retrieve actions details
-      description: Retrieve actions details
-      operationId: Retrieveactions
-      parameters:
-        - $ref: '#/components/parameters/actionsid'
-      responses:
-        '200':
-          $ref: '#/components/responses/RetrieveactionsResponse'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  /actions/{actionsid}/Update:
-    put:
-      tags:
-        - BQ - actions
-      summary: Update actions record
-      description: Update actions record
-      operationId: Updateactions
-      parameters:
-        - $ref: '#/components/parameters/actionsid'
-      requestBody:
-        $ref: '#/components/requestBodies/UpdateactionsRequest'
-      responses:
-        '200':
-          $ref: '#/components/responses/UpdateactionsResponse'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  /actions/Retrieve:
+  /rbac/getAllactions/Retrieve:
     get:
       tags:
         - BQ - actions
@@ -486,7 +236,7 @@ paths:
           $ref: '#/components/responses/TooManyRequests'
         '500':
           $ref: '#/components/responses/InternalServerError'
-  /policies/Initiate:
+  /rbac/policies/Initiate:
     post:
       tags:
         - BQ - policies
@@ -510,57 +260,7 @@ paths:
           $ref: '#/components/responses/TooManyRequests'
         '500':
           $ref: '#/components/responses/InternalServerError'
-  /policies/{policiesid}/Retrieve:
-    get:
-      tags:
-        - BQ - policies
-      summary: Retrieve policies details
-      description: Retrieve policies details
-      operationId: Retrievepolicies
-      parameters:
-        - $ref: '#/components/parameters/policiesid'
-      responses:
-        '200':
-          $ref: '#/components/responses/RetrievepoliciesResponse'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  /policies/{policiesid}/Update:
-    put:
-      tags:
-        - BQ - policies
-      summary: Update policies record
-      description: Update policies record
-      operationId: Updatepolicies
-      parameters:
-        - $ref: '#/components/parameters/policiesid'
-      requestBody:
-        $ref: '#/components/requestBodies/UpdatepoliciesRequest'
-      responses:
-        '200':
-          $ref: '#/components/responses/UpdatepoliciesResponse'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  /policies/Retrieve:
+  /rbac/getAllpolicies/Retrieve:
     get:
       tags:
         - BQ - policies
@@ -589,29 +289,44 @@ components:
       properties:
         id:
           type: string
-          description: clients
+          description: ''
           format: string
         name:
           type: string
-          description: clients
+          description: ''
           format: string
         type:
           type: string
-          description: clients
+          description: ''
           format: string
         description:
           type: string
-          description: clients
+          description: ''
           format: string
         created_at:
           type: string
-          description: clients
+          description: ''
           format: string
         updated_at:
           type: string
-          description: clients
+          description: ''
           format: string
-    clientsResponse:
+    InitiateclientsResponse:
+      type: object
+      properties:
+        clients:
+          $ref: '#/components/schemas/clients'
+    InitiateclientsRequest:
+      type: object
+      properties:
+        clients:
+          $ref: '#/components/schemas/clients'
+    RetrieveclientsResponse:
+      type: object
+      properties:
+        clients:
+          $ref: '#/components/schemas/clients'
+    RetrieveclientsRequest:
       type: object
       properties:
         clients:
@@ -621,25 +336,40 @@ components:
       properties:
         id:
           type: string
-          description: subjects
+          description: ''
           format: string
         subject:
           type: string
-          description: subjects
+          description: ''
           format: string
         client_id:
           type: integer
-          description: subjects
+          description: ''
           format: integer
         created_at:
           type: string
-          description: subjects
+          description: ''
           format: string
         updated_at:
           type: string
-          description: subjects
+          description: ''
           format: string
-    subjectsResponse:
+    InitiatesubjectsResponse:
+      type: object
+      properties:
+        subjects:
+          $ref: '#/components/schemas/subjects'
+    InitiatesubjectsRequest:
+      type: object
+      properties:
+        subjects:
+          $ref: '#/components/schemas/subjects'
+    RetrievesubjectsResponse:
+      type: object
+      properties:
+        subjects:
+          $ref: '#/components/schemas/subjects'
+    RetrievesubjectsRequest:
       type: object
       properties:
         subjects:
@@ -649,25 +379,40 @@ components:
       properties:
         id:
           type: string
-          description: contexts
+          description: ''
           format: string
         name:
           type: string
-          description: contexts
+          description: ''
           format: string
         description:
           type: string
-          description: contexts
+          description: ''
           format: string
         created_at:
           type: string
-          description: contexts
+          description: ''
           format: string
         updated_at:
           type: string
-          description: contexts
+          description: ''
           format: string
-    contextsResponse:
+    InitiatecontextsResponse:
+      type: object
+      properties:
+        contexts:
+          $ref: '#/components/schemas/contexts'
+    InitiatecontextsRequest:
+      type: object
+      properties:
+        contexts:
+          $ref: '#/components/schemas/contexts'
+    RetrievecontextsResponse:
+      type: object
+      properties:
+        contexts:
+          $ref: '#/components/schemas/contexts'
+    RetrievecontextsRequest:
       type: object
       properties:
         contexts:
@@ -677,29 +422,44 @@ components:
       properties:
         id:
           type: string
-          description: resources
+          description: ''
           format: string
         context_id:
           type: integer
-          description: resources
+          description: ''
           format: integer
         name:
           type: string
-          description: resources
+          description: ''
           format: string
         description:
           type: string
-          description: resources
+          description: ''
           format: string
         created_at:
           type: string
-          description: resources
+          description: ''
           format: string
         updated_at:
           type: string
-          description: resources
+          description: ''
           format: string
-    resourcesResponse:
+    InitiateresourcesResponse:
+      type: object
+      properties:
+        resources:
+          $ref: '#/components/schemas/resources'
+    InitiateresourcesRequest:
+      type: object
+      properties:
+        resources:
+          $ref: '#/components/schemas/resources'
+    RetrieveresourcesResponse:
+      type: object
+      properties:
+        resources:
+          $ref: '#/components/schemas/resources'
+    RetrieveresourcesRequest:
       type: object
       properties:
         resources:
@@ -709,25 +469,40 @@ components:
       properties:
         id:
           type: string
-          description: actions
+          description: ''
           format: string
         name:
           type: string
-          description: actions
+          description: ''
           format: string
         description:
           type: string
-          description: actions
+          description: ''
           format: string
         created_at:
           type: string
-          description: actions
+          description: ''
           format: string
         updated_at:
           type: string
-          description: actions
+          description: ''
           format: string
-    actionsResponse:
+    InitiateactionsResponse:
+      type: object
+      properties:
+        actions:
+          $ref: '#/components/schemas/actions'
+    InitiateactionsRequest:
+      type: object
+      properties:
+        actions:
+          $ref: '#/components/schemas/actions'
+    RetrieveactionsResponse:
+      type: object
+      properties:
+        actions:
+          $ref: '#/components/schemas/actions'
+    RetrieveactionsRequest:
       type: object
       properties:
         actions:
@@ -737,41 +512,56 @@ components:
       properties:
         id:
           type: string
-          description: policies
+          description: ''
           format: string
         client_id:
           type: integer
-          description: policies
+          description: ''
           format: integer
         subject:
           type: string
-          description: policies
+          description: ''
           format: string
         context_id:
           type: integer
-          description: policies
+          description: ''
           format: integer
         resource_id:
           type: integer
-          description: policies
+          description: ''
           format: integer
         action_id:
           type: integer
-          description: policies
+          description: ''
           format: integer
         is_active:
           type: string
-          description: policies
+          description: ''
           format: string
         created_at:
           type: string
-          description: policies
+          description: ''
           format: string
         updated_at:
           type: string
-          description: policies
+          description: ''
           format: string
-    policiesResponse:
+    InitiatepoliciesResponse:
+      type: object
+      properties:
+        policies:
+          $ref: '#/components/schemas/policies'
+    InitiatepoliciesRequest:
+      type: object
+      properties:
+        policies:
+          $ref: '#/components/schemas/policies'
+    RetrievepoliciesResponse:
+      type: object
+      properties:
+        policies:
+          $ref: '#/components/schemas/policies'
+    RetrievepoliciesRequest:
       type: object
       properties:
         policies:
@@ -837,260 +627,146 @@ components:
       content:
         application/json:
           schema:
-            type: object
-            properties:
-              clients:
-                $ref: '#/components/schemas/clients'
-      required: true
-    UpdateclientsRequest:
-      description: Updateclients
+            $ref: '#/components/schemas/InitiateclientsRequest'
+    RetrieveclientsRequest:
+      description: Retrieveclients
       content:
         application/json:
           schema:
-            type: object
-            properties:
-              clients:
-                $ref: '#/components/schemas/clients'
-      required: true
+            $ref: '#/components/schemas/RetrieveclientsRequest'
     InitiatesubjectsRequest:
       description: Initiatesubjects
       content:
         application/json:
           schema:
-            type: object
-            properties:
-              subjects:
-                $ref: '#/components/schemas/subjects'
-      required: true
-    UpdatesubjectsRequest:
-      description: Updatesubjects
+            $ref: '#/components/schemas/InitiatesubjectsRequest'
+    RetrievesubjectsRequest:
+      description: Retrievesubjects
       content:
         application/json:
           schema:
-            type: object
-            properties:
-              subjects:
-                $ref: '#/components/schemas/subjects'
-      required: true
+            $ref: '#/components/schemas/RetrievesubjectsRequest'
     InitiatecontextsRequest:
       description: Initiatecontexts
       content:
         application/json:
           schema:
-            type: object
-            properties:
-              contexts:
-                $ref: '#/components/schemas/contexts'
-      required: true
-    UpdatecontextsRequest:
-      description: Updatecontexts
+            $ref: '#/components/schemas/InitiatecontextsRequest'
+    RetrievecontextsRequest:
+      description: Retrievecontexts
       content:
         application/json:
           schema:
-            type: object
-            properties:
-              contexts:
-                $ref: '#/components/schemas/contexts'
-      required: true
+            $ref: '#/components/schemas/RetrievecontextsRequest'
     InitiateresourcesRequest:
       description: Initiateresources
       content:
         application/json:
           schema:
-            type: object
-            properties:
-              resources:
-                $ref: '#/components/schemas/resources'
-      required: true
-    UpdateresourcesRequest:
-      description: Updateresources
+            $ref: '#/components/schemas/InitiateresourcesRequest'
+    RetrieveresourcesRequest:
+      description: Retrieveresources
       content:
         application/json:
           schema:
-            type: object
-            properties:
-              resources:
-                $ref: '#/components/schemas/resources'
-      required: true
+            $ref: '#/components/schemas/RetrieveresourcesRequest'
     InitiateactionsRequest:
       description: Initiateactions
       content:
         application/json:
           schema:
-            type: object
-            properties:
-              actions:
-                $ref: '#/components/schemas/actions'
-      required: true
-    UpdateactionsRequest:
-      description: Updateactions
+            $ref: '#/components/schemas/InitiateactionsRequest'
+    RetrieveactionsRequest:
+      description: Retrieveactions
       content:
         application/json:
           schema:
-            type: object
-            properties:
-              actions:
-                $ref: '#/components/schemas/actions'
-      required: true
+            $ref: '#/components/schemas/RetrieveactionsRequest'
     InitiatepoliciesRequest:
       description: Initiatepolicies
       content:
         application/json:
           schema:
-            type: object
-            properties:
-              policies:
-                $ref: '#/components/schemas/policies'
-      required: true
-    UpdatepoliciesRequest:
-      description: Updatepolicies
+            $ref: '#/components/schemas/InitiatepoliciesRequest'
+    RetrievepoliciesRequest:
+      description: Retrievepolicies
       content:
         application/json:
           schema:
-            type: object
-            properties:
-              policies:
-                $ref: '#/components/schemas/policies'
-      required: true
+            $ref: '#/components/schemas/RetrievepoliciesRequest'
   responses:
     InitiateclientsResponse:
       description: clients created
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/clientsResponse'
+            $ref: '#/components/schemas/InitiateclientsResponse'
     RetrieveclientsResponse:
       description: clients details
       content:
         application/json:
           schema:
-            type: object
-            properties:
-              clients:
-                type: array
-                items:
-                  $ref: '#/components/schemas/clients'
-    UpdateclientsResponse:
-      description: clients updated
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/clientsResponse'
+            $ref: '#/components/schemas/RetrieveclientsResponse'
     InitiatesubjectsResponse:
       description: subjects created
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/subjectsResponse'
+            $ref: '#/components/schemas/InitiatesubjectsResponse'
     RetrievesubjectsResponse:
       description: subjects details
       content:
         application/json:
           schema:
-            type: object
-            properties:
-              subjects:
-                type: array
-                items:
-                  $ref: '#/components/schemas/subjects'
-    UpdatesubjectsResponse:
-      description: subjects updated
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/subjectsResponse'
+            $ref: '#/components/schemas/RetrievesubjectsResponse'
     InitiatecontextsResponse:
       description: contexts created
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/contextsResponse'
+            $ref: '#/components/schemas/InitiatecontextsResponse'
     RetrievecontextsResponse:
       description: contexts details
       content:
         application/json:
           schema:
-            type: object
-            properties:
-              contexts:
-                type: array
-                items:
-                  $ref: '#/components/schemas/contexts'
-    UpdatecontextsResponse:
-      description: contexts updated
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/contextsResponse'
+            $ref: '#/components/schemas/RetrievecontextsResponse'
     InitiateresourcesResponse:
       description: resources created
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/resourcesResponse'
+            $ref: '#/components/schemas/InitiateresourcesResponse'
     RetrieveresourcesResponse:
       description: resources details
       content:
         application/json:
           schema:
-            type: object
-            properties:
-              resources:
-                type: array
-                items:
-                  $ref: '#/components/schemas/resources'
-    UpdateresourcesResponse:
-      description: resources updated
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/resourcesResponse'
+            $ref: '#/components/schemas/RetrieveresourcesResponse'
     InitiateactionsResponse:
       description: actions created
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/actionsResponse'
+            $ref: '#/components/schemas/InitiateactionsResponse'
     RetrieveactionsResponse:
       description: actions details
       content:
         application/json:
           schema:
-            type: object
-            properties:
-              actions:
-                type: array
-                items:
-                  $ref: '#/components/schemas/actions'
-    UpdateactionsResponse:
-      description: actions updated
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/actionsResponse'
+            $ref: '#/components/schemas/RetrieveactionsResponse'
     InitiatepoliciesResponse:
       description: policies created
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/policiesResponse'
+            $ref: '#/components/schemas/InitiatepoliciesResponse'
     RetrievepoliciesResponse:
       description: policies details
       content:
         application/json:
           schema:
-            type: object
-            properties:
-              policies:
-                type: array
-                items:
-                  $ref: '#/components/schemas/policies'
-    UpdatepoliciesResponse:
-      description: policies updated
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/policiesResponse'
+            $ref: '#/components/schemas/RetrievepoliciesResponse'
     BadRequest:
       description: BadRequest
       content:
