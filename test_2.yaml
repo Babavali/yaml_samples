@@ -1,0 +1,205 @@
+openapi: 3.0.1
+info:
+  title: screening_results_schema
+  description: API for managing database records.
+  version: 11.0.0
+servers:
+  - url: http://api.example.com/v1
+paths:
+  /screening_results_schema/FINX_CA_ENTITES_SCAN/Initiate:
+    post:
+      tags:
+        - BQ - FINX_CA_ENTITES_SCAN
+      summary: Initialize finx_ca_entites_scan record
+      description: Initialize finx_ca_entites_scan record
+      operationId: InitiateFINX_CA_ENTITES_SCAN
+      requestBody:
+        $ref: '#/components/requestBodies/InitiateFINX_CA_ENTITES_SCANRequest'
+      responses:
+        '200':
+          $ref: '#/components/responses/InitiateFINX_CA_ENTITES_SCANResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+  /screening_results_schema/getAllFINX_CA_ENTITES_SCAN/Retrieve:
+    get:
+      tags:
+        - BQ - FINX_CA_ENTITES_SCAN
+      summary: Retrieve all finx_ca_entites_scan records
+      description: Retrieve all finx_ca_entites_scan records
+      operationId: GetAllFINX_CA_ENTITES_SCAN
+      responses:
+        '200':
+          $ref: '#/components/responses/RetrieveFINX_CA_ENTITES_SCANResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+components:
+  schemas:
+    FINX_CA_ENTITES_SCAN:
+      type: object
+      properties:
+        ID:
+          type: string
+          description: ''
+          format: string
+        CA_screening_configuration_identifier:
+          type: string
+          description: ''
+          format: string
+        MSD_entity_id:
+          type: string
+          description: ''
+          format: string
+        MSD_entity_type:
+          type: string
+          description: ''
+          format: string
+        Finx_entity_status:
+          type: string
+          description: ''
+          format: string
+        Finx_Api_id:
+          type: string
+          description: ''
+          format: string
+        Finx_overall_decision:
+          type: string
+          description: ''
+          format: string
+        Finx_status_from_method:
+          type: string
+          description: ''
+          format: string
+        scan_initiated_on:
+          type: string
+          description: ''
+          format: string
+        scan_status_updated_on:
+          type: string
+          description: ''
+          format: string
+        CA_Webhook_configuration_identifier:
+          type: string
+          description: ''
+          format: string
+    InitiateFINX_CA_ENTITES_SCANResponse:
+      type: object
+      properties:
+        FINX_CA_ENTITES_SCAN:
+          $ref: '#/components/schemas/FINX_CA_ENTITES_SCAN'
+    InitiateFINX_CA_ENTITES_SCANRequest:
+      type: object
+      properties:
+        FINX_CA_ENTITES_SCAN:
+          $ref: '#/components/schemas/FINX_CA_ENTITES_SCAN'
+    RetrieveFINX_CA_ENTITES_SCANResponse:
+      type: object
+      properties:
+        FINX_CA_ENTITES_SCAN:
+          $ref: '#/components/schemas/FINX_CA_ENTITES_SCAN'
+    RetrieveFINX_CA_ENTITES_SCANRequest:
+      type: object
+      properties:
+        FINX_CA_ENTITES_SCAN:
+          $ref: '#/components/schemas/FINX_CA_ENTITES_SCAN'
+    HTTPError:
+      type: object
+      properties:
+        status_code:
+          type: string
+          description: ''
+        status:
+          type: string
+          description: ''
+        message:
+          type: string
+          description: ''
+  parameters:
+    finx_ca_entites_scanid:
+      name: finx_ca_entites_scanid
+      in: path
+      required: true
+      style: simple
+      schema:
+        type: string
+  requestBodies:
+    InitiateFINX_CA_ENTITES_SCANRequest:
+      description: InitiateFINX_CA_ENTITES_SCAN
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/InitiateFINX_CA_ENTITES_SCANRequest'
+    RetrieveFINX_CA_ENTITES_SCANRequest:
+      description: RetrieveFINX_CA_ENTITES_SCAN
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/RetrieveFINX_CA_ENTITES_SCANRequest'
+  responses:
+    InitiateFINX_CA_ENTITES_SCANResponse:
+      description: FINX_CA_ENTITES_SCAN created
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/InitiateFINX_CA_ENTITES_SCANResponse'
+    RetrieveFINX_CA_ENTITES_SCANResponse:
+      description: FINX_CA_ENTITES_SCAN details
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/RetrieveFINX_CA_ENTITES_SCANResponse'
+    BadRequest:
+      description: BadRequest
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/HTTPError'
+    Unauthorized:
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/HTTPError'
+    Forbidden:
+      description: Forbidden
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/HTTPError'
+    NotFound:
+      description: NotFound
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/HTTPError'
+    TooManyRequests:
+      description: TooManyRequests
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/HTTPError'
+    InternalServerError:
+      description: InternalServerError
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/HTTPError'
