@@ -1,7 +1,8 @@
+
 openapi: 3.0.1
 info:
   title: E-Commerce Merchant Platform
-  description: 'This service domain orchestrates an e-commerce merchant platform. The typical range of services covers product management, order processing, inventory control, payment processing, and customer management.'
+  description: 'This service domain orchestrates an e-commerce merchant platform, covering product management, order processing, inventory control, payment processing, and customer management.'
   version: 1.0.0
 servers:
   - url: https://api.merchantplatform.com/v1
@@ -679,7 +680,39 @@ components:
               ECommerceFacility:
                 $ref: '#/components/schemas/ECommerceFacility'
               Product:
-                $ref: '#/components/schemas/Product'
+                type: object
+                properties:
+                  Name:
+                    type: string
+                    description: Product name
+                  Description:
+                    type: string
+                    description: Product description
+                  Price:
+                    type: string
+                    description: Product price
+                  Currency:
+                    type: string
+                    description: Currency code (ISO 4217)
+                    default: USD
+                  SKU:
+                    type: string
+                    description: Stock keeping unit
+                  Category:
+                    type: string
+                    description: Product category
+                  InventoryQuantity:
+                    type: string
+                    description: Available quantity in stock
+                    default: "0"
+                  Images:
+                    type: array
+                    items:
+                      type: string
+                    description: Array of product image URLs
+                required:
+                  - Name
+                  - Price
       required: true
     UpdateProductRequest:
       description: UpdateProduct
@@ -693,14 +726,19 @@ components:
                 properties:
                   Name:
                     type: string
+                    description: Product name
                   Description:
                     type: string
+                    description: Product description
                   Price:
                     type: string
+                    description: Product price
                   InventoryQuantity:
                     type: string
+                    description: Available quantity in stock
                   Status:
                     type: string
+                    description: Product status
                     enum: [active, inactive, archived]
     UpdateOrderStatusRequest:
       description: UpdateOrderStatus
@@ -714,6 +752,7 @@ components:
                 properties:
                   Status:
                     type: string
+                    description: Order status
                     enum: [pending, processing, shipped, delivered, cancelled, refunded]
                   Notes:
                     type: string
@@ -731,7 +770,7 @@ components:
                 type: object
                 properties:
                   Adjustment:
-                    type: string
+                    type: integer
                     description: Positive or negative quantity to adjust
                   Reason:
                     type: string
@@ -752,20 +791,25 @@ components:
                 properties:
                   OrderReference:
                     type: string
+                    description: Associated order identifier
                   Amount:
                     type: string
+                    description: Payment amount
                   Currency:
                     type: string
+                    description: Currency code (ISO 4217)
                     default: USD
                   Method:
                     type: string
+                    description: Payment method used
                   PaymentDetails:
                     type: object
                     description: Payment method specific details
-            required:
-              - OrderReference
-              - Amount
-              - Method
+                required:
+                  - OrderReference
+                  - Amount
+                  - Method
+      required: true
   responses:
     InitiateProductResponse:
       description: Product created successfully
