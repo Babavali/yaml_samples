@@ -1,0 +1,934 @@
+openapi: 3.0.1
+info:
+  title: E-Commerce Merchant Platform
+  description: 'This service domain orchestrates an e-commerce merchant platform. The typical range of services covers product management, order processing, inventory control, payment processing, and customer management.'
+  version: 1.0.0
+servers:
+  - url: https://api.merchantplatform.com/v1
+    description: Production server
+  - url: https://sandbox.merchantplatform.com/v1
+    description: Sandbox server for testing
+paths:
+  '/ECommercePlatform/{platformid}/products/Initiate':
+    post:
+      tags:
+        - BQ - ProductManagement
+      summary: InBQ Initialize product creation
+      description: InBQ Initialize product creation
+      operationId: InitiateProduct
+      parameters:
+        - $ref: '#/components/parameters/platformid'
+      requestBody:
+        $ref: '#/components/requestBodies/InitiateProductRequest'
+      responses:
+        '200':
+          $ref: '#/components/responses/InitiateProductResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+  '/ECommercePlatform/{platformid}/products/Retrieve':
+    get:
+      tags:
+        - BQ - ProductManagement
+      summary: ReBQ Retrieve details about all products
+      description: ReBQ Retrieve details about all products
+      operationId: RetrieveAllProducts
+      parameters:
+        - $ref: '#/components/parameters/platformid'
+        - $ref: '#/components/parameters/page'
+        - $ref: '#/components/parameters/limit'
+      responses:
+        '200':
+          $ref: '#/components/responses/RetrieveProductsResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+  '/ECommercePlatform/{platformid}/products/{productid}/Retrieve':
+    get:
+      tags:
+        - BQ - ProductManagement
+      summary: ReBQ Retrieve product details
+      description: ReBQ Retrieve product details
+      operationId: RetrieveProduct
+      parameters:
+        - $ref: '#/components/parameters/platformid'
+        - $ref: '#/components/parameters/productid'
+      responses:
+        '200':
+          $ref: '#/components/responses/ProductResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+  '/ECommercePlatform/{platformid}/products/{productid}/Update':
+    post:
+      tags:
+        - BQ - ProductManagement
+      summary: UpBQ Update product details
+      description: UpBQ Update product details
+      operationId: UpdateProduct
+      parameters:
+        - $ref: '#/components/parameters/platformid'
+        - $ref: '#/components/parameters/productid'
+      requestBody:
+        $ref: '#/components/requestBodies/UpdateProductRequest'
+      responses:
+        '200':
+          $ref: '#/components/responses/ProductResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+  '/ECommercePlatform/{platformid}/products/{productid}/Terminate':
+    post:
+      tags:
+        - BQ - ProductManagement
+      summary: TeBQ Terminate a product
+      description: TeBQ Terminate a product
+      operationId: TerminateProduct
+      parameters:
+        - $ref: '#/components/parameters/platformid'
+        - $ref: '#/components/parameters/productid'
+      responses:
+        '200':
+          description: Product terminated successfully
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+  '/ECommercePlatform/{platformid}/orders/Retrieve':
+    get:
+      tags:
+        - BQ - OrderManagement
+      summary: ReBQ Retrieve details about all orders
+      description: ReBQ Retrieve details about all orders
+      operationId: RetrieveAllOrders
+      parameters:
+        - $ref: '#/components/parameters/platformid'
+        - $ref: '#/components/parameters/page'
+        - $ref: '#/components/parameters/limit'
+        - $ref: '#/components/parameters/status'
+      responses:
+        '200':
+          $ref: '#/components/responses/RetrieveOrdersResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+  '/ECommercePlatform/{platformid}/orders/{orderid}/Retrieve':
+    get:
+      tags:
+        - BQ - OrderManagement
+      summary: ReBQ Retrieve order details
+      description: ReBQ Retrieve order details
+      operationId: RetrieveOrder
+      parameters:
+        - $ref: '#/components/parameters/platformid'
+        - $ref: '#/components/parameters/orderid'
+      responses:
+        '200':
+          $ref: '#/components/responses/OrderResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+  '/ECommercePlatform/{platformid}/orders/{orderid}/status/Update':
+    post:
+      tags:
+        - BQ - OrderManagement
+      summary: UpBQ Update order status
+      description: UpBQ Update order status
+      operationId: UpdateOrderStatus
+      parameters:
+        - $ref: '#/components/parameters/platformid'
+        - $ref: '#/components/parameters/orderid'
+      requestBody:
+        $ref: '#/components/requestBodies/UpdateOrderStatusRequest'
+      responses:
+        '200':
+          $ref: '#/components/responses/OrderResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+  '/ECommercePlatform/{platformid}/inventory/Retrieve':
+    get:
+      tags:
+        - BQ - InventoryManagement
+      summary: ReBQ Retrieve inventory status
+      description: ReBQ Retrieve inventory status
+      operationId: RetrieveInventory
+      parameters:
+        - $ref: '#/components/parameters/platformid'
+        - $ref: '#/components/parameters/productid'
+        - $ref: '#/components/parameters/sku'
+      responses:
+        '200':
+          $ref: '#/components/responses/InventoryResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+  '/ECommercePlatform/{platformid}/inventory/{productid}/adjust/Initiate':
+    post:
+      tags:
+        - BQ - InventoryManagement
+      summary: InBQ Initialize inventory adjustment
+      description: InBQ Initialize inventory adjustment
+      operationId: InitiateInventoryAdjustment
+      parameters:
+        - $ref: '#/components/parameters/platformid'
+        - $ref: '#/components/parameters/productid'
+      requestBody:
+        $ref: '#/components/requestBodies/InitiateInventoryAdjustmentRequest'
+      responses:
+        '200':
+          $ref: '#/components/responses/InventoryResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+  '/ECommercePlatform/{platformid}/payments/Initiate':
+    post:
+      tags:
+        - BQ - PaymentProcessing
+      summary: InBQ Initialize payment processing
+      description: InBQ Initialize payment processing
+      operationId: InitiatePayment
+      parameters:
+        - $ref: '#/components/parameters/platformid'
+      requestBody:
+        $ref: '#/components/requestBodies/InitiatePaymentRequest'
+      responses:
+        '200':
+          $ref: '#/components/responses/InitiatePaymentResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+  '/ECommercePlatform/{platformid}/payments/{paymentid}/Retrieve':
+    get:
+      tags:
+        - BQ - PaymentProcessing
+      summary: ReBQ Retrieve payment details
+      description: ReBQ Retrieve payment details
+      operationId: RetrievePayment
+      parameters:
+        - $ref: '#/components/parameters/platformid'
+        - $ref: '#/components/parameters/paymentid'
+      responses:
+        '200':
+          $ref: '#/components/responses/PaymentResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+  '/ECommercePlatform/{platformid}/customers/Retrieve':
+    get:
+      tags:
+        - BQ - CustomerManagement
+      summary: ReBQ Retrieve details about all customers
+      description: ReBQ Retrieve details about all customers
+      operationId: RetrieveAllCustomers
+      parameters:
+        - $ref: '#/components/parameters/platformid'
+        - $ref: '#/components/parameters/page'
+        - $ref: '#/components/parameters/limit'
+      responses:
+        '200':
+          $ref: '#/components/responses/RetrieveCustomersResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+  '/ECommercePlatform/{platformid}/customers/{customerid}/Retrieve':
+    get:
+      tags:
+        - BQ - CustomerManagement
+      summary: ReBQ Retrieve customer details
+      description: ReBQ Retrieve customer details
+      operationId: RetrieveCustomer
+      parameters:
+        - $ref: '#/components/parameters/platformid'
+        - $ref: '#/components/parameters/customerid'
+      responses:
+        '200':
+          $ref: '#/components/responses/CustomerResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+components:
+  schemas:
+    ECommerceFacility:
+      type: object
+      properties:
+        PlatformInstanceReference:
+          type: string
+          description: Unique identifier for the e-commerce platform instance
+        MerchantReference:
+          type: string
+          description: Reference to the merchant
+        Currency:
+          type: string
+          description: Default currency code (ISO 4217)
+        PlatformType:
+          type: string
+          description: Type of e-commerce platform
+          enum:
+            - Retail
+            - Marketplace
+            - Subscription
+    Product:
+      type: object
+      properties:
+        ProductReference:
+          type: string
+          description: Unique identifier for the product
+        Name:
+          type: string
+          description: Product name
+        Description:
+          type: string
+          description: Product description
+        Price:
+          type: string
+          description: Product price
+        Currency:
+          type: string
+          description: Currency code (ISO 4217)
+        SKU:
+          type: string
+          description: Stock keeping unit
+        Category:
+          type: string
+          description: Product category
+        InventoryQuantity:
+          type: string
+          description: Available quantity in stock
+        Images:
+          type: array
+          items:
+            type: string
+          description: Array of product image URLs
+        Status:
+          type: string
+          description: Product status
+          enum: [active, inactive, archived]
+        CreatedAt:
+          type: string
+          format: date-time
+          description: Creation timestamp
+        UpdatedAt:
+          type: string
+          format: date-time
+          description: Last update timestamp
+    Order:
+      type: object
+      properties:
+        OrderReference:
+          type: string
+          description: Unique order identifier
+        CustomerReference:
+          type: string
+          description: Customer who placed the order
+        Items:
+          type: array
+          items:
+            $ref: '#/components/schemas/OrderItem'
+          description: Ordered products
+        TotalAmount:
+          type: string
+          description: Order total amount
+        Currency:
+          type: string
+          description: Currency code (ISO 4217)
+        Status:
+          type: string
+          description: Order status
+          enum: [pending, processing, shipped, delivered, cancelled, refunded]
+        ShippingAddress:
+          $ref: '#/components/schemas/Address'
+        BillingAddress:
+          $ref: '#/components/schemas/Address'
+        PaymentMethod:
+          type: string
+          description: Payment method used
+        PaymentStatus:
+          type: string
+          description: Payment status
+          enum: [pending, paid, failed, refunded]
+        CreatedAt:
+          type: string
+          format: date-time
+          description: Creation timestamp
+        UpdatedAt:
+          type: string
+          format: date-time
+          description: Last update timestamp
+    OrderItem:
+      type: object
+      properties:
+        ProductReference:
+          type: string
+          description: Product identifier
+        Quantity:
+          type: string
+          description: Quantity ordered
+        UnitPrice:
+          type: string
+          description: Price per unit at time of order
+        TotalPrice:
+          type: string
+          description: Total price for this line item
+    Inventory:
+      type: object
+      properties:
+        ProductReference:
+          type: string
+          description: Product identifier
+        SKU:
+          type: string
+          description: Stock keeping unit
+        Quantity:
+          type: string
+          description: Available quantity
+        Reserved:
+          type: string
+          description: Quantity reserved for pending orders
+        Status:
+          type: string
+          description: Inventory status
+          enum: [in_stock, low_stock, out_of_stock, discontinued]
+        LastUpdated:
+          type: string
+          format: date-time
+          description: Last inventory update timestamp
+    Payment:
+      type: object
+      properties:
+        PaymentReference:
+          type: string
+          description: Unique payment identifier
+        OrderReference:
+          type: string
+          description: Associated order identifier
+        Amount:
+          type: string
+          description: Payment amount
+        Currency:
+          type: string
+          description: Currency code (ISO 4217)
+        Method:
+          type: string
+          description: Payment method used
+        Status:
+          type: string
+          description: Payment status
+          enum: [pending, completed, failed, refunded]
+        TransactionId:
+          type: string
+          description: Payment processor transaction ID
+        ProcessedAt:
+          type: string
+          format: date-time
+          description: Payment processing timestamp
+    Customer:
+      type: object
+      properties:
+        CustomerReference:
+          type: string
+          description: Unique customer identifier
+        FirstName:
+          type: string
+          description: Customer first name
+        LastName:
+          type: string
+          description: Customer last name
+        Email:
+          type: string
+          description: Customer email address
+        Phone:
+          type: string
+          description: Customer phone number
+        Addresses:
+          type: array
+          items:
+            $ref: '#/components/schemas/Address'
+          description: Customer addresses
+        CreatedAt:
+          type: string
+          format: date-time
+          description: Creation timestamp
+        UpdatedAt:
+          type: string
+          format: date-time
+          description: Last update timestamp
+    Address:
+      type: object
+      properties:
+        Type:
+          type: string
+          description: Address type
+          enum: [billing, shipping]
+        Street:
+          type: string
+          description: Street address
+        City:
+          type: string
+          description: City
+        State:
+          type: string
+          description: State/province
+        PostalCode:
+          type: string
+          description: Postal/ZIP code
+        Country:
+          type: string
+          description: Country code (ISO 3166-1 alpha-2)
+    HTTPError:
+      type: object
+      properties:
+        status_code:
+          type: string
+          description: Error code
+        status:
+          type: string
+          description: Error status
+        message:
+          type: string
+          description: Error message
+    ProductResponse:
+      type: object
+      properties:
+        Product:
+          $ref: '#/components/schemas/Product'
+    RetrieveProductsResponse:
+      type: object
+      properties:
+        Products:
+          type: array
+          items:
+            $ref: '#/components/schemas/Product'
+    InitiateProductResponse:
+      type: object
+      properties:
+        Product:
+          $ref: '#/components/schemas/Product'
+    OrderResponse:
+      type: object
+      properties:
+        Order:
+          $ref: '#/components/schemas/Order'
+    RetrieveOrdersResponse:
+      type: object
+      properties:
+        Orders:
+          type: array
+          items:
+            $ref: '#/components/schemas/Order'
+    InventoryResponse:
+      type: object
+      properties:
+        Inventory:
+          $ref: '#/components/schemas/Inventory'
+    PaymentResponse:
+      type: object
+      properties:
+        Payment:
+          $ref: '#/components/schemas/Payment'
+    InitiatePaymentResponse:
+      type: object
+      properties:
+        Payment:
+          $ref: '#/components/schemas/Payment'
+    CustomerResponse:
+      type: object
+      properties:
+        Customer:
+          $ref: '#/components/schemas/Customer'
+    RetrieveCustomersResponse:
+      type: object
+      properties:
+        Customers:
+          type: array
+          items:
+            $ref: '#/components/schemas/Customer'
+  requestBodies:
+    InitiateProductRequest:
+      description: InitiateProduct
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              ECommerceFacility:
+                $ref: '#/components/schemas/ECommerceFacility'
+              Product:
+                $ref: '#/components/schemas/Product'
+      required: true
+    UpdateProductRequest:
+      description: UpdateProduct
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              Product:
+                type: object
+                properties:
+                  Name:
+                    type: string
+                  Description:
+                    type: string
+                  Price:
+                    type: string
+                  InventoryQuantity:
+                    type: string
+                  Status:
+                    type: string
+                    enum: [active, inactive, archived]
+    UpdateOrderStatusRequest:
+      description: UpdateOrderStatus
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              Order:
+                type: object
+                properties:
+                  Status:
+                    type: string
+                    enum: [pending, processing, shipped, delivered, cancelled, refunded]
+                  Notes:
+                    type: string
+                    description: Optional status update notes
+            required:
+              - Status
+    InitiateInventoryAdjustmentRequest:
+      description: InitiateInventoryAdjustment
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              Inventory:
+                type: object
+                properties:
+                  Adjustment:
+                    type: string
+                    description: Positive or negative quantity to adjust
+                  Reason:
+                    type: string
+                    description: Reason for adjustment
+            required:
+              - Adjustment
+    InitiatePaymentRequest:
+      description: InitiatePayment
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              ECommerceFacility:
+                $ref: '#/components/schemas/ECommerceFacility'
+              Payment:
+                type: object
+                properties:
+                  OrderReference:
+                    type: string
+                  Amount:
+                    type: string
+                  Currency:
+                    type: string
+                    default: USD
+                  Method:
+                    type: string
+                  PaymentDetails:
+                    type: object
+                    description: Payment method specific details
+            required:
+              - OrderReference
+              - Amount
+              - Method
+  responses:
+    InitiateProductResponse:
+      description: Product created successfully
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/InitiateProductResponse'
+    RetrieveProductsResponse:
+      description: All products retrieved successfully
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/RetrieveProductsResponse'
+    ProductResponse:
+      description: Product details retrieved successfully
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ProductResponse'
+    RetrieveOrdersResponse:
+      description: All orders retrieved successfully
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/RetrieveOrdersResponse'
+    OrderResponse:
+      description: Order details retrieved successfully
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/OrderResponse'
+    InventoryResponse:
+      description: Inventory details retrieved successfully
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/InventoryResponse'
+    InitiatePaymentResponse:
+      description: Payment initiated successfully
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/InitiatePaymentResponse'
+    PaymentResponse:
+      description: Payment details retrieved successfully
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/PaymentResponse'
+    RetrieveCustomersResponse:
+      description: All customers retrieved successfully
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/RetrieveCustomersResponse'
+    CustomerResponse:
+      description: Customer details retrieved successfully
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/CustomerResponse'
+    BadRequest:
+      description: BadRequest
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/HTTPError'
+    Unauthorized:
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/HTTPError'
+    Forbidden:
+      description: Forbidden
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/HTTPError'
+    NotFound:
+      description: NotFound
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/HTTPError'
+    TooManyRequests:
+      description: TooManyRequests
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/HTTPError'
+    InternalServerError:
+      description: InternalServerError
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/HTTPError'
+  parameters:
+    platformid:
+      name: platformid
+      in: path
+      required: true
+      style: simple
+      schema:
+        type: string
+    productid:
+      name: productid
+      in: path
+      required: true
+      style: simple
+      schema:
+        type: string
+    orderid:
+      name: orderid
+      in: path
+      required: true
+      style: simple
+      schema:
+        type: string
+    paymentid:
+      name: paymentid
+      in: path
+      required: true
+      style: simple
+      schema:
+        type: string
+    customerid:
+      name: customerid
+      in: path
+      required: true
+      style: simple
+      schema:
+        type: string
+    page:
+      name: page
+      in: query
+      required: false
+      description: Page number for pagination
+      schema:
+        type: integer
+        default: 1
+        minimum: 1
+    limit:
+      name: limit
+      in: query
+      required: false
+      description: Number of items per page
+      schema:
+        type: integer
+        default: 10
+        minimum: 1
+        maximum: 100
+    status:
+      name: status
+      in: query
+      required: false
+      description: Filter by status
+      schema:
+        type: string
+    sku:
+      name: sku
+      in: query
+      required: false
+      description: Filter by SKU
+      schema:
+        type: string
