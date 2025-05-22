@@ -112,89 +112,6 @@ paths:
 
 components:
   schemas:
-    ECommercePlatformFacility:
-      type: object
-      properties:
-        PlatformInstanceReference:
-          type: string
-          description: "\n"
-          format: object
-        MerchantReference:
-          type: string
-          description: "\n"
-          format: object
-        Currency:
-          type: string
-          description: "\n"
-          format: string
-        PlatformType:
-          type: string
-          description: "\n"
-          format: string
-          enum:
-            - Retail
-            - Marketplace
-            - Subscription
-
-    ProductManagement:
-      type: object
-      properties:
-        ProductReference:
-          type: string
-          description: "\n"
-          format: string
-        ProductName:
-          type: string
-          description: "\n"
-          format: string
-        ProductDescription:
-          type: string
-          description: "\n"
-          format: string
-        ProductPrice:
-          type: string
-          description: "\n"
-          format: string
-        ProductStatus:
-          type: string
-          description: "\n"
-          format: string
-          enum: [active, inactive, archived]
-
-    OrderManagement:
-      type: object
-      properties:
-        OrderReference:
-          type: string
-          description: "\n"
-          format: string
-        OrderStatus:
-          type: string
-          description: "\n"
-          format: string
-          enum: [pending, processing, shipped, delivered, cancelled, refunded]
-        OrderAmount:
-          type: string
-          description: "\n"
-          format: string
-        OrderItems:
-          type: array
-          items:
-            type: object
-            properties:
-              ProductReference:
-                type: string
-                description: "\n"
-                format: string
-              Quantity:
-                type: string
-                description: "\n"
-                format: string
-              Price:
-                type: string
-                description: "\n"
-                format: string
-
     Products:
       type: array
       items:
@@ -251,18 +168,6 @@ components:
             description: "\n"
             format: string
 
-    ECommercePlatformFacilityResponse:
-      type: object
-      properties:
-        TransactionReference:
-          type: string
-          description: "\n"
-          format: string
-        PlatformStatus:
-          type: string
-          description: "\n"
-          format: string
-
     HTTPError:
       type: object
       properties:
@@ -278,35 +183,29 @@ components:
           type: string
           description: "\n"
           format: string
-
-    InitiateProductResponse:
-      type: object
-      properties:
-        ECommercePlatformFacilityResponse:
-          $ref: '#/components/schemas/ECommercePlatformFacilityResponse'
-
-    InitiateOrderResponse:
-      type: object
-      properties:
-        ECommercePlatformFacilityResponse:
-          $ref: '#/components/schemas/ECommercePlatformFacilityResponse'
-
     InitiateProductRequest:
       type: object
       properties:
-        ECommercePlatformFacility:
-          $ref: '#/components/schemas/ECommercePlatformFacility'
-        ProductManagement:
-          $ref: '#/components/schemas/ProductManagement'
-
+        Products:
+          $ref: '#/components/schemas/Products'
+          
+    InitiateProductResponse:
+      type: object
+      properties:
+        Products:
+          $ref: '#/components/schemas/Products'
+          
+    InitiateOrderResponse:
+      type: object
+      properties:
+        Products:
+          $ref: '#/components/schemas/Orders'
+          
     InitiateOrderRequest:
       type: object
       properties:
-        ECommercePlatformFacility:
-          $ref: '#/components/schemas/ECommercePlatformFacility'
-        OrderManagement:
-          $ref: '#/components/schemas/OrderManagement'
-
+        Products:
+          $ref: '#/components/schemas/Orders'
     RetrieveProductsResponse:
       type: object
       properties:
