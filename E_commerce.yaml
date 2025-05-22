@@ -33,7 +33,7 @@ paths:
         '500':
           $ref: '#/components/responses/InternalServerError'
 
-  '/ECommercePlatform/{ecommerceplatformid}/products/Retrieve':
+  '/ECommercePlatform/{ecommerceplatformid}/getProducts/Retrieve':
     get:
       tags:
         - BQ - ProductManagement
@@ -85,7 +85,7 @@ paths:
         '500':
           $ref: '#/components/responses/InternalServerError'
 
-  '/ECommercePlatform/{ecommerceplatformid}/orders/Retrieve':
+  '/ECommercePlatform/{ecommerceplatformid}/getOrders/Retrieve':
     get:
       tags:
         - BQ - OrderManagement
