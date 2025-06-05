@@ -4,9 +4,9 @@ info:
   description: 'This service domain handles user management operations including retrieving user information and adding new users.'
   version: 11.0.0
 servers:
-  - url: https://dev.aairavx.com/api
+  - url: https://virtserver.swaggerhub.com/BIAN-3/BIAN/UserManagement/11.0.0
 paths:
-  '/getUsers/Retrieve':
+  '/UserManagement/getUsers/Retrieve':
     get:
       tags:
         - BQ - UserManagement
@@ -28,7 +28,7 @@ paths:
           $ref: '#/components/responses/TooManyRequests'
         '500':
           $ref: '#/components/responses/InternalServerError'
-  '/users/Initiate':
+  '/UserManagement/users/Initiate':
     post:
       tags:
         - BQ - UserManagement
