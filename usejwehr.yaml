@@ -46,9 +46,8 @@ components:
           format: email
         microservices:
           type: string
-          items:
-            type: string
           description: List of microservices associated with the user
+          format: string
         createdOn:
           type: string
           format: date
