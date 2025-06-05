@@ -30,7 +30,7 @@ paths:
           $ref: '#/components/responses/TooManyRequests'
         '500':
           $ref: '#/components/responses/InternalServerError'
-  '/users/{userid}/Initiate':
+  '/users/Initiate':
     post:
       tags:
         - BQ - UserManagement
