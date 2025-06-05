@@ -1,63 +1,33 @@
 openapi: 3.0.1
 info:
-  title: Users Management API
-  description: "This service domain manages user information and their associated microservices"
-  version: 1.0.0
+  title: User Management
+  description: 'This service domain handles user management operations including retrieving user information and adding new users.'
+  version: 11.0.0
 servers:
-  - url: https://dev.aairavx.com/api
+  - url: https://virtserver.swaggerhub.com/BIAN-3/BIAN/UserManagement/11.0.0
 paths:
   "/users/Retrieve":
     get:
       tags:
-        - Users
-      summary: Retrieve user information
-      description: Retrieve details about users including their microservices and API information
-      operationId: retrieveUsers
-      parameters:
-        - name: Microservices
-          in: query
-          description: Filter by microservices
-          required: false
-          schema:
-            type: string
-        - name: createdOn
-          in: query
-          description: Filter by creation date
-          required: false
-          schema:
-            type: string
-            format: date
-        - name: NoOfAPIs
-          in: query
-          description: Filter by number of APIs
-          required: false
-          schema:
-            type: integer
-        - name: Status
-          in: query
-          description: Filter by status
-          required: false
-          schema:
-            type: string
-            enum:
-              - Active
-              - Inactive
-              - Pending
+        - BQ - UserManagement
+      summary: ReBQ Retrieve details about all users
+      description: ReBQ Retrieve details about all users
+      operationId: RetrieveAllUsers
       responses:
-        "200":
-          description: Successful retrieval of user information
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UsersResponse"
-        "400":
-          $ref: "#/components/responses/BadRequest"
-        "401":
-          $ref: "#/components/responses/Unauthorized"
-        "404":
-          $ref: "#/components/responses/NotFound"
-        "500":
-          $ref: "#/components/responses/InternalServerError"
+        '200':
+          $ref: '#/components/responses/RetrieveUsersResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
 
 components:
   schemas:
@@ -94,52 +64,73 @@ components:
             - Pending
           description: Current status of the user account
 
-    UsersResponse:
-      type: object
-      properties:
-        users:
-          type: array
-          items:
-            $ref: "#/components/schemas/User"
-        totalCount:
-          type: integer
-          description: Total number of users matching the criteria
-
     HTTPError:
       type: object
       properties:
         status_code:
-          type: integer
-          description: HTTP status code
+          type: string
+          description: "\n"
         status:
           type: string
-          description: Status message
+          description: "\n"
         message:
           type: string
-          description: Detailed error message
+          description: "\n"
+
+    RetrieveUsersResponse:
+      type: object
+      properties:
+        Users:
+          $ref: '#/components/schemas/User'
+
 
   responses:
-    BadRequest:
-      description: Bad Request
+
+    RetrieveUsersResponse:
+      description: Users retrieved successfully
       content:
         application/json:
           schema:
-            $ref: "#/components/schemas/HTTPError"
+            $ref: '#/components/schemas/RetrieveUsersResponse'
+
+    BadRequest:
+      description: BadRequest
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/HTTPError'
+
     Unauthorized:
       description: Unauthorized
       content:
         application/json:
           schema:
-            $ref: "#/components/schemas/HTTPError"
+            $ref: '#/components/schemas/HTTPError'
+
+    Forbidden:
+      description: Forbidden
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/HTTPError'
+
     NotFound:
-      description: Not Found
+      description: NotFound
       content:
         application/json:
           schema:
-            $ref: "#/components/schemas/HTTPError"
+            $ref: '#/components/schemas/HTTPError'
+
+    TooManyRequests:
+      description: TooManyRequests
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/HTTPError'
+
     InternalServerError:
-      description: Internal Server Error
+      description: InternalServerError
       content:
         application/json:
           schema:
-            $ref: "#/components/schemas/HTTPError"
+            $ref: '#/components/schemas/HTTPError'
