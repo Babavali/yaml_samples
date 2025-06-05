@@ -6,7 +6,7 @@ info:
 servers:
   - url: https://dev.aairavx.com/api
 paths:
-  '/usersManagement/getusers/Retrieve':
+  '/usersManagement/getUsers/Retrieve':
     get:
       tags:
         - BQ - UserManagement
