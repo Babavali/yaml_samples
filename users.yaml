@@ -131,14 +131,14 @@ components:
       type: object
       properties:
         UserFacilityResponse:
-          $ref: '#/components/schemas/UserFacilityResponse'
+          $ref: '#/components/schemas/Users'
     InitiateUserRequest:
       type: object
       properties:
         UserFacility:
-          $ref: '#/components/schemas/UserFacility'
+          $ref: '#/components/schemas/Users'
         UserManagement:
-          $ref: '#/components/schemas/UserManagement'
+          $ref: '#/components/schemas/Users'
     RetrieveUsersResponse:
       type: object
       properties:
