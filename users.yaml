@@ -201,7 +201,3 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/HTTPError'
- d: true
-      style: simple
-      schema:
-        type: string
