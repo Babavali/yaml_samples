@@ -6,7 +6,7 @@ info:
 servers:
   - url: https://virtserver.swaggerhub.com/BIAN-3/BIAN/UserManagement/11.0.0
 paths:
-  '/User/getUsers/Retrieve':
+  '/getUsers/Retrieve':
     get:
       tags:
         - BQ - UserManagement
