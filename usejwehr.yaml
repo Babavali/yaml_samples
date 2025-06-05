@@ -1,251 +1,182 @@
 openapi: 3.0.1
 info:
-  title: User Management 
-  description: managing users
-  contact:
-    name: BIAN
-    url: https://bian.org
+  title: User Management
+  description: 'This service domain handles user management operations including retrieving user information and adding new users.'
   version: 11.0.0
 servers:
-  - url: https://api.example.com/v1
+  - url: https://virtserver.swaggerhub.com/BIAN-3/BIAN/UserManagement/11.0.0
 paths:
-  /users/{userId}/Retrieve:
+  '/UserManagement/users/Retrieve':
     get:
       tags:
-        - CR - Users
-      summary: Get user by ID
-      description: Returns user details for a specific user ID
-      operationId: Retrieve
-      parameters:
-        - $ref: '#/components/parameters/userId'
+        - BQ - UserManagement
+      summary: ReBQ Retrieve details about all users
+      description: ReBQ Retrieve details about all users
+      operationId: RetrieveAllUsers
       responses:
         '200':
-          $ref: '#/components/responses/RetrieveUserResponse'
+          $ref: '#/components/responses/RetrieveUsersResponse'
         '400':
           $ref: '#/components/responses/BadRequest'
         '401':
           $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
         '404':
           $ref: '#/components/responses/NotFound'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
         '500':
           $ref: '#/components/responses/InternalServerError'
 
-  /users/Initiate:
+  '/UserManagement/users/Initiate':
     post:
       tags:
-        - CR - Users
-      summary: Initiate a new user
-      description: Initiate a new user with the provided details
-      operationId: Initiate
+        - BQ - UserManagement
+      summary: InBQ Initialize user creation
+      description: InBQ Initialize user creation
+      operationId: InitiateUser
       requestBody:
         $ref: '#/components/requestBodies/InitiateUserRequest'
       responses:
-        '201':
+        '200':
           $ref: '#/components/responses/InitiateUserResponse'
         '400':
           $ref: '#/components/responses/BadRequest'
         '401':
           $ref: '#/components/responses/Unauthorized'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-
-  /users/{userId}/Update:
-    put:
-      tags:
-        - CR - Users
-      summary: Update details of  a user
-      description: update details of a user with the provided details
-      operationId: Update
-      parameters:
-        - $ref: '#/components/parameters/userId'
-      requestBody:
-        $ref: '#/components/requestBodies/UpdateUserRequest'
-      responses:
-        '201':
-          $ref: '#/components/responses/UpdateUserResponse'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
         '500':
           $ref: '#/components/responses/InternalServerError'
 
 components:
   schemas:
+    Users:
+      type: array
+      items:
+        type: object
+        properties:
+          UserReference:
+            type: string
+            description: "\n"
+          UserName:
+            type: string
+            description: "\n"
+          UserDescription:
+            type: string
+            description: "\n"
+          UserType:
+            type: string
+            description: "\n"
+          UserStatus:
+            type: string
+            description: "\n"
+          CreatedDate:
+            type: string
+            description: "\n"
+            format: date
+          No_of_APIs:
+            type: integer
+            description: "\n"
+
     HTTPError:
       type: object
       properties:
         status_code:
-          type: integer
-          format: int32
+          type: string
+          description: "\n"
         status:
           type: string
+          description: "\n"
         message:
           type: string
-      description: Status Attributes
-
-    RetrieveUserResponse:
-      type: object
-      properties:
-        name:
-          type: string
-          description: The full name of the user
-        mobileNumber:
-          type: string
-          description: The mobile number of the user
-        email:
-          type: string
-          format: email
-          description: The email address of the user
-        role:
-          type: string
-          description: The role of the user
+          description: "\n"
 
     InitiateUserRequest:
       type: object
       properties:
-        fullName:
-          type: string
-          description: The full name of the user
-        mobileNumber:
-          type: string
-          description: The mobile number of the user
-        email:
-          type: string
-          format: email
-          description: The email address of the user
-        role:
-          type: string
-          description: The role of the user
-        permissions:
-          type: string
-          description: The permissions assigned to the user
-
+        Users:
+          $ref: '#/components/schemas/Users'
+          
     InitiateUserResponse:
       type: object
       properties:
-        fullName:
-          type: string
-          description: The full name of the user
-        mobileNumber:
-          type: string
-          description: The mobile number of the user
-        email:
-          type: string
-          format: email
-          description: The email address of the user
-        role:
-          type: string
-          description: The role of the user
-        permissions:
-          type: string
-          description: The permissions assigned to the user
+        Users:
+          $ref: '#/components/schemas/Users'
 
-    UpdateUserRequest:
+    RetrieveUsersResponse:
       type: object
       properties:
-        fullName:
-          type: string
-          description: The full name of the user
-        mobileNumber:
-          type: string
-          description: The mobile number of the user
-        email:
-          type: string
-          format: email
-          description: The email address of the user
-        role:
-          type: string
-          description: The role of the user
-        permissions:
-          type: string
-          description: The permissions assigned to the user
-
-    UpdateUserResponse:
-      type: object
-      properties:
-        fullName:
-          type: string
-          description: The full name of the user
-        mobileNumber:
-          type: string
-          description: The mobile number of the user
-        email:
-          type: string
-          format: email
-          description: The email address of the user
-        role:
-          type: string
-          description: The role of the user
-        permissions:
-          type: string
-          description: The permissions assigned to the user
-
-  responses:
-    BadRequest:
-      description: Bad Request
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/HTTPError'
-    Unauthorized:
-      description: Unauthorized
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/HTTPError'
-    NotFound:
-      description: Not Found
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/HTTPError'
-    InternalServerError:
-      description: Internal Server Error
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/HTTPError'
-    InitiateUserResponse:
-      description: InitiateUserResponse
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/InitiateUserResponse'
-    RetrieveUserResponse:
-      description: RetrieveUserResponse
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/RetrieveUserResponse'
-
-    UpdateUserResponse:
-      description: UpdateUserResponse
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/UpdateUserResponse'
-
-  parameters:
-    userId:
-      name: userId
-      in: path
-      required: true
-      style: simple
-      schema:
-        type: string
+        Users:
+          $ref: '#/components/schemas/Users'
 
   requestBodies:
     InitiateUserRequest:
+      description: InitiateUser
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/InitiateUserRequest'
       required: true
 
-    UpdateUserRequest:
+  responses:
+    InitiateUserResponse:
+      description: User initiated successfully
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/UpdateUserRequest'
-      required: true
+            $ref: '#/components/schemas/InitiateUserResponse'
+
+    RetrieveUsersResponse:
+      description: Users retrieved successfully
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/RetrieveUsersResponse'
+
+    BadRequest:
+      description: BadRequest
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/HTTPError'
+
+    Unauthorized:
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/HTTPError'
+
+    Forbidden:
+      description: Forbidden
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/HTTPError'
+
+    NotFound:
+      description: NotFound
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/HTTPError'
+
+    TooManyRequests:
+      description: TooManyRequests
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/HTTPError'
+
+    InternalServerError:
+      description: InternalServerError
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/HTTPError'
