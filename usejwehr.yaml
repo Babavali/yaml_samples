@@ -1,182 +1,145 @@
 openapi: 3.0.1
 info:
-  title: User Management
-  description: 'This service domain handles user management operations including retrieving user information and adding new users.'
-  version: 11.0.0
+  title: Users Management API
+  description: "This service domain manages user information and their associated microservices"
+  version: 1.0.0
 servers:
-  - url: https://virtserver.swaggerhub.com/BIAN-3/BIAN/UserManagement/11.0.0
+  - url: https://dev.aairavx.com/api
 paths:
-  '/UserManagement/users/Retrieve':
+  "/users/Retrieve":
     get:
       tags:
-        - BQ - UserManagement
-      summary: ReBQ Retrieve details about all users
-      description: ReBQ Retrieve details about all users
-      operationId: RetrieveAllUsers
+        - Users
+      summary: Retrieve user information
+      description: Retrieve details about users including their microservices and API information
+      operationId: retrieveUsers
+      parameters:
+        - name: Microservices
+          in: query
+          description: Filter by microservices
+          required: false
+          schema:
+            type: string
+        - name: createdOn
+          in: query
+          description: Filter by creation date
+          required: false
+          schema:
+            type: string
+            format: date
+        - name: NoOfAPIs
+          in: query
+          description: Filter by number of APIs
+          required: false
+          schema:
+            type: integer
+        - name: Status
+          in: query
+          description: Filter by status
+          required: false
+          schema:
+            type: string
+            enum:
+              - Active
+              - Inactive
+              - Pending
       responses:
-        '200':
-          $ref: '#/components/responses/RetrieveUsersResponse'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-
-  '/UserManagement/users/Initiate':
-    post:
-      tags:
-        - BQ - UserManagement
-      summary: InBQ Initialize user creation
-      description: InBQ Initialize user creation
-      operationId: InitiateUser
-      requestBody:
-        $ref: '#/components/requestBodies/InitiateUserRequest'
-      responses:
-        '200':
-          $ref: '#/components/responses/InitiateUserResponse'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
+        "200":
+          description: Successful retrieval of user information
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/UsersResponse"
+        "400":
+          $ref: "#/components/responses/BadRequest"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "404":
+          $ref: "#/components/responses/NotFound"
+        "500":
+          $ref: "#/components/responses/InternalServerError"
 
 components:
   schemas:
-    Users:
-      type: array
-      items:
-        type: object
-        properties:
-          UserReference:
+    User:
+      type: object
+      properties:
+        userId:
+          type: string
+          description: Unique identifier for the user
+        name:
+          type: string
+          description: Name of the user
+        email:
+          type: string
+          description: Email address of the user
+          format: email
+        microservices:
+          type: array
+          items:
             type: string
-            description: "\n"
-          UserName:
-            type: string
-            description: "\n"
-          UserDescription:
-            type: string
-            description: "\n"
-          UserType:
-            type: string
-            description: "\n"
-          UserStatus:
-            type: string
-            description: "\n"
-          CreatedDate:
-            type: string
-            description: "\n"
-            format: date
-          No_of_APIs:
-            type: integer
-            description: "\n"
+          description: List of microservices associated with the user
+        createdOn:
+          type: string
+          format: date
+          description: Date when the user was created
+        noOfAPIs:
+          type: integer
+          description: Number of APIs associated with the user
+        status:
+          type: string
+          enum:
+            - Active
+            - Inactive
+            - Pending
+          description: Current status of the user account
+
+    UsersResponse:
+      type: object
+      properties:
+        users:
+          type: array
+          items:
+            $ref: "#/components/schemas/User"
+        totalCount:
+          type: integer
+          description: Total number of users matching the criteria
 
     HTTPError:
       type: object
       properties:
         status_code:
-          type: string
-          description: "\n"
+          type: integer
+          description: HTTP status code
         status:
           type: string
-          description: "\n"
+          description: Status message
         message:
           type: string
-          description: "\n"
-
-    InitiateUserRequest:
-      type: object
-      properties:
-        Users:
-          $ref: '#/components/schemas/Users'
-          
-    InitiateUserResponse:
-      type: object
-      properties:
-        Users:
-          $ref: '#/components/schemas/Users'
-
-    RetrieveUsersResponse:
-      type: object
-      properties:
-        Users:
-          $ref: '#/components/schemas/Users'
-
-  requestBodies:
-    InitiateUserRequest:
-      description: InitiateUser
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/InitiateUserRequest'
-      required: true
+          description: Detailed error message
 
   responses:
-    InitiateUserResponse:
-      description: User initiated successfully
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/InitiateUserResponse'
-
-    RetrieveUsersResponse:
-      description: Users retrieved successfully
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/RetrieveUsersResponse'
-
     BadRequest:
-      description: BadRequest
+      description: Bad Request
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/HTTPError'
-
+            $ref: "#/components/schemas/HTTPError"
     Unauthorized:
       description: Unauthorized
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/HTTPError'
-
-    Forbidden:
-      description: Forbidden
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/HTTPError'
-
+            $ref: "#/components/schemas/HTTPError"
     NotFound:
-      description: NotFound
+      description: Not Found
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/HTTPError'
-
-    TooManyRequests:
-      description: TooManyRequests
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/HTTPError'
-
+            $ref: "#/components/schemas/HTTPError"
     InternalServerError:
-      description: InternalServerError
+      description: Internal Server Error
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/HTTPError'
+            $ref: "#/components/schemas/HTTPError"
