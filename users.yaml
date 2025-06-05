@@ -6,7 +6,7 @@ info:
 servers:
   - url: https://dev.aairavx.com/api
 paths:
-  '/UserManagement/getUsers/Retrieve':
+  '/getUsers/Retrieve':
     get:
       tags:
         - BQ - UserManagement
@@ -28,7 +28,7 @@ paths:
           $ref: '#/components/responses/TooManyRequests'
         '500':
           $ref: '#/components/responses/InternalServerError'
-  '/UserManagement/users/Initiate':
+  '/users/Initiate':
     post:
       tags:
         - BQ - UserManagement
