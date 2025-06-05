@@ -31,33 +31,37 @@ paths:
 
 components:
   schemas:
-    Users:
-      type: array
-      items:
-        type: object
-        properties:
-          UserReference:
-            type: string
-            description: "\n"
-          UserName:
-            type: string
-            description: "\n"
-          UserDescription:
-            type: string
-            description: "\n"
-          UserType:
-            type: string
-            description: "\n"
-          UserStatus:
-            type: string
-            description: "\n"
-          CreatedDate:
-            type: string
-            description: "\n"
-            format: date
-          No_of_APIs:
-            type: integer
-            description: "\n"
+    User:
+      type: object
+      properties:
+        userId:
+          type: string
+          description: Unique identifier for the user
+        name:
+          type: string
+          description: Name of the user
+        email:
+          type: string
+          description: Email address of the user
+          format: email
+        microservices:
+          type: string
+          description: List of microservices associated with the user
+          format: string
+        createdOn:
+          type: string
+          format: date
+          description: Date when the user was created
+        noOfAPIs:
+          type: integer
+          description: Number of APIs associated with the user
+        status:
+          type: string
+          enum:
+            - Active
+            - Inactive
+            - Pending
+          description: Current status of the user account
 
     HTTPError:
       type: object
@@ -76,7 +80,7 @@ components:
       type: object
       properties:
         Users:
-          $ref: '#/components/schemas/Users'
+          $ref: '#/components/schemas/User'
 
 
   responses:
