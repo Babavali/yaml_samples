@@ -6,13 +6,13 @@ info:
 servers:
   - url: https://virtserver.swaggerhub.com/BIAN-3/BIAN/UserManagement/11.0.0
 paths:
-  '/UserManagement/getUsers/Retrieve':
+  '/User/getUsers/Retrieve':
     get:
       tags:
         - BQ - UserManagement
-      summary: ReBQ Retrieve details about users
-      description: ReBQ Retrieve details about users
-      operationId: RetrieveUsers
+      summary: ReBQ Retrieve details about all users
+      description: ReBQ Retrieve details about all users
+      operationId: RetrieveAllUsers
       responses:
         '200':
           $ref: '#/components/responses/RetrieveUsersResponse'
@@ -28,30 +28,7 @@ paths:
           $ref: '#/components/responses/TooManyRequests'
         '500':
           $ref: '#/components/responses/InternalServerError'
-  '/UserManagement/users/Initiate':
-    post:
-      tags:
-        - BQ - UserManagement
-      summary: InBQ Initialize user creation
-      description: InBQ Initialize user creation
-      operationId: InitiateUserCreation
-      requestBody:
-        $ref: '#/components/requestBodies/InitiateUserRequest'
-      responses:
-        '200':
-          $ref: '#/components/responses/InitiateUserResponse'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
+
 components:
   schemas:
     Users:
@@ -59,28 +36,29 @@ components:
       items:
         type: object
         properties:
-          Title:
+          UserReference:
+            type: string
+            description: "\n"
+          UserName:
+            type: string
+            description: "\n"
+          UserDescription:
             type: string
             description: "\n"
           UserType:
             type: string
             description: "\n"
-          OperationDescription:
+          UserStatus:
             type: string
             description: "\n"
-          UserDetails:
-            type: string
-            description: "\n"
-          created_on:
+          CreatedDate:
             type: string
             description: "\n"
             format: date
-          Status:
-            type: string
-            description: "\n"
           No_of_APIs:
             type: integer
             description: "\n"
+
     HTTPError:
       type: object
       properties:
@@ -93,82 +71,61 @@ components:
         message:
           type: string
           description: "\n"
-    InitiateUserResponse:
-      type: object
-      properties:
-        Users:
-          $ref: '#/components/schemas/Users'
-    InitiateUserRequest:
-      type: object
-      properties:
-        Users:
-          $ref: '#/components/schemas/Users'
+
     RetrieveUsersResponse:
       type: object
       properties:
         Users:
           $ref: '#/components/schemas/Users'
-  requestBodies:
-    InitiateUserRequest:
-      description: InitiateUser
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/InitiateUserRequest'
-      required: true
+
+
   responses:
+
     RetrieveUsersResponse:
-      description: allUsers
+      description: Users retrieved successfully
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/RetrieveUsersResponse'
-    InitiateUserResponse:
-      description: userOperation
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/InitiateUserResponse'
+
     BadRequest:
       description: BadRequest
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/HTTPError'
+
     Unauthorized:
       description: Unauthorized
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/HTTPError'
+
     Forbidden:
       description: Forbidden
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/HTTPError'
+
     NotFound:
       description: NotFound
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/HTTPError'
+
     TooManyRequests:
       description: TooManyRequests
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/HTTPError'
+
     InternalServerError:
       description: InternalServerError
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/HTTPError'
-  parameters:
-    userid:
-      name: userid
-      in: path
-      required: true
-      schema:
-        type: string
