@@ -1,0 +1,137 @@
+openapi: 3.0.1
+info:
+  title: User Management
+  description: "This service domain handles user management operations including retrieving user information and adding new users."
+  version: 11.0.0
+servers:
+  - url: https://virtserver.swaggerhub.com/BIAN-3/BIAN/UserManagement/11.0.0
+paths:
+  "/users/get":
+    get:
+      tags:
+        - BQ - UserManagement
+      summary: ReBQ Retrieve details about all users
+      description: ReBQ Retrieve details about all users
+      operationId: RetrieveAllUsers
+      responses:
+        "200":
+          $ref: "#/components/responses/RetrieveUsersResponse"
+        "400":
+          $ref: "#/components/responses/BadRequest"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "403":
+          $ref: "#/components/responses/Forbidden"
+        "404":
+          $ref: "#/components/responses/NotFound"
+        "429":
+          $ref: "#/components/responses/TooManyRequests"
+        "500":
+          $ref: "#/components/responses/InternalServerError"
+
+components:
+  schemas:
+    User:
+      type: object
+      properties:
+        userId:
+          type: string
+          description: Unique identifier for the user
+        userName:
+          type: string
+          description: Name of the user
+        email:
+          type: string
+          description: Email address of the user
+          format: email
+        microservices:
+          type: string
+          description: List of microservices associated with the user
+          format: string
+        createdAt:
+          type: string
+          format: date
+          description: Date when the user was created
+        updatedAt:
+          type: string
+          format: date
+          description: Date when the user was updated
+        noofAPIs:
+          type: integer
+          description: Number of APIs associated with the user
+        status:
+          type: string
+          enum:
+            - Active
+            - Inactive
+            - Pending
+          description: Current status of the user account
+
+    HTTPError:
+      type: object
+      properties:
+        status_code:
+          type: string
+          description: "\n"
+        status:
+          type: string
+          description: "\n"
+        message:
+          type: string
+          description: "\n"
+
+    RetrieveUsersResponse:
+      type: object
+      properties:
+        Users:
+          $ref: "#/components/schemas/User"
+
+  responses:
+    RetrieveUsersResponse:
+      description: Users retrieved successfully
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/RetrieveUsersResponse"
+
+    BadRequest:
+      description: BadRequest
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/HTTPError"
+
+    Unauthorized:
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/HTTPError"
+
+    Forbidden:
+      description: Forbidden
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/HTTPError"
+
+    NotFound:
+      description: NotFound
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/HTTPError"
+
+    TooManyRequests:
+      description: TooManyRequests
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/HTTPError"
+
+    InternalServerError:
+      description: InternalServerError
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/HTTPError"
