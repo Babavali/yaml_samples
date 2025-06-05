@@ -1,0 +1,275 @@
+openapi: 3.0.1
+info:
+  title: User Management
+  description: 'This service domain handles user management operations including retrieving user information and adding new users.'
+  version: 1.0.0
+servers:
+  - url: https://dev.aairavx.com/api
+paths:
+  '/users/{userid}/Retrieve':
+    get:
+      tags:
+        - BQ - UserManagement
+      summary: ReBQ Retrieve details about users
+      description: ReBQ Retrieve details about users
+      operationId: RetrieveUsers
+      parameters:
+        - $ref: '#/components/parameters/userid'
+      responses:
+        '200':
+          $ref: '#/components/responses/RetrieveUsersResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+  '/users/{userid}/Initiate':
+    post:
+      tags:
+        - BQ - UserManagement
+      summary: InBQ Initialize user creation
+      description: InBQ Initialize user creation
+      operationId: InitiateUserCreation
+      parameters:
+        - $ref: '#/components/parameters/userid'
+      requestBody:
+        $ref: '#/components/requestBodies/InitiateUserRequest'
+      responses:
+        '200':
+          $ref: '#/components/responses/InitiateUserResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+components:
+  schemas:
+    UserFacility:
+      type: object
+      properties:
+        UserInstanceReference:
+          type: string
+          description: "\n"
+          format: object
+        UserNumber:
+          description: "\n"
+          format: string
+          type: integer
+        CustomerReference:
+          type: string
+          description: "\n"
+          format: object
+        UserType:
+          type: string
+          description: "\n"
+          format: string
+          enum: 
+            - Admin
+            - Regular
+            - Guest
+        AccountStatus:
+          type: string
+          description: "\n"
+          format: string
+        EntitlementOptionSetting:
+          type: string
+          description: "\n"
+          format: string
+        RestrictionOptionSetting:
+          type: string
+          description: "\n"
+          format: string
+    UserManagement:
+      type: object
+      properties:
+        OperationType:
+          type: string
+          description: "\n"
+          format: string
+        UserDetails:
+          type: string
+          description: "\n"
+          format: string
+        OperationDescription:
+          type: string
+          description: "\n"
+          format: string
+    Users:
+      type: array
+      items:
+        type: object
+        properties:
+          UserReference:
+            type: string
+            description: "\n"
+            format: string
+          UserType:
+            type: string
+            description: "\n"
+            format: string
+          OperationDescription:
+            type: string
+            description: "\n"
+            format: string
+          UserDetails:
+            type: string
+            description: "\n"
+            format: string
+          OperationDate:
+            type: string
+            description: "\n"
+            format: string
+    UserFacilityResponse:
+      type: object
+      properties:
+        OperationReference:
+          type: string
+          description: "\n"
+          format: string
+        PositionLimitValue:
+          type: string
+          description: "\n"
+          format: string
+        DateType:
+          type: string
+          description: "\n"
+          format: string
+    HTTPError:
+      type: object
+      properties:
+        status_code:
+          type: string
+          description: "\n"
+          format: string
+        status:
+          type: string
+          description: "\n"
+          format: string
+        message:
+          type: string
+          description: "\n"
+          format: string
+    InitiateUserResponse:
+      type: object
+      properties:
+        UserFacilityResponse:
+          $ref: '#/components/schemas/UserFacilityResponse'
+    InitiateUserRequest:
+      type: object
+      properties:
+        UserFacility:
+          $ref: '#/components/schemas/UserFacility'
+        UserManagement:
+          $ref: '#/components/schemas/UserManagement'
+    RetrieveUsersResponse:
+      type: object
+      properties:
+        Users:
+          $ref: '#/components/schemas/Users'
+  requestBodies:
+    InitiateUserRequest:
+      description: InitiateUser
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/InitiateUserRequest'
+      required: true
+  responses:
+    RetrieveUsersResponse:
+      description: allUsers
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/RetrieveUsersResponse'
+    InitiateUserResponse:
+      description: userOperation
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/InitiateUserResponse'
+    BadRequest:
+      description: BadRequest
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/HTTPError'
+    Unauthorized:
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/HTTPError'
+    Forbidden:
+      description: Forbidden
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/HTTPError'
+    NotFound:
+      description: NotFound
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/HTTPError'
+    TooManyRequests:
+      description: TooManyRequests
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/HTTPError'
+    InternalServerError:
+      description: InternalServerError
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/HTTPError'
+  parameters:
+    userid:
+      name: userid
+      in: path
+      required: true
+      style: simple
+      schema:
+        type: string
+    roleid:
+      name: roleid
+      in: path
+      required: true
+      style: simple
+      schema:
+        type: string
+    permissionid:
+      name: permissionid
+      in: path
+      required: true
+      style: simple
+      schema:
+        type: string
+    usergroupid:
+      name: usergroupid
+      in: path
+      required: true
+      style: simple
+      schema:
+        type: string
+    accessprofileid:
+      name: accessprofileid
+      in: path
+      required: true
+      style: simple
+      schema:
+        type: string
