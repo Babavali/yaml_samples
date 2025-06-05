@@ -1,57 +1,70 @@
 openapi: 3.0.1
 info:
-  title: User Management
-  description: 'This service domain handles user management operations including retrieving user information and adding new users.'
-  version: 11.0.0
+  title: Users Management
+  description: "This service domain manages user accounts and their details."
+  version: 1.0.0
 servers:
   - url: https://dev.aairavx.com/api
 paths:
-  '/getUsers/Retrieve':
-    get:
-      tags:
-        - BQ - UserManagement
-      summary: ReBQ Retrieve details about users
-      description: ReBQ Retrieve details about users
-      operationId: RetrieveUsers
-      responses:
-        '200':
-          $ref: '#/components/responses/RetrieveUsersResponse'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  '/users/Initiate':
+  "/users/Initiate":
     post:
       tags:
-        - BQ - UserManagement
+        - BQ - Users
       summary: InBQ Initialize user creation
       description: InBQ Initialize user creation
       operationId: InitiateUserCreation
       requestBody:
-        $ref: '#/components/requestBodies/InitiateUserRequest'
+        description: User creation request
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/InitiateUserRequest"
       responses:
-        '200':
-          $ref: '#/components/responses/InitiateUserResponse'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
+        "200":
+          description: User created successfully
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/InitiateUserResponse"
+        "400":
+          $ref: "#/components/responses/BadRequest"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "403":
+          $ref: "#/components/responses/Forbidden"
+        "404":
+          $ref: "#/components/responses/NotFound"
+        "429":
+          $ref: "#/components/responses/TooManyRequests"
+        "500":
+          $ref: "#/components/responses/InternalServerError"
+  "/getUsers/Retrieve":
+    get:
+      tags:
+        - BQ - Users
+      summary: ReBQ Retrieve details about all users
+      description: ReBQ Retrieve details about all users
+      operationId: RetrieveAllUsers
+      responses:
+        "200":
+          description: List of users retrieved successfully
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/RetrieveUsersResponse"
+        "400":
+          $ref: "#/components/responses/BadRequest"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "403":
+          $ref: "#/components/responses/Forbidden"
+        "404":
+          $ref: "#/components/responses/NotFound"
+        "429":
+          $ref: "#/components/responses/TooManyRequests"
+        "500":
+          $ref: "#/components/responses/InternalServerError"
 components:
   schemas:
     Users:
@@ -61,114 +74,111 @@ components:
         properties:
           Title:
             type: string
-            description: "\n"
+            description: "User's title/role"
           UserType:
             type: string
-            description: "\n"
-          OperationDescription:
-            type: string
-            description: "\n"
+            description: "Type of user (Admin, Guest, etc.)"
           UserDetails:
             type: string
-            description: "\n"
+            description: "Additional user details"
           created_on:
             type: string
-            description: "\n"
             format: date
+            description: "Date of creation (YYYY-MM-DD)"
           Status:
             type: string
-            description: "\n"
+            description: "User status (Active, Inactive, Pending)"
           No_of_APIs:
             type: integer
-            description: "\n"
+            description: "Number of APIs user has access to"
+    InitiateUserRequest:
+      type: object
+      properties:
+        Title:
+          type: string
+          description: "User's title/role"
+        UserType:
+          type: string
+          description: "Type of user (Admin, Guest, etc.)"
+        UserDetails:
+          type: string
+          description: "Additional user details"
+        created_on:
+          type: string
+          format: date
+          description: "Date of creation (YYYY-MM-DD)"
+        Status:
+          type: string
+          description: "User status (Active, Inactive, Pending)"
+        No_of_APIs:
+          type: integer
+          description: "Number of APIs user has access to"
+      required:
+        - Title
+        - UserType
+        - Status
+    InitiateUserResponse:
+      type: object
+      properties:
+        UserReference:
+          type: string
+          description: "Unique reference ID for the created user"
+        Status:
+          type: string
+          description: "Confirmation status of user creation"
+    RetrieveUsersResponse:
+      type: object
+      properties:
+        Users:
+          type: array
+          items:
+            $ref: "#/components/schemas/Users"
     HTTPError:
       type: object
       properties:
         status_code:
-          type: string
-          description: "\n"
+          type: integer
+          description: "HTTP status code"
         status:
           type: string
-          description: "\n"
+          description: "Error status"
         message:
           type: string
-          description: "\n"
-    InitiateUserResponse:
-      type: object
-      properties:
-        Users:
-          $ref: '#/components/schemas/Users'
-    InitiateUserRequest:
-      type: object
-      properties:
-        Users:
-          $ref: '#/components/schemas/Users'
-    RetrieveUsersResponse:
-      type: object
-      properties:
-        Users:
-          $ref: '#/components/schemas/Users'
-  requestBodies:
-    InitiateUserRequest:
-      description: InitiateUser
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/InitiateUserRequest'
-      required: true
+          description: "Detailed error message"
   responses:
-    RetrieveUsersResponse:
-      description: allUsers
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/RetrieveUsersResponse'
-    InitiateUserResponse:
-      description: userOperation
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/InitiateUserResponse'
     BadRequest:
-      description: BadRequest
+      description: Bad request
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/HTTPError'
+            $ref: "#/components/schemas/HTTPError"
     Unauthorized:
-      description: Unauthorized
+      description: Unauthorized access
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/HTTPError'
+            $ref: "#/components/schemas/HTTPError"
     Forbidden:
-      description: Forbidden
+      description: Forbidden access
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/HTTPError'
+            $ref: "#/components/schemas/HTTPError"
     NotFound:
-      description: NotFound
+      description: Resource not found
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/HTTPError'
+            $ref: "#/components/schemas/HTTPError"
     TooManyRequests:
-      description: TooManyRequests
+      description: Too many requests
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/HTTPError'
+            $ref: "#/components/schemas/HTTPError"
     InternalServerError:
-      description: InternalServerError
+      description: Internal server error
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/HTTPError'
-  parameters:
-    userid:
-      name: userid
-      in: path
-      required: true
-      schema:
-        type: string
+            $ref: "#/components/schemas/HTTPError"
