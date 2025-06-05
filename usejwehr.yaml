@@ -45,7 +45,7 @@ components:
           description: Email address of the user
           format: email
         microservices:
-          type: array
+          type: string
           items:
             type: string
           description: List of microservices associated with the user
