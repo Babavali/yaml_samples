@@ -13,8 +13,6 @@ paths:
       summary: ReBQ Retrieve details about users
       description: ReBQ Retrieve details about users
       operationId: RetrieveUsers
-      parameters:
-        - $ref: '#/components/parameters/userid'
       responses:
         '200':
           $ref: '#/components/responses/RetrieveUsersResponse'
@@ -37,8 +35,6 @@ paths:
       summary: InBQ Initialize user creation
       description: InBQ Initialize user creation
       operationId: InitiateUserCreation
-      parameters:
-        - $ref: '#/components/parameters/userid'
       requestBody:
         $ref: '#/components/requestBodies/InitiateUserRequest'
       responses:
@@ -205,11 +201,7 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/HTTPError'
-  parameters:
-    userid:
-      name: userid
-      in: path
-      required: true
+ d: true
       style: simple
       schema:
         type: string
