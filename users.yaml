@@ -6,7 +6,7 @@ info:
 servers:
   - url: https://dev.aairavx.com/api
 paths:
-  '/UserManagement/getUsers/Retrieve':
+  '/getUsers/Retrieve':
     get:
       tags:
         - BQ - UserManagement
@@ -28,7 +28,7 @@ paths:
           $ref: '#/components/responses/TooManyRequests'
         '500':
           $ref: '#/components/responses/InternalServerError'
-  '/UserManagement/users/Initiate':
+  '/users/Initiate':
     post:
       tags:
         - BQ - UserManagement
@@ -62,19 +62,15 @@ components:
           Title:
             type: string
             description: "\n"
-            format: string
           UserType:
             type: string
             description: "\n"
-            format: string
           OperationDescription:
             type: string
             description: "\n"
-            format: string
           UserDetails:
             type: string
             description: "\n"
-            format: string
           created_on:
             type: string
             description: "\n"
@@ -82,26 +78,21 @@ components:
           Status:
             type: string
             description: "\n"
-            format: string
           No_of_APIs:
             type: integer
             description: "\n"
-            format: integer
     HTTPError:
       type: object
       properties:
         status_code:
           type: string
           description: "\n"
-          format: string
         status:
           type: string
           description: "\n"
-          format: string
         message:
           type: string
           description: "\n"
-          format: string
     InitiateUserResponse:
       type: object
       properties:
@@ -127,13 +118,13 @@ components:
       required: true
   responses:
     RetrieveUsersResponse:
-      description: Users retrieved successfully
+      description: allUsers
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/RetrieveUsersResponse'
     InitiateUserResponse:
-      description: User initiated successfully
+      description: userOperation
       content:
         application/json:
           schema:
@@ -174,3 +165,10 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/HTTPError'
+  parameters:
+    userid:
+      name: userid
+      in: path
+      required: true
+      schema:
+        type: string
