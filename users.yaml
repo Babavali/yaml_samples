@@ -2,11 +2,11 @@ openapi: 3.0.1
 info:
   title: User Management
   description: 'This service domain handles user management operations including retrieving user information and adding new users.'
-  version: 1.0.0
+  version: 11.0.0
 servers:
   - url: https://dev.aairavx.com/api
 paths:
-  '/users/{userid}/Retrieve':
+  '/users/{userid}/getusers/Retrieve':
     get:
       tags:
         - BQ - UserManagement
@@ -61,108 +61,76 @@ components:
     UserFacility:
       type: object
       properties:
-        UserInstanceReference:
+        Title:
           type: string
-          description: "\n"
-          format: object
-        UserNumber:
-          description: "\n"
-          format: string
+          description: "The title of the user"
+        created_on:
+          type: string
+          format: date
+          description: "The creation date of the user record"
+        Status:
+          type: string
+          description: "The current status of the user"
+        No_of_APIs:
           type: integer
-        CustomerReference:
-          type: string
-          description: "\n"
-          format: object
+          description: "Number of APIs the user has access to"
         UserType:
           type: string
-          description: "\n"
-          format: string
           enum: 
             - Admin
             - Regular
             - Guest
-        AccountStatus:
-          type: string
-          description: "\n"
-          format: string
         EntitlementOptionSetting:
           type: string
-          description: "\n"
-          format: string
         RestrictionOptionSetting:
           type: string
-          description: "\n"
-          format: string
     UserManagement:
       type: object
       properties:
         OperationType:
           type: string
-          description: "\n"
-          format: string
         UserDetails:
           type: string
-          description: "\n"
-          format: string
         OperationDescription:
           type: string
-          description: "\n"
-          format: string
     Users:
       type: array
       items:
         type: object
         properties:
-          UserReference:
+          Title:
             type: string
-            description: "\n"
-            format: string
           UserType:
             type: string
-            description: "\n"
-            format: string
           OperationDescription:
             type: string
-            description: "\n"
-            format: string
           UserDetails:
             type: string
-            description: "\n"
-            format: string
-          OperationDate:
+          created_on:
             type: string
-            description: "\n"
-            format: string
+            format: date
+          Status:
+            type: string
+          No_of_APIs:
+            type: integer
     UserFacilityResponse:
       type: object
       properties:
         OperationReference:
           type: string
-          description: "\n"
-          format: string
         PositionLimitValue:
           type: string
-          description: "\n"
-          format: string
         DateType:
           type: string
-          description: "\n"
-          format: string
     HTTPError:
       type: object
       properties:
         status_code:
           type: string
-          description: "\n"
-          format: string
         status:
           type: string
-          description: "\n"
-          format: string
         message:
           type: string
-          description: "\n"
-          format: string
     InitiateUserResponse:
       type: object
       properties:
@@ -240,34 +208,6 @@ components:
   parameters:
     userid:
       name: userid
-      in: path
-      required: true
-      style: simple
-      schema:
-        type: string
-    roleid:
-      name: roleid
-      in: path
-      required: true
-      style: simple
-      schema:
-        type: string
-    permissionid:
-      name: permissionid
-      in: path
-      required: true
-      style: simple
-      schema:
-        type: string
-    usergroupid:
-      name: usergroupid
-      in: path
-      required: true
-      style: simple
-      schema:
-        type: string
-    accessprofileid:
-      name: accessprofileid
       in: path
       required: true
       style: simple
