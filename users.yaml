@@ -61,28 +61,47 @@ components:
         properties:
           Title:
             type: string
+            description: "\n"
+            format: string
           UserType:
             type: string
+            description: "\n"
+            format: string
           OperationDescription:
             type: string
+            description: "\n"
+            format: string
           UserDetails:
             type: string
+            description: "\n"
+            format: string
           created_on:
             type: string
+            description: "\n"
             format: date
           Status:
             type: string
+            description: "\n"
+            format: string
           No_of_APIs:
             type: integer
+            description: "\n"
+            format: integer
     HTTPError:
       type: object
       properties:
         status_code:
           type: string
+          description: "\n"
+          format: string
         status:
           type: string
+          description: "\n"
+          format: string
         message:
           type: string
+          description: "\n"
+          format: string
     InitiateUserResponse:
       type: object
       properties:
