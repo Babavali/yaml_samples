@@ -54,41 +54,6 @@ paths:
           $ref: '#/components/responses/InternalServerError'
 components:
   schemas:
-    UserFacility:
-      type: object
-      properties:
-        Title:
-          type: string
-          description: "The title of the user"
-        created_on:
-          type: string
-          format: date
-          description: "The creation date of the user record"
-        Status:
-          type: string
-          description: "The current status of the user"
-        No_of_APIs:
-          type: integer
-          description: "Number of APIs the user has access to"
-        UserType:
-          type: string
-          enum: 
-            - Admin
-            - Regular
-            - Guest
-        EntitlementOptionSetting:
-          type: string
-        RestrictionOptionSetting:
-          type: string
-    UserManagement:
-      type: object
-      properties:
-        OperationType:
-          type: string
-        UserDetails:
-          type: string
-        OperationDescription:
-          type: string
     Users:
       type: array
       items:
@@ -109,15 +74,6 @@ components:
             type: string
           No_of_APIs:
             type: integer
-    UserFacilityResponse:
-      type: object
-      properties:
-        OperationReference:
-          type: string
-        PositionLimitValue:
-          type: string
-        DateType:
-          type: string
     HTTPError:
       type: object
       properties:
@@ -130,14 +86,12 @@ components:
     InitiateUserResponse:
       type: object
       properties:
-        UserFacilityResponse:
+        Users:
           $ref: '#/components/schemas/Users'
     InitiateUserRequest:
       type: object
       properties:
-        UserFacility:
-          $ref: '#/components/schemas/Users'
-        UserManagement:
+        Users:
           $ref: '#/components/schemas/Users'
     RetrieveUsersResponse:
       type: object
