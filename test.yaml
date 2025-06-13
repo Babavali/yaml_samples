@@ -1,20 +1,74 @@
 openapi: 3.0.1
 info:
-  title: E-Commerce Merchant Platform
-  description: 'This service domain orchestrates an e-commerce merchant platform, covering product management, order processing, inventory control, payment processing, and customer management.'
+  title: E-Commerce Platform
+  description: APIs for managing merchants, products, orders, and payments.
   version: 11.0.0
 servers:
-  - url: https://virtserver.swaggerhub.com/BIAN-3/BIAN/ECommercePlatform/11.0.0
+  - url: https://virtserver.swaggerhub.com/BIAN-3/BIAN/ECommerce/1.0.0
 paths:
-  '/ECommercePlatform/{ecommerceplatformid}/products/Initiate':
+  # Merchant Endpoints
+  '/ECommerce/{ecommerceid}/Merchant/Initiate':
     post:
       tags:
-        - BQ - ProductManagement
-      summary: InBQ Initialize product creation
-      description: InBQ Initialize product creation
+        - CR - Merchant
+      summary: Initialize merchant account
+      description: Initialize merchant account
+      operationId: InitiateMerchant
+      parameters:
+        - $ref: '#/components/parameters/ecommerceid'
+      requestBody:
+        $ref: '#/components/requestBodies/InitiateMerchantRequest'
+      responses:
+        '200':
+          $ref: '#/components/responses/InitiateMerchantResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+
+  '/ECommerce/{ecommerceid}/Merchant/Retrieve':
+    get:
+      tags:
+        - CR - Merchant
+      summary: Retrieve merchant details
+      description: Retrieve merchant details
+      operationId: RetrieveMerchant
+      parameters:
+        - $ref: '#/components/parameters/ecommerceid'
+      responses:
+        '200':
+          $ref: '#/components/responses/RetrieveMerchantResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+
+  # Product Endpoints
+  '/ECommerce/{ecommerceid}/Product/Initiate':
+    post:
+      tags:
+        - CR - Product
+      summary: Initialize product listing
+      description: Initialize product listing
       operationId: InitiateProduct
       parameters:
-        - $ref: '#/components/parameters/ecommerceplatformid'
+        - $ref: '#/components/parameters/ecommerceid'
       requestBody:
         $ref: '#/components/requestBodies/InitiateProductRequest'
       responses:
@@ -33,40 +87,16 @@ paths:
         '500':
           $ref: '#/components/responses/InternalServerError'
 
-  '/ECommercePlatform/{ecommerceplatformid}/getProducts/Retrieve':
-    get:
-      tags:
-        - BQ - ProductManagement
-      summary: ReBQ Retrieve details about all products
-      description: ReBQ Retrieve details about all products
-      operationId: RetrieveAllProducts
-      parameters:
-        - $ref: '#/components/parameters/ecommerceplatformid'
-      responses:
-        '200':
-          $ref: '#/components/responses/RetrieveProductsResponse'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-
-  '/ECommercePlatform/{ecommerceplatformid}/orders/Initiate':
+  # Order Endpoints
+  '/ECommerce/{ecommerceid}/Order/Initiate':
     post:
       tags:
-        - BQ - OrderManagement
-      summary: InBQ Initialize order creation
-      description: InBQ Initialize order creation
+        - CR - Order
+      summary: Initialize order
+      description: Initialize order
       operationId: InitiateOrder
       parameters:
-        - $ref: '#/components/parameters/ecommerceplatformid'
+        - $ref: '#/components/parameters/ecommerceid'
       requestBody:
         $ref: '#/components/requestBodies/InitiateOrderRequest'
       responses:
@@ -85,15 +115,15 @@ paths:
         '500':
           $ref: '#/components/responses/InternalServerError'
 
-  '/ECommercePlatform/{ecommerceplatformid}/getOrders/Retrieve':
+  '/ECommerce/{ecommerceid}/Order/Retrieve':
     get:
       tags:
-        - BQ - OrderManagement
-      summary: ReBQ Retrieve details about all orders
-      description: ReBQ Retrieve details about all orders
-      operationId: RetrieveAllOrders
+        - CR - Order
+      summary: Retrieve orders
+      description: Retrieve orders
+      operationId: RetrieveOrders
       parameters:
-        - $ref: '#/components/parameters/ecommerceplatformid'
+        - $ref: '#/components/parameters/ecommerceid'
       responses:
         '200':
           $ref: '#/components/responses/RetrieveOrdersResponse'
@@ -110,117 +140,285 @@ paths:
         '500':
           $ref: '#/components/responses/InternalServerError'
 
+  # Payment Endpoints
+  '/ECommerce/{ecommerceid}/Payment/Initiate':
+    post:
+      tags:
+        - CR - Payment
+      summary: Initialize payment
+      description: Initialize payment
+      operationId: InitiatePayment
+      parameters:
+        - $ref: '#/components/parameters/ecommerceid'
+      requestBody:
+        $ref: '#/components/requestBodies/InitiatePaymentRequest'
+      responses:
+        '200':
+          $ref: '#/components/responses/InitiatePaymentResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+
+  '/ECommerce/{ecommerceid}/Payment/Retrieve':
+    get:
+      tags:
+        - CR - Payment
+      summary: Retrieve payments
+      description: Retrieve payments
+      operationId: RetrievePayments
+      parameters:
+        - $ref: '#/components/parameters/ecommerceid'
+      responses:
+        '200':
+          $ref: '#/components/responses/RetrievePaymentsResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+
+  # Merchant Payout Endpoints
+  '/ECommerce/{ecommerceid}/MerchantPayout/Initiate':
+    post:
+      tags:
+        - CR - MerchantPayout
+      summary: Initialize merchant payout
+      description: Initialize merchant payout
+      operationId: InitiateMerchantPayout
+      parameters:
+        - $ref: '#/components/parameters/ecommerceid'
+      requestBody:
+        $ref: '#/components/requestBodies/InitiateMerchantPayoutRequest'
+      responses:
+        '200':
+          $ref: '#/components/responses/InitiateMerchantPayoutResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+
 components:
   schemas:
-    Products:
-      type: array
-      items:
-        type: object
-        properties:
-          ProductReference:
-            type: string
-            description: "\n"
-            format: string
-          ProductName:
-            type: string
-            description: "\n"
-            format: string
-          ProductDescription:
-            type: string
-            description: "\n"
-            format: string
-          ProductPrice:
-            type: string
-            description: "\n"
-            format: string
-          ProductStatus:
-            type: string
-            description: "\n"
-            format: string
-          CreatedDate:
-            type: string
-            description: "\n"
-            format: string
-
-    Orders:
-      type: array
-      items:
-        type: object
-        properties:
-          OrderReference:
-            type: string
-            description: "\n"
-            format: string
-          OrderStatus:
-            type: string
-            description: "\n"
-            format: string
-          OrderAmount:
-            type: string
-            description: "\n"
-            format: string
-          OrderDate:
-            type: string
-            description: "\n"
-            format: string
-          CustomerReference:
-            type: string
-            description: "\n"
-            format: string
-
-    HTTPError:
+    # Core Objects
+    ECommerceFacility:
       type: object
       properties:
-        status_code:
+        ECommerceInstanceReference:
           type: string
-          description: "\n"
-          format: string
-        status:
+          description: Reference to the e-commerce instance
+        ECommercePlatformName:
           type: string
-          description: "\n"
-          format: string
-        message:
+          description: Name of the e-commerce platform
+        MerchantReference:
           type: string
-          description: "\n"
-          format: string
+          description: Reference to the merchant
+        ProductReference:
+          type: string
+          description: Reference to the product
+        OrderReference:
+          type: string
+          description: Reference to the order
+        PaymentReference:
+          type: string
+          description: Reference to the payment
+
+    # Entity Objects
+    Merchant:
+      type: object
+      properties:
+        MerchantName:
+          type: string
+          description: Name of the merchant
+        MerchantTaxID:
+          type: string
+          description: Tax ID of the merchant
+        MerchantStatus:
+          type: string
+          description: Status of the merchant
+          enum: [Active, Inactive, Suspended]
+
+    Product:
+      type: object
+      properties:
+        ProductName:
+          type: string
+          description: Name of the product
+        ProductPrice:
+          type: string
+          description: Price of the product
+        ProductCurrency:
+          type: string
+          description: Currency of the product price
+
+    Order:
+      type: object
+      properties:
+        OrderAmount:
+          type: string
+          description: Amount of the order
+        OrderCurrency:
+          type: string
+          description: Currency of the order
+        OrderStatus:
+          type: string
+          description: Status of the order
+          enum: [Pending, Paid, Shipped, Delivered]
+
+    Payment:
+      type: object
+      properties:
+        PaymentAmount:
+          type: string
+          description: Amount of the payment
+        PaymentMethod:
+          type: string
+          description: Method of payment
+          enum: [CreditCard, PayPal, BankTransfer]
+        PaymentStatus:
+          type: string
+          description: Status of the payment
+          enum: [Pending, Completed, Failed]
+
+    MerchantPayout:
+      type: object
+      properties:
+        PayoutAmount:
+          type: string
+          description: Amount of the payout
+        PayoutMethod:
+          type: string
+          description: Method of payout
+          enum: [BankTransfer, PayPal]
+        PayoutStatus:
+          type: string
+          description: Status of the payout
+          enum: [Pending, Completed, Failed]
+
+    # Response Objects
+    ECommerceFacilityResponse:
+      type: object
+      properties:
+        TransactionReference:
+          type: string
+          description: Reference for the transaction
+        Status:
+          type: string
+          description: Status of the operation
+
+    # Request Objects
+    InitiateMerchantRequest:
+      type: object
+      properties:
+        ECommerceFacility:
+          $ref: '#/components/schemas/ECommerceFacility'
+        Merchant:
+          $ref: '#/components/schemas/Merchant'
+
     InitiateProductRequest:
       type: object
       properties:
-        Products:
-          $ref: '#/components/schemas/Products'
-          
-    InitiateProductResponse:
-      type: object
-      properties:
-        Products:
-          $ref: '#/components/schemas/Products'
-          
-    InitiateOrderResponse:
-      type: object
-      properties:
-        Products:
-          $ref: '#/components/schemas/Orders'
-          
+        ECommerceFacility:
+          $ref: '#/components/schemas/ECommerceFacility'
+        Product:
+          $ref: '#/components/schemas/Product'
+
     InitiateOrderRequest:
       type: object
       properties:
-        Products:
-          $ref: '#/components/schemas/Orders'
-    RetrieveProductsResponse:
+        ECommerceFacility:
+          $ref: '#/components/schemas/ECommerceFacility'
+        Order:
+          $ref: '#/components/schemas/Order'
+
+    InitiatePaymentRequest:
       type: object
       properties:
-        Products:
-          $ref: '#/components/schemas/Products'
+        ECommerceFacility:
+          $ref: '#/components/schemas/ECommerceFacility'
+        Payment:
+          $ref: '#/components/schemas/Payment'
 
+    InitiateMerchantPayoutRequest:
+      type: object
+      properties:
+        ECommerceFacility:
+          $ref: '#/components/schemas/ECommerceFacility'
+        MerchantPayout:
+          $ref: '#/components/schemas/MerchantPayout'
+
+    # Response Collections
     RetrieveOrdersResponse:
       type: object
       properties:
         Orders:
-          $ref: '#/components/schemas/Orders'
+          type: array
+          items:
+            $ref: '#/components/schemas/Order'
 
+    RetrievePaymentsResponse:
+      type: object
+      properties:
+        Payments:
+          type: array
+          items:
+            $ref: '#/components/schemas/Payment'
+
+    RetrieveMerchantResponse:
+      type: object
+      properties:
+        Merchant:
+          $ref: '#/components/schemas/Merchant'
+
+    # Error Response
+    HTTPError:
+      type: object
+      properties:
+        error:
+          type: string
+          description: Error message
+        code:
+          type: integer
+          description: HTTP status code
+        details:
+          type: string
+          description: Additional error details
+
+  # Request Bodies
   requestBodies:
+    InitiateMerchantRequest:
+      description: Request to initialize a merchant account
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/InitiateMerchantRequest'
+      required: true
+
     InitiateProductRequest:
-      description: InitiateProduct
+      description: Request to initialize a product listing
       content:
         application/json:
           schema:
@@ -228,129 +426,136 @@ components:
       required: true
 
     InitiateOrderRequest:
-      description: InitiateOrder
+      description: Request to initialize an order
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/InitiateOrderRequest'
       required: true
 
-  responses:
-    InitiateProductResponse:
-      description: Product initiated successfully
+    InitiatePaymentRequest:
+      description: Request to initialize a payment
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/InitiateProductResponse'
+            $ref: '#/components/schemas/InitiatePaymentRequest'
+      required: true
+
+    InitiateMerchantPayoutRequest:
+      description: Request to initialize a merchant payout
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/InitiateMerchantPayoutRequest'
+      required: true
+
+  # Responses
+  responses:
+    InitiateMerchantResponse:
+      description: Response for merchant initialization
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ECommerceFacilityResponse'
+
+    InitiateProductResponse:
+      description: Response for product initialization
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ECommerceFacilityResponse'
 
     InitiateOrderResponse:
-      description: Order initiated successfully
+      description: Response for order initialization
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/InitiateOrderResponse'
+            $ref: '#/components/schemas/ECommerceFacilityResponse'
 
-    RetrieveProductsResponse:
-      description: Products retrieved successfully
+    InitiatePaymentResponse:
+      description: Response for payment initialization
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/RetrieveProductsResponse'
+            $ref: '#/components/schemas/ECommerceFacilityResponse'
+
+    InitiateMerchantPayoutResponse:
+      description: Response for merchant payout initialization
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ECommerceFacilityResponse'
 
     RetrieveOrdersResponse:
-      description: Orders retrieved successfully
+      description: Response containing list of orders
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/RetrieveOrdersResponse'
 
+    RetrievePaymentsResponse:
+      description: Response containing list of payments
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/RetrievePaymentsResponse'
+
+    RetrieveMerchantResponse:
+      description: Response containing merchant details
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/RetrieveMerchantResponse'
+
+    # Standard Error Responses
     BadRequest:
-      description: BadRequest
+      description: Bad request error response
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/HTTPError'
 
     Unauthorized:
-      description: Unauthorized
+      description: Unauthorized error response
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/HTTPError'
 
     Forbidden:
-      description: Forbidden
+      description: Forbidden error response
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/HTTPError'
 
     NotFound:
-      description: NotFound
+      description: Not found error response
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/HTTPError'
 
     TooManyRequests:
-      description: TooManyRequests
+      description: Too many requests error response
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/HTTPError'
 
     InternalServerError:
-      description: InternalServerError
+      description: Internal server error response
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/HTTPError'
 
+  # Parameters
   parameters:
-    ecommerceplatformid:
-      name: ecommerceplatformid
+    ecommerceid:
+      name: ecommerceid
       in: path
-      required: true
-      style: simple
-      schema:
-        type: string
-
-    productmanagementid:
-      name: productmanagementid
-      in: path
-      required: true
-      style: simple
-      schema:
-        type: string
-
-    ordermanagementid:
-      name: ordermanagementid
-      in: path
-      required: true
-      style: simple
-      schema:
-        type: string
-
-    inventorymanagementid:
-      name: inventorymanagementid
-      in: path
-      required: true
-      style: simple
-      schema:
-        type: string
-
-    paymentprocessingid:
-      name: paymentprocessingid
-      in: path
-      required: true
-      style: simple
-      schema:
-        type: string
-
-    customermanagementid:
-      name: customermanagementid
-      in: path
-      required: true
-      style: simple
+      required: false
+      description: ID of the e-commerce platform instance
       schema:
         type: string
