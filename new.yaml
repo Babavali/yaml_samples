@@ -1,0 +1,507 @@
+openapi: 3.0.1
+info:
+  title: E-Commerce Platform
+  description: APIs for managing merchants, products, orders, and payments.
+  version: 11.0.0
+servers:
+  - url: https://virtserver.swaggerhub.com/BIAN-3/BIAN/ECommerce/1.0.0
+paths:
+  # 1. Create Merchant Account
+  '/ECommerce/{ecommerceid}/Merchant/Initiate':
+    post:
+      tags:
+        - CR - Merchant
+      summary: CrBQ Initialize merchant account
+      description: CrBQ Initialize merchant account
+      operationId: InitiateMerchant
+      parameters:
+        - $ref: '#/components/parameters/ecommerceid'
+      requestBody:
+        $ref: '#/components/requestBodies/InitiateMerchantRequest'
+      responses:
+        '200':
+          $ref: '#/components/responses/InitiateMerchantResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+
+  # 2. Add Product
+  '/ECommerce/{ecommerceid}/Product/Initiate':
+    post:
+      tags:
+        - CR - Product
+      summary: CrBQ Initialize product listing
+      description: CrBQ Initialize product listing
+      operationId: InitiateProduct
+      parameters:
+        - $ref: '#/components/parameters/ecommerceid'
+      requestBody:
+        $ref: '#/components/requestBodies/InitiateProductRequest'
+      responses:
+        '200':
+          $ref: '#/components/responses/InitiateProductResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+
+  # 3. Create Order
+  '/ECommerce/{ecommerceid}/Order/Initiate':
+    post:
+      tags:
+        - CR - Order
+      summary: CrBQ Initialize order
+      description: CrBQ Initialize order
+      operationId: InitiateOrder
+      parameters:
+        - $ref: '#/components/parameters/ecommerceid'
+      requestBody:
+        $ref: '#/components/requestBodies/InitiateOrderRequest'
+      responses:
+        '200':
+          $ref: '#/components/responses/InitiateOrderResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+
+  # 4. Add Payment (Customer)
+  '/ECommerce/{ecommerceid}/Payment/Initiate':
+    post:
+      tags:
+        - CR - Payment
+      summary: CrBQ Initialize payment
+      description: CrBQ Initialize payment
+      operationId: InitiatePayment
+      parameters:
+        - $ref: '#/components/parameters/ecommerceid'
+      requestBody:
+        $ref: '#/components/requestBodies/InitiatePaymentRequest'
+      responses:
+        '200':
+          $ref: '#/components/responses/InitiatePaymentResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+
+  # 5. Add Merchant Payout
+  '/ECommerce/{ecommerceid}/MerchantPayout/Initiate':
+    post:
+      tags:
+        - CR - MerchantPayout
+      summary: CrBQ Initialize merchant payout
+      description: CrBQ Initialize merchant payout
+      operationId: InitiateMerchantPayout
+      parameters:
+        - $ref: '#/components/parameters/ecommerceid'
+      requestBody:
+        $ref: '#/components/requestBodies/InitiateMerchantPayoutRequest'
+      responses:
+        '200':
+          $ref: '#/components/responses/InitiateMerchantPayoutResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+
+  # 6. Retrieve Orders
+  '/ECommerce/{ecommerceid}/Order/Retrieve':
+    get:
+      tags:
+        - CR - Order
+      summary: ReBQ Retrieve orders
+      description: ReBQ Retrieve orders
+      operationId: RetrieveOrders
+      parameters:
+        - $ref: '#/components/parameters/ecommerceid'
+      responses:
+        '200':
+          $ref: '#/components/responses/RetrieveOrdersResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+
+  # 7. Retrieve Payments
+  '/ECommerce/{ecommerceid}/Payment/Retrieve':
+    get:
+      tags:
+        - CR - Payment
+      summary: ReBQ Retrieve payments
+      description: ReBQ Retrieve payments
+      operationId: RetrievePayments
+      parameters:
+        - $ref: '#/components/parameters/ecommerceid'
+      responses:
+        '200':
+          $ref: '#/components/responses/RetrievePaymentsResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+
+  # 8. Retrieve Merchant Details
+  '/ECommerce/{ecommerceid}/Merchant/Retrieve':
+    get:
+      tags:
+        - CR - Merchant
+      summary: ReBQ Retrieve merchant details
+      description: ReBQ Retrieve merchant details
+      operationId: RetrieveMerchant
+      parameters:
+        - $ref: '#/components/parameters/ecommerceid'
+      responses:
+        '200':
+          $ref: '#/components/responses/RetrieveMerchantResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+
+components:
+  schemas:
+    # Core Objects (Like SavingsAccountFacility)
+    ECommerceFacility:
+      type: object
+      properties:
+        ECommerceInstanceReference:
+          type: string
+          description: "\n"
+          format: object
+        ECommercePlatformName:
+          type: string
+          description: "\n"
+          format: string
+        MerchantReference:
+          type: string
+          description: "\n"
+          format: object
+        ProductReference:
+          type: string
+          description: "\n"
+          format: object
+        OrderReference:
+          type: string
+          description: "\n"
+          format: object
+        PaymentReference:
+          type: string
+          description: "\n"
+          format: object
+
+    # Sub-Objects (Like DepositsandWithdrawals)
+    Merchant:
+      type: object
+      properties:
+        MerchantName:
+          type: string
+          description: "\n"
+          format: string
+        MerchantTaxID:
+          type: string
+          description: "\n"
+          format: string
+        MerchantStatus:
+          type: string
+          description: "\n"
+          format: string
+          enum: [Active, Inactive, Suspended]
+
+    Product:
+      type: object
+      properties:
+        ProductName:
+          type: string
+          description: "\n"
+          format: string
+        ProductPrice:
+          type: string
+          description: "\n"
+          format: string
+        ProductCurrency:
+          type: string
+          description: "\n"
+          format: string
+
+    Order:
+      type: object
+      properties:
+        OrderAmount:
+          type: string
+          description: "\n"
+          format: string
+        OrderCurrency:
+          type: string
+          description: "\n"
+          format: string
+        OrderStatus:
+          type: string
+          description: "\n"
+          format: string
+          enum: [Pending, Paid, Shipped, Delivered]
+
+    Payment:
+      type: object
+      properties:
+        PaymentAmount:
+          type: string
+          description: "\n"
+          format: string
+        PaymentMethod:
+          type: string
+          description: "\n"
+          format: string
+          enum: [CreditCard, PayPal, BankTransfer]
+        PaymentStatus:
+          type: string
+          description: "\n"
+          format: string
+          enum: [Pending, Completed, Failed]
+
+    MerchantPayout:
+      type: object
+      properties:
+        PayoutAmount:
+          type: string
+          description: "\n"
+          format: string
+        PayoutMethod:
+          type: string
+          description: "\n"
+          format: string
+          enum: [BankTransfer, PayPal]
+        PayoutStatus:
+          type: string
+          description: "\n"
+          format: string
+          enum: [Pending, Completed, Failed]
+
+    # Responses (Like SavingsAccountFacilityResponse)
+    ECommerceFacilityResponse:
+      type: object
+      properties:
+        TransactionReference:
+          type: string
+          description: "\n"
+          format: string
+        Status:
+          type: string
+          description: "\n"
+          format: string
+
+    # Request Bodies
+    InitiateMerchantRequest:
+      type: object
+      properties:
+        ECommerceFacility:
+          $ref: '#/components/schemas/ECommerceFacility'
+        Merchant:
+          $ref: '#/components/schemas/Merchant'
+
+    InitiateProductRequest:
+      type: object
+      properties:
+        ECommerceFacility:
+          $ref: '#/components/schemas/ECommerceFacility'
+        Product:
+          $ref: '#/components/schemas/Product'
+
+    InitiateOrderRequest:
+      type: object
+      properties:
+        ECommerceFacility:
+          $ref: '#/components/schemas/ECommerceFacility'
+        Order:
+          $ref: '#/components/schemas/Order'
+
+    InitiatePaymentRequest:
+      type: object
+      properties:
+        ECommerceFacility:
+          $ref: '#/components/schemas/ECommerceFacility'
+        Payment:
+          $ref: '#/components/schemas/Payment'
+
+    InitiateMerchantPayoutRequest:
+      type: object
+      properties:
+        ECommerceFacility:
+          $ref: '#/components/schemas/ECommerceFacility'
+        MerchantPayout:
+          $ref: '#/components/schemas/MerchantPayout'
+
+    # Retrieve Responses (Like Transactions)
+    RetrieveOrdersResponse:
+      type: object
+      properties:
+        Orders:
+          type: array
+          items:
+            $ref: '#/components/schemas/Order'
+
+    RetrievePaymentsResponse:
+      type: object
+      properties:
+        Payments:
+          type: array
+          items:
+            $ref: '#/components/schemas/Payment'
+
+    RetrieveMerchantResponse:
+      type: object
+      properties:
+        Merchant:
+          $ref: '#/components/schemas/Merchant'
+
+    # Error Handling (Same as Savings Account)
+    HTTPError:
+      type: object
+      properties:
+        status_code:
+          type: string
+          description: "\n"
+          format: string
+        status:
+          type: string
+          description: "\n"
+          format: string
+        message:
+          type: string
+          description: "\n"
+          format: string
+
+  requestBodies:
+    InitiateMerchantRequest:
+      description: InitiateMerchant
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/InitiateMerchantRequest'
+      required: true
+
+    InitiateProductRequest:
+      description: InitiateProduct
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/InitiateProductRequest'
+      required: true
+
+    InitiateOrderRequest:
+      description: InitiateOrder
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/InitiateOrderRequest'
+      required: true
+
+    InitiatePaymentRequest:
+      description: InitiatePayment
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/InitiatePaymentRequest'
+      required: true
+
+    InitiateMerchantPayoutRequest:
+      description: InitiateMerchantPayout
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/InitiateMerchantPayoutRequest'
+      required: true
+
+  responses:
+    InitiateMerchantResponse:
+      description: MerchantResponse
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ECommerceFacilityResponse'
+
+    InitiateProductResponse:
+      description: ProductResponse
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ECommerceFacilityResponse'
+
+    InitiateOrderResponse:
+      description: OrderResponse
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ECommerceFacilityResponse'
+
+    InitiatePaymentResponse:
+      description: PaymentResponse
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ECommerceFacilityResponse'
+
+    InitiateMerchantPayoutResponse:
+      description: MerchantPayoutResponse
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ECommerceFacilityResponse'
+
+    RetrieveOrdersResponse:
+      description: Orders
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/RetrieveOrdersResponse'
+
+    RetrievePaymentsResponse:
+      description: Payments
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/RetrievePaymentsResponse'
+
+    RetrieveMerchantResponse:
+      description: Merchant
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/RetrieveMerchantResponse'
+
+    # Reused Error Responses (Same as Savings Account)
+    BadRequest:
+      description: BadRequest
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/HTTPError'
+
+    Unauthorized:
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/HTTPError'
+
+    Forbidden:
+      description: Forbidden
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/HTTPError'
+
+    NotFound:
+      description: NotFound
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/HTTPError'
+
+    TooManyRequests:
+      description: TooManyRequests
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/HTTPError'
+
+    InternalServerError:
+      description: InternalServerError
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/HTTPError'
+
+  parameters:
+    ecommerceid:
+      name: ecommerceid
+      in: path
+      required: true
+      style: simple
+      schema:
+        type: string
