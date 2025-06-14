@@ -34,7 +34,7 @@ paths:
         '500':
           $ref: '#/components/responses/InternalServerError'
 
-  '/ECommerce/{ecommerceid}/Merchant/Retrieve':
+  '/ECommerce/{ecommerceid}/getMerchant/Retrieve':
     get:
       tags:
         - CR - Merchant
@@ -90,7 +90,7 @@ paths:
         '500':
           $ref: '#/components/responses/InternalServerError'
 
-  '/ECommerce/{ecommerceid}/Order/Retrieve':
+  '/ECommerce/{ecommerceid}/getOrder/Retrieve':
     get:
       tags:
         - CR - Order
@@ -143,7 +143,7 @@ paths:
         '500':
           $ref: '#/components/responses/InternalServerError'
 
-  '/ECommerce/{ecommerceid}/Payment/Retrieve':
+  '/ECommerce/{ecommerceid}/getPayment/Retrieve':
     get:
       tags:
         - CR - Payment
