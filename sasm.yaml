@@ -376,17 +376,13 @@ components:
       type: object
       properties:
         Orders:
-          type: array
-          items:
-            $ref: '#/components/schemas/Order'
+          $ref: '#/components/schemas/Order'
 
     RetrievePaymentsResponse:
       type: object
       properties:
         Payments:
-          type: array
-          items:
-            $ref: '#/components/schemas/Payment'
+          $ref: '#/components/schemas/Payment'
 
     RetrieveMerchantResponse:
       type: object
