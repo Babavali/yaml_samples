@@ -7,7 +7,7 @@ servers:
   - url: https://virtserver.swaggerhub.com/BIAN-3/BIAN/ECommerce/1.0.0
 paths:
   # Merchant Endpoints
-  '/ECommerce/{ecommerceid}/Merchant/Initiate':
+  '/ECommerce/Merchant/Initiate':
     post:
       tags:
         - CR - Merchant
@@ -34,7 +34,7 @@ paths:
         '500':
           $ref: '#/components/responses/InternalServerError'
 
-  '/ECommerce/{ecommerceid}/getMerchant/Retrieve':
+  '/ECommerce/getMerchant/Retrieve':
     get:
       tags:
         - CR - Merchant
@@ -63,7 +63,7 @@ paths:
 
 
   # Order Endpoints
-  '/ECommerce/{ecommerceid}/Order/Initiate':
+  '/ECommerce/Order/Initiate':
     post:
       tags:
         - CR - Order
@@ -90,7 +90,7 @@ paths:
         '500':
           $ref: '#/components/responses/InternalServerError'
 
-  '/ECommerce/{ecommerceid}/getOrder/Retrieve':
+  '/ECommerce/getOrder/Retrieve':
     get:
       tags:
         - CR - Order
@@ -116,7 +116,7 @@ paths:
           $ref: '#/components/responses/InternalServerError'
 
   # Payment Endpoints
-  '/ECommerce/{ecommerceid}/Payment/Initiate':
+  '/ECommerce/Payment/Initiate':
     post:
       tags:
         - CR - Payment
@@ -143,7 +143,7 @@ paths:
         '500':
           $ref: '#/components/responses/InternalServerError'
 
-  '/ECommerce/{ecommerceid}/getPayment/Retrieve':
+  '/ECommerce/getPayment/Retrieve':
     get:
       tags:
         - CR - Payment
