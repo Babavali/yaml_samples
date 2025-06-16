@@ -300,21 +300,7 @@ components:
           type: string
           description: Processing fee deducted from the payout
 
-    # Standard Response Object
-    ECommerceFacilityResponse:
-      type: object
-      properties:
-        status:
-          type: string
-          description: Status of the operation
-          enum: [Success, Failed]
-        referenceId:
-          type: string
-          description: Unique reference ID for the operation
-        timestamp:
-          type: string
-          format: date-time
-          description: Timestamp of the response
+
 
     # Request Objects
     InitiateMerchantRequest:
