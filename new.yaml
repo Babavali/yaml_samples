@@ -516,12 +516,4 @@ components:
           schema:
             $ref: '#/components/schemas/HTTPError'
 
-  # Parameters
-  parameters:
-    ecommerceid:
-      name: ecommerceid
-      in: path
-      required: true
-      description: ID of the e-commerce platform instance
-      schema:
-        type: string
+
