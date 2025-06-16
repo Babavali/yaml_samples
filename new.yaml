@@ -171,29 +171,6 @@ paths:
 
 components:
   schemas:
-    # Core Objects
-    ECommerceFacility:
-      type: object
-      properties:
-        ECommerceInstanceReference:
-          type: string
-          description: Reference to the e-commerce instance
-        ECommercePlatformName:
-          type: string
-          description: Name of the e-commerce platform
-        MerchantReference:
-          type: string
-          description: Reference to the merchant
-        ProductReference:
-          type: string
-          description: Reference to the product
-        OrderReference:
-          type: string
-          description: Reference to the order
-        PaymentReference:
-          type: string
-          description: Reference to the payment
-
     # Entity Objects
     Merchant:
       type: object
@@ -208,6 +185,20 @@ components:
           type: string
           description: Status of the merchant
           enum: [Active, Inactive, Suspended]
+        MerchantAddress:
+          type: string
+          description: Physical address of the merchant
+        MerchantEmail:
+          type: string
+          format: email
+          description: Contact email of the merchant
+        MerchantPhone:
+          type: string
+          description: Contact phone number of the merchant
+        MerchantRegistrationDate:
+          type: string
+          format: date-time
+          description: Date when merchant registered on the platform
 
     Product:
       type: object
@@ -221,6 +212,18 @@ components:
         ProductCurrency:
           type: string
           description: Currency of the product price
+        ProductCategory:
+          type: string
+          description: Category of the product
+        ProductStock:
+          type: integer
+          description: Current stock quantity of the product
+        ProductDescription:
+          type: string
+          description: Detailed description of the product
+        ProductSKU:
+          type: string
+          description: Stock Keeping Unit identifier for the product
 
     Order:
       type: object
@@ -235,6 +238,21 @@ components:
           type: string
           description: Status of the order
           enum: [Pending, Paid, Shipped, Delivered]
+        OrderDate:
+          type: string
+          format: date-time
+          description: Date when order was placed
+        CustomerName:
+          type: string
+          description: Name of the customer who placed the order
+        ShippingAddress:
+          type: string
+          description: Address where order should be shipped
+        OrderItems:
+          type: array
+          items:
+            type: string
+          description: List of product IDs in the order
 
     Payment:
       type: object
@@ -250,6 +268,19 @@ components:
           type: string
           description: Status of the payment
           enum: [Pending, Completed, Failed]
+        PaymentDate:
+          type: string
+          format: date-time
+          description: Date when payment was processed
+        PaymentTransactionID:
+          type: string
+          description: Unique transaction identifier from payment processor
+        PaymentCurrency:
+          type: string
+          description: Currency of the payment
+        PaymentFee:
+          type: string
+          description: Processing fee charged for the payment
 
     MerchantPayout:
       type: object
@@ -265,6 +296,19 @@ components:
           type: string
           description: Status of the payout
           enum: [Pending, Completed, Failed]
+        PayoutDate:
+          type: string
+          format: date-time
+          description: Date when payout was initiated
+        PayoutReference:
+          type: string
+          description: Reference number for the payout transaction
+        PayoutCurrency:
+          type: string
+          description: Currency of the payout
+        PayoutFee:
+          type: string
+          description: Processing fee deducted from the payout
 
     # Response Objects
     ECommerceFacilityResponse:
