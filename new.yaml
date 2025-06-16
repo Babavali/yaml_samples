@@ -14,8 +14,6 @@ paths:
       summary: Initialize merchant account
       description: Initialize merchant account
       operationId: InitiateMerchant
-      parameters:
-        - $ref: '#/components/parameters/ecommerceid'
       requestBody:
         $ref: '#/components/requestBodies/InitiateMerchantRequest'
       responses:
@@ -41,8 +39,6 @@ paths:
       summary: Retrieve merchant details
       description: Retrieve merchant details
       operationId: RetrieveMerchant
-      parameters:
-        - $ref: '#/components/parameters/ecommerceid'
       responses:
         '200':
           $ref: '#/components/responses/RetrieveMerchantResponse'
@@ -70,8 +66,6 @@ paths:
       summary: Initialize order
       description: Initialize order
       operationId: InitiateOrder
-      parameters:
-        - $ref: '#/components/parameters/ecommerceid'
       requestBody:
         $ref: '#/components/requestBodies/InitiateOrderRequest'
       responses:
@@ -97,8 +91,6 @@ paths:
       summary: Retrieve orders
       description: Retrieve orders
       operationId: RetrieveOrders
-      parameters:
-        - $ref: '#/components/parameters/ecommerceid'
       responses:
         '200':
           $ref: '#/components/responses/RetrieveOrdersResponse'
@@ -123,8 +115,6 @@ paths:
       summary: Initialize payment
       description: Initialize payment
       operationId: InitiatePayment
-      parameters:
-        - $ref: '#/components/parameters/ecommerceid'
       requestBody:
         $ref: '#/components/requestBodies/InitiatePaymentRequest'
       responses:
@@ -150,8 +140,6 @@ paths:
       summary: Retrieve payments
       description: Retrieve payments
       operationId: RetrievePayments
-      parameters:
-        - $ref: '#/components/parameters/ecommerceid'
       responses:
         '200':
           $ref: '#/components/responses/RetrievePaymentsResponse'
