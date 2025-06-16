@@ -334,40 +334,30 @@ components:
     InitiateMerchantRequest:
       type: object
       properties:
-        ECommerceFacility:
-          $ref: '#/components/schemas/ECommerceFacility'
         Merchant:
           $ref: '#/components/schemas/Merchant'
 
     InitiateProductRequest:
       type: object
       properties:
-        ECommerceFacility:
-          $ref: '#/components/schemas/ECommerceFacility'
         Product:
           $ref: '#/components/schemas/Product'
 
     InitiateOrderRequest:
       type: object
       properties:
-        ECommerceFacility:
-          $ref: '#/components/schemas/ECommerceFacility'
         Order:
           $ref: '#/components/schemas/Order'
 
     InitiatePaymentRequest:
       type: object
       properties:
-        ECommerceFacility:
-          $ref: '#/components/schemas/ECommerceFacility'
         Payment:
           $ref: '#/components/schemas/Payment'
 
     InitiateMerchantPayoutRequest:
       type: object
       properties:
-        ECommerceFacility:
-          $ref: '#/components/schemas/ECommerceFacility'
         MerchantPayout:
           $ref: '#/components/schemas/MerchantPayout'
 
