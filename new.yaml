@@ -167,7 +167,7 @@ paths:
           $ref: '#/components/responses/TooManyRequests'
         '500':
           $ref: '#/components/responses/InternalServerError'
-          
+
 
 components:
   schemas:
@@ -281,42 +281,50 @@ components:
     InitiateMerchantRequest:
       type: object
       properties:
+        Merchant:
           $ref: '#/components/schemas/Merchant'
 
     InitiateProductRequest:
       type: object
       properties:
+        Product:
           $ref: '#/components/schemas/Product'
 
     InitiateOrderRequest:
       type: object
       properties:
+        Order:
           $ref: '#/components/schemas/Order'
 
     InitiatePaymentRequest:
       type: object
       properties:
+        Payment:
           $ref: '#/components/schemas/Payment'
 
     InitiateMerchantPayoutRequest:
       type: object
       properties:
+        MerchantPayout:
           $ref: '#/components/schemas/MerchantPayout'
 
     # Response Collections
     RetrieveOrdersResponse:
       type: object
       properties:
+        Orders:
           $ref: '#/components/schemas/Order'
 
     RetrievePaymentsResponse:
       type: object
       properties:
+        Payments:
           $ref: '#/components/schemas/Payment'
 
     RetrieveMerchantResponse:
       type: object
       properties:
+        Merchant:
           $ref: '#/components/schemas/Merchant'
 
     # Error Response
