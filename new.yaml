@@ -11,7 +11,7 @@ paths:
       tags: [CR - Merchant]
       summary: Initialize merchant account
       description: Initialize merchant account
-      operationId: initiateMerchant
+      operationId: InitiateMerchant
       requestBody:
         $ref: '#/components/requestBodies/InitiateMerchantRequest'
       responses:
@@ -34,7 +34,7 @@ paths:
       tags: [CR - Merchant]
       summary: Retrieve merchant details
       description: Retrieve merchant details
-      operationId: retrieveMerchant
+      operationId: RetrieveMerchant
       responses:
         '200':
           $ref: '#/components/responses/RetrieveMerchantResponse'
@@ -55,7 +55,7 @@ paths:
       tags: [CR - Product]
       summary: Initialize product listing
       description: Initialize product listing
-      operationId: initiateProduct
+      operationId: InitiateProduct
       requestBody:
         $ref: '#/components/requestBodies/InitiateProductRequest'
       responses:
@@ -78,7 +78,7 @@ paths:
       tags: [CR - Product]
       summary: Retrieve products
       description: Retrieve products
-      operationId: retrieveProduct
+      operationId: RetrieveProduct
       responses:
         '200': 
           $ref: '#/components/responses/RetrieveProductResponse'
@@ -99,7 +99,7 @@ paths:
       tags: [CR - Order]
       summary: Initialize order
       description: Initialize order
-      operationId: initiateOrder
+      operationId: InitiateOrder
       requestBody:
         $ref: '#/components/requestBodies/InitiateOrderRequest'
       responses:
@@ -122,7 +122,7 @@ paths:
       tags: [CR - Order]
       summary: Retrieve orders
       description: Retrieve orders
-      operationId: retrieveOrder
+      operationId: RetrieveOrder
       responses:
         '200': 
           $ref: '#/components/responses/RetrieveOrderResponse'
@@ -143,7 +143,7 @@ paths:
       tags: [CR - Payment]
       summary: Initialize payment
       description: Initialize payment
-      operationId: initiatePayment
+      operationId: InitiatePayment
       requestBody:
         $ref: '#/components/requestBodies/InitiatePaymentRequest'
       responses:
@@ -166,7 +166,7 @@ paths:
       tags: [CR - Payment]
       summary: Retrieve payments
       description: Retrieve payments
-      operationId: retrievePayment
+      operationId: RetrievePayment
       responses:
         '200': 
           $ref: '#/components/responses/RetrievePaymentResponse'
@@ -187,7 +187,7 @@ paths:
       tags: [CR - MerchantPayout]
       summary: Initialize merchant payout
       description: Initialize merchant payout
-      operationId: initiateMerchantPayout
+      operationId: InitiateMerchantPayout
       requestBody:
         $ref: '#/components/requestBodies/InitiateMerchantPayoutRequest'
       responses:
@@ -210,7 +210,7 @@ paths:
       tags: [CR - MerchantPayout]
       summary: Retrieve merchant payouts
       description: Retrieve merchant payouts
-      operationId: retrieveMerchantPayout
+      operationId: RetrieveMerchantPayout
       responses:
         '200': 
           $ref: '#/components/responses/RetrieveMerchantPayoutResponse'
@@ -413,22 +413,22 @@ components:
     RetrieveProductResponse:
       type: object
       properties:
-        products:
-           $ref: '#/components/schemas/Product'
+        product:
+          $ref: '#/components/schemas/Product'
     RetrieveOrderResponse:
       type: object
       properties:
-        orders:
+        order:
           $ref: '#/components/schemas/Order'
     RetrievePaymentResponse:
       type: object
       properties:
-        payments:
+        payment:
           $ref: '#/components/schemas/Payment'
     RetrieveMerchantPayoutResponse:
       type: object
       properties:
-        merchantPayouts:
+        merchantPayout:
           $ref: '#/components/schemas/MerchantPayout'
     HTTPError:
       type: object
