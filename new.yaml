@@ -6,7 +6,7 @@ info:
 servers:
   - url: https://virtserver.swaggerhub.com/BIAN-3/BIAN/ECommerce/1.0.0
 paths:
-  '/ECommerce/{ecommerceId}/Merchant/Initiate':
+  '/eCommerce/{ecommerceId}/Merchant/Initiate':
     post:
       tags: [CR - Merchant]
       summary: Initialize merchant account
@@ -31,7 +31,7 @@ paths:
           $ref: '#/components/responses/TooManyRequests'
         '500': 
           $ref: '#/components/responses/InternalServerError'
-  '/ECommerce/getMerchant/Retrieve':
+  '/eCommerce/getMerchant/Retrieve':
     get:
       tags: [CR - Merchant]
       summary: Retrieve merchant details
@@ -52,7 +52,7 @@ paths:
           $ref: '#/components/responses/TooManyRequests'
         '500': 
           $ref: '#/components/responses/InternalServerError'
-  '/ECommerce/{ecommerceId}/Product/Initiate':
+  '/eCommerce/{ecommerceId}/Product/Initiate':
     post:
       tags: [CR - Product]
       summary: Initialize product listing
@@ -77,7 +77,7 @@ paths:
           $ref: '#/components/responses/TooManyRequests'
         '500': 
           $ref: '#/components/responses/InternalServerError'
-  '/ECommerce/getProduct/Retrieve':
+  '/eCommerce/getProduct/Retrieve':
     get:
       tags: [CR - Product]
       summary: Retrieve products
@@ -98,7 +98,7 @@ paths:
           $ref: '#/components/responses/TooManyRequests'
         '500': 
           $ref: '#/components/responses/InternalServerError'
-  '/ECommerce/{ecommerceId}/Order/Initiate':
+  '/eCommerce/{ecommerceId}/Order/Initiate':
     post:
       tags: [CR - Order]
       summary: Initialize order
@@ -123,7 +123,7 @@ paths:
           $ref: '#/components/responses/TooManyRequests'
         '500': 
           $ref: '#/components/responses/InternalServerError'
-  '/ECommerce/getOrder/Retrieve':
+  '/eCommerce/getOrder/Retrieve':
     get:
       tags: [CR - Order]
       summary: Retrieve orders
@@ -144,7 +144,7 @@ paths:
           $ref: '#/components/responses/TooManyRequests'
         '500': 
           $ref: '#/components/responses/InternalServerError'
-  '/ECommerce/{ecommerceId}/Payment/Initiate':
+  '/eCommerce/{ecommerceId}/Payment/Initiate':
     post:
       tags: [CR - Payment]
       summary: Initialize payment
@@ -169,7 +169,7 @@ paths:
           $ref: '#/components/responses/TooManyRequests'
         '500': 
           $ref: '#/components/responses/InternalServerError'
-  '/ECommerce/getPayment/Retrieve':
+  '/eCommerce/getPayment/Retrieve':
     get:
       tags: [CR - Payment]
       summary: Retrieve payments
@@ -190,7 +190,7 @@ paths:
           $ref: '#/components/responses/TooManyRequests'
         '500': 
           $ref: '#/components/responses/InternalServerError'
-  '/ECommerce/{ecommerceId}/MerchantPayout/Initiate':
+  '/eCommerce/{ecommerceId}/MerchantPayout/Initiate':
     post:
       tags: [CR - MerchantPayout]
       summary: Initialize merchant payout
@@ -215,7 +215,7 @@ paths:
           $ref: '#/components/responses/TooManyRequests'
         '500': 
           $ref: '#/components/responses/InternalServerError'
-  '/ECommerce/getMerchantPayout/Retrieve':
+  '/eCommerce/getMerchantPayout/Retrieve':
     get:
       tags: [CR - MerchantPayout]
       summary: Retrieve merchant payouts
@@ -253,7 +253,6 @@ components:
           type: string
           format: string
           description: Status of the merchant
-          enum: [Active, Inactive, Suspended]
         merchantAddress:
           type: string
           format: string
@@ -299,6 +298,7 @@ components:
           description: Detailed description of the product
         productSku:
           type: string
+          format: string
           description: Stock Keeping Unit identifier for the product
     Order:
       type: object
@@ -315,7 +315,6 @@ components:
           type: string
           format: string
           description: Status of the order
-          enum: [Pending, Paid, Shipped, Delivered]
         orderDate:
           type: string
           format: date-time
@@ -328,13 +327,6 @@ components:
           type: string
           format: string
           description: Address where order should be shipped
-        orderItems:
-          type: array
-          format: string
-          items:
-            type: string
-            format: string
-          description: List of product IDs in the order
     Payment:
       type: object
       properties:
@@ -351,7 +343,6 @@ components:
           type: string
           format: string
           description: Status of the payment
-          enum: [Pending, Completed, Failed]
         paymentDate:
           type: string
           format: date-time
@@ -379,12 +370,10 @@ components:
           type: string
           format: string
           description: Method of payout
-          enum: [BankTransfer, PayPal]
         payoutStatus:
           type: string
           format: string
           description: Status of the payout
-          enum: [Pending, Completed, Failed]
         payoutDate:
           type: string
           format: date-time
