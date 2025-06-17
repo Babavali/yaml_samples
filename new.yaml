@@ -5,7 +5,6 @@ info:
   version: 11.0.0
 servers:
   - url: https://virtserver.swaggerhub.com/BIAN-3/BIAN/ECommerce/1.0.0
-
 paths:
   '/ECommerce/{ecommerceId}/Merchant/Initiate':
     post:
@@ -32,7 +31,6 @@ paths:
           $ref: '#/components/responses/TooManyRequests'
         '500': 
           $ref: '#/components/responses/InternalServerError'
-
   '/ECommerce/getMerchant/Retrieve':
     get:
       tags: [CR - Merchant]
@@ -54,7 +52,6 @@ paths:
           $ref: '#/components/responses/TooManyRequests'
         '500': 
           $ref: '#/components/responses/InternalServerError'
-
   '/ECommerce/{ecommerceId}/Product/Initiate':
     post:
       tags: [CR - Product]
@@ -80,7 +77,6 @@ paths:
           $ref: '#/components/responses/TooManyRequests'
         '500': 
           $ref: '#/components/responses/InternalServerError'
-
   '/ECommerce/getProduct/Retrieve':
     get:
       tags: [CR - Product]
@@ -102,7 +98,6 @@ paths:
           $ref: '#/components/responses/TooManyRequests'
         '500': 
           $ref: '#/components/responses/InternalServerError'
-
   '/ECommerce/{ecommerceId}/Order/Initiate':
     post:
       tags: [CR - Order]
@@ -128,7 +123,6 @@ paths:
           $ref: '#/components/responses/TooManyRequests'
         '500': 
           $ref: '#/components/responses/InternalServerError'
-
   '/ECommerce/getOrder/Retrieve':
     get:
       tags: [CR - Order]
@@ -150,7 +144,6 @@ paths:
           $ref: '#/components/responses/TooManyRequests'
         '500': 
           $ref: '#/components/responses/InternalServerError'
-
   '/ECommerce/{ecommerceId}/Payment/Initiate':
     post:
       tags: [CR - Payment]
@@ -176,7 +169,6 @@ paths:
           $ref: '#/components/responses/TooManyRequests'
         '500': 
           $ref: '#/components/responses/InternalServerError'
-
   '/ECommerce/getPayment/Retrieve':
     get:
       tags: [CR - Payment]
@@ -198,7 +190,6 @@ paths:
           $ref: '#/components/responses/TooManyRequests'
         '500': 
           $ref: '#/components/responses/InternalServerError'
-
   '/ECommerce/{ecommerceId}/MerchantPayout/Initiate':
     post:
       tags: [CR - MerchantPayout]
@@ -224,7 +215,6 @@ paths:
           $ref: '#/components/responses/TooManyRequests'
         '500': 
           $ref: '#/components/responses/InternalServerError'
-
   '/ECommerce/getMerchantPayout/Retrieve':
     get:
       tags: [CR - MerchantPayout]
@@ -246,7 +236,6 @@ paths:
           $ref: '#/components/responses/TooManyRequests'
         '500': 
           $ref: '#/components/responses/InternalServerError'
-
 components:
   schemas:
     Merchant:
@@ -281,7 +270,6 @@ components:
           type: string
           format: date-time
           description: Date when merchant registered on the platform
-
     Product:
       type: object
       properties:
@@ -312,7 +300,6 @@ components:
         productSku:
           type: string
           description: Stock Keeping Unit identifier for the product
-
     Order:
       type: object
       properties:
@@ -348,7 +335,6 @@ components:
             type: string
             format: string
           description: List of product IDs in the order
-
     Payment:
       type: object
       properties:
@@ -382,7 +368,6 @@ components:
           type: number
           format: float
           description: Processing fee charged for the payment
-
     MerchantPayout:
       type: object
       properties:
@@ -416,69 +401,56 @@ components:
           type: number
           format: float
           description: Processing fee deducted from the payout
-
-
     InitiateMerchantRequest:
       type: object
       properties:
         merchant: 
           $ref: '#/components/schemas/Merchant'
-
     InitiateProductRequest:
       type: object
       properties:
         product: 
           $ref: '#/components/schemas/Product'
-
     InitiateOrderRequest:
       type: object
       properties:
         order: 
           $ref: '#/components/schemas/Order'
-
     InitiatePaymentRequest:
       type: object
       properties:
         payment: 
           $ref: '#/components/schemas/Payment'
-
     InitiateMerchantPayoutRequest:
       type: object
       properties:
         merchantPayout: 
           $ref: '#/components/schemas/MerchantPayout'
-
     RetrieveMerchantResponse:
       type: object
       properties:
         merchant: 
           $ref: '#/components/schemas/Merchant'
-
     RetrieveProductsResponse:
       type: object
       properties:
         products:
            $ref: '#/components/schemas/Product'
-
     RetrieveOrdersResponse:
       type: object
       properties:
         orders:
           $ref: '#/components/schemas/Order'
-
     RetrievePaymentsResponse:
       type: object
       properties:
         payments:
           $ref: '#/components/schemas/Payment'
-
     RetrieveMerchantPayoutsResponse:
       type: object
       properties:
         merchantPayouts:
           $ref: '#/components/schemas/MerchantPayout'
-
-
     HTTPError:
       type: object
       properties:
@@ -492,7 +464,6 @@ components:
         details:
           type: string
           description: Additional error details
-
   requestBodies:
     InitiateMerchantRequest:
       description: Request to initialize a merchant account
@@ -501,7 +472,6 @@ components:
           schema: 
             $ref: '#/components/schemas/InitiateMerchantRequest'
       required: true
-
     InitiateProductRequest:
       description: Request to initialize a product listing
       content:
@@ -509,7 +479,6 @@ components:
           schema: 
             $ref: '#/components/schemas/InitiateProductRequest'
       required: true
-
     InitiateOrderRequest:
       description: Request to initialize an order
       content:
@@ -517,7 +486,6 @@ components:
           schema: 
             $ref: '#/components/schemas/InitiateOrderRequest'
       required: true
-
     InitiatePaymentRequest:
       description: Request to initialize a payment
       content:
@@ -525,7 +493,6 @@ components:
           schema:   
             $ref: '#/components/schemas/InitiatePaymentRequest'
       required: true
-
     InitiateMerchantPayoutRequest:
       description: Request to initialize a merchant payout
       content:
@@ -533,7 +500,6 @@ components:
           schema: 
             $ref: '#/components/schemas/InitiateMerchantPayoutRequest'
       required: true
-
   responses:
     InitiateMerchantResponse:
       description: Response for merchant initialization
@@ -541,112 +507,96 @@ components:
         application/json:
           schema: 
             $ref: '#/components/schemas/RetrieveMerchantResponse'
-
     InitiateProductResponse:
       description: Response for product initialization
       content:
         application/json:
           schema: 
             $ref: '#/components/schemas/RetrieveProductsResponse'
-
     InitiateOrderResponse:
       description: Response for order initialization
       content:
         application/json:
           schema:  
             $ref: '#/components/schemas/RetrieveOrdersResponse'
-
     InitiatePaymentResponse:
       description: Response for payment initialization
       content:
         application/json:
           schema: 
             $ref: '#/components/schemas/RetrievePaymentsResponse'
-
     InitiateMerchantPayoutResponse:
       description: Response for merchant payout initialization
       content:
         application/json:
           schema: 
             $ref: '#/components/schemas/RetrieveMerchantPayoutsResponse'
-
     RetrieveMerchantResponse:
       description: Response containing merchant details
       content:
         application/json:
           schema: 
             $ref: '#/components/schemas/RetrieveMerchantResponse'
-
     RetrieveProductsResponse:
       description: Response containing list of products
       content:
         application/json:
           schema: 
             $ref: '#/components/schemas/RetrieveProductsResponse'
-
     RetrieveOrdersResponse:
       description: Response containing list of orders
       content:
         application/json:
           schema: 
             $ref: '#/components/schemas/RetrieveOrdersResponse'
-
     RetrievePaymentsResponse:
       description: Response containing list of payments
       content:
         application/json:
           schema: 
             $ref: '#/components/schemas/RetrievePaymentsResponse'
-
     RetrieveMerchantPayoutsResponse:
       description: Response containing list of merchant payouts
       content:
         application/json:
           schema: 
             $ref: '#/components/schemas/RetrieveMerchantPayoutsResponse'
-
     BadRequest:
       description: Bad request error response
       content:
         application/json:
           schema: 
             $ref: '#/components/schemas/HTTPError'
-
     Unauthorized:
       description: Unauthorized error response
       content:
         application/json:
           schema: 
             $ref: '#/components/schemas/HTTPError'
-
     Forbidden:
       description: Forbidden error response
       content:
         application/json:
           schema: 
             $ref: '#/components/schemas/HTTPError'
-
     NotFound:
       description: Not found error response
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/HTTPError'
-
     TooManyRequests:
       description: Too many requests error response
       content:
         application/json:
           schema: 
             $ref: '#/components/schemas/HTTPError'
-
     InternalServerError:
       description: Internal server error response
       content:
         application/json:
           schema: 
             $ref: '#/components/schemas/HTTPError'
-
   parameters:
     ecommerceId:
       name: ecommerceId
