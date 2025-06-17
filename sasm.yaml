@@ -6,381 +6,440 @@ info:
 servers:
   - url: https://virtserver.swaggerhub.com/BIAN-3/BIAN/ECommerce/1.0.0
 paths:
-  # Merchant Endpoints
-  '/ECommerce/{ecommerceid}/Merchant/Initiate':
+  '/eCommerce/{ecommerceId}/Merchant/Initiate':
     post:
-      tags:
-        - CR - Merchant
+      tags: [CR - Merchant]
       summary: Initialize merchant account
       description: Initialize merchant account
-      operationId: InitiateMerchant
+      operationId: initiateMerchant
       parameters:
-        - $ref: '#/components/parameters/ecommerceid'
+        - $ref: '#/components/parameters/ecommerceId'
       requestBody:
         $ref: '#/components/requestBodies/InitiateMerchantRequest'
       responses:
         '200':
           $ref: '#/components/responses/InitiateMerchantResponse'
-        '400':
+        '400': 
           $ref: '#/components/responses/BadRequest'
         '401':
           $ref: '#/components/responses/Unauthorized'
-        '403':
+        '403': 
           $ref: '#/components/responses/Forbidden'
-        '404':
+        '404': 
           $ref: '#/components/responses/NotFound'
-        '429':
+        '429': 
           $ref: '#/components/responses/TooManyRequests'
-        '500':
+        '500': 
           $ref: '#/components/responses/InternalServerError'
-
-  '/ECommerce/{ecommerceid}/getMerchant/Retrieve':
+  '/eCommerce/getMerchant/Retrieve':
     get:
-      tags:
-        - CR - Merchant
+      tags: [CR - Merchant]
       summary: Retrieve merchant details
       description: Retrieve merchant details
-      operationId: RetrieveMerchant
-      parameters:
-        - $ref: '#/components/parameters/ecommerceid'
+      operationId: retrieveMerchant
       responses:
         '200':
           $ref: '#/components/responses/RetrieveMerchantResponse'
-        '400':
+        '400': 
           $ref: '#/components/responses/BadRequest'
         '401':
           $ref: '#/components/responses/Unauthorized'
-        '403':
+        '403': 
           $ref: '#/components/responses/Forbidden'
-        '404':
+        '404': 
           $ref: '#/components/responses/NotFound'
-        '429':
+        '429': 
           $ref: '#/components/responses/TooManyRequests'
-        '500':
+        '500': 
           $ref: '#/components/responses/InternalServerError'
-
-  # Product Endpoints
-
-
-  # Order Endpoints
-  '/ECommerce/{ecommerceid}/Order/Initiate':
+  '/eCommerce/{ecommerceId}/Product/Initiate':
     post:
-      tags:
-        - CR - Order
-      summary: Initialize order
-      description: Initialize order
-      operationId: InitiateOrder
-      parameters:
-        - $ref: '#/components/parameters/ecommerceid'
-      requestBody:
-        $ref: '#/components/requestBodies/InitiateOrderRequest'
-      responses:
-        '200':
-          $ref: '#/components/responses/InitiateOrderResponse'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-
-  '/ECommerce/{ecommerceid}/getOrder/Retrieve':
-    get:
-      tags:
-        - CR - Order
-      summary: Retrieve orders
-      description: Retrieve orders
-      operationId: RetrieveOrders
-      parameters:
-        - $ref: '#/components/parameters/ecommerceid'
-      responses:
-        '200':
-          $ref: '#/components/responses/RetrieveOrdersResponse'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-
-  # Payment Endpoints
-  '/ECommerce/{ecommerceid}/Payment/Initiate':
-    post:
-      tags:
-        - CR - Payment
-      summary: Initialize payment
-      description: Initialize payment
-      operationId: InitiatePayment
-      parameters:
-        - $ref: '#/components/parameters/ecommerceid'
-      requestBody:
-        $ref: '#/components/requestBodies/InitiatePaymentRequest'
-      responses:
-        '200':
-          $ref: '#/components/responses/InitiatePaymentResponse'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-
-  '/ECommerce/{ecommerceid}/getPayment/Retrieve':
-    get:
-      tags:
-        - CR - Payment
-      summary: Retrieve payments
-      description: Retrieve payments
-      operationId: RetrievePayments
-      parameters:
-        - $ref: '#/components/parameters/ecommerceid'
-      responses:
-        '200':
-          $ref: '#/components/responses/RetrievePaymentsResponse'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-          
-  '/ECommerce/{ecommerceid}/Product/Initiate':
-    post:
-      tags:
-        - CR - Product
+      tags: [CR - Product]
       summary: Initialize product listing
       description: Initialize product listing
-      operationId: InitiateProduct
+      operationId: initiateProduct
       parameters:
-        - $ref: '#/components/parameters/ecommerceid'
+        - $ref: '#/components/parameters/ecommerceId'
       requestBody:
         $ref: '#/components/requestBodies/InitiateProductRequest'
       responses:
-        '200':
+        '200': 
           $ref: '#/components/responses/InitiateProductResponse'
-        '400':
+        '400': 
           $ref: '#/components/responses/BadRequest'
         '401':
           $ref: '#/components/responses/Unauthorized'
-        '403':
+        '403': 
           $ref: '#/components/responses/Forbidden'
-        '404':
+        '404': 
           $ref: '#/components/responses/NotFound'
-        '429':
+        '429': 
           $ref: '#/components/responses/TooManyRequests'
-        '500':
+        '500': 
           $ref: '#/components/responses/InternalServerError'
-  # Merchant Payout Endpoints
-  '/ECommerce/{ecommerceid}/MerchantPayout/Initiate':
+  '/eCommerce/getProduct/Retrieve':
+    get:
+      tags: [CR - Product]
+      summary: Retrieve products
+      description: Retrieve products
+      operationId: retrieveProducts
+      responses:
+        '200': 
+          $ref: '#/components/responses/RetrieveProductsResponse'
+        '400': 
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403': 
+          $ref: '#/components/responses/Forbidden'
+        '404': 
+          $ref: '#/components/responses/NotFound'
+        '429': 
+          $ref: '#/components/responses/TooManyRequests'
+        '500': 
+          $ref: '#/components/responses/InternalServerError'
+  '/eCommerce/{ecommerceId}/Order/Initiate':
     post:
-      tags:
-        - CR - MerchantPayout
+      tags: [CR - Order]
+      summary: Initialize order
+      description: Initialize order
+      operationId: initiateOrder
+      parameters:
+        - $ref: '#/components/parameters/ecommerceId'
+      requestBody:
+        $ref: '#/components/requestBodies/InitiateOrderRequest'
+      responses:
+        '200': 
+          $ref: '#/components/responses/InitiateOrderResponse'
+        '400': 
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403': 
+          $ref: '#/components/responses/Forbidden'
+        '404': 
+          $ref: '#/components/responses/NotFound'
+        '429': 
+          $ref: '#/components/responses/TooManyRequests'
+        '500': 
+          $ref: '#/components/responses/InternalServerError'
+  '/eCommerce/getOrder/Retrieve':
+    get:
+      tags: [CR - Order]
+      summary: Retrieve orders
+      description: Retrieve orders
+      operationId: retrieveOrders
+      responses:
+        '200': 
+          $ref: '#/components/responses/RetrieveOrdersResponse'
+        '400': 
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403': 
+          $ref: '#/components/responses/Forbidden'
+        '404': 
+          $ref: '#/components/responses/NotFound'
+        '429': 
+          $ref: '#/components/responses/TooManyRequests'
+        '500': 
+          $ref: '#/components/responses/InternalServerError'
+  '/eCommerce/{ecommerceId}/Payment/Initiate':
+    post:
+      tags: [CR - Payment]
+      summary: Initialize payment
+      description: Initialize payment
+      operationId: initiatePayment
+      parameters:
+        - $ref: '#/components/parameters/ecommerceId'
+      requestBody:
+        $ref: '#/components/requestBodies/InitiatePaymentRequest'
+      responses:
+        '200': 
+          $ref: '#/components/responses/InitiatePaymentResponse'
+        '400': 
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403': 
+          $ref: '#/components/responses/Forbidden'
+        '404': 
+          $ref: '#/components/responses/NotFound'
+        '429': 
+          $ref: '#/components/responses/TooManyRequests'
+        '500': 
+          $ref: '#/components/responses/InternalServerError'
+  '/eCommerce/getPayment/Retrieve':
+    get:
+      tags: [CR - Payment]
+      summary: Retrieve payments
+      description: Retrieve payments
+      operationId: retrievePayments
+      responses:
+        '200': 
+          $ref: '#/components/responses/RetrievePaymentsResponse'
+        '400': 
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403': 
+          $ref: '#/components/responses/Forbidden'
+        '404': 
+          $ref: '#/components/responses/NotFound'
+        '429': 
+          $ref: '#/components/responses/TooManyRequests'
+        '500': 
+          $ref: '#/components/responses/InternalServerError'
+  '/eCommerce/{ecommerceId}/MerchantPayout/Initiate':
+    post:
+      tags: [CR - MerchantPayout]
       summary: Initialize merchant payout
       description: Initialize merchant payout
-      operationId: InitiateMerchantPayout
+      operationId: initiateMerchantPayout
       parameters:
-        - $ref: '#/components/parameters/ecommerceid'
+        - $ref: '#/components/parameters/ecommerceId'
       requestBody:
         $ref: '#/components/requestBodies/InitiateMerchantPayoutRequest'
       responses:
-        '200':
+        '200': 
           $ref: '#/components/responses/InitiateMerchantPayoutResponse'
-        '400':
+        '400': 
           $ref: '#/components/responses/BadRequest'
         '401':
           $ref: '#/components/responses/Unauthorized'
-        '403':
+        '403': 
           $ref: '#/components/responses/Forbidden'
-        '404':
+        '404': 
           $ref: '#/components/responses/NotFound'
-        '429':
+        '429': 
           $ref: '#/components/responses/TooManyRequests'
-        '500':
+        '500': 
           $ref: '#/components/responses/InternalServerError'
-
+  '/eCommerce/getMerchantPayout/Retrieve':
+    get:
+      tags: [CR - MerchantPayout]
+      summary: Retrieve merchant payouts
+      description: Retrieve merchant payouts
+      operationId: retrieveMerchantPayouts
+      responses:
+        '200': 
+          $ref: '#/components/responses/RetrieveMerchantPayoutsResponse'
+        '400': 
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403': 
+          $ref: '#/components/responses/Forbidden'
+        '404': 
+          $ref: '#/components/responses/NotFound'
+        '429': 
+          $ref: '#/components/responses/TooManyRequests'
+        '500': 
+          $ref: '#/components/responses/InternalServerError'
 components:
   schemas:
-    # Core Objects
-    ECommerceFacility:
-      type: object
-      properties:
-        ECommerceInstanceReference:
-          type: string
-          description: Reference to the e-commerce instance
-        ECommercePlatformName:
-          type: string
-          description: Name of the e-commerce platform
-        MerchantReference:
-          type: string
-          description: Reference to the merchant
-        ProductReference:
-          type: string
-          description: Reference to the product
-        OrderReference:
-          type: string
-          description: Reference to the order
-        PaymentReference:
-          type: string
-          description: Reference to the payment
-
-    # Entity Objects
     Merchant:
       type: object
       properties:
-        MerchantName:
+        merchantName:
           type: string
+          format: string
           description: Name of the merchant
-        MerchantTaxID:
+        merchantTaxId:
           type: string
+          format: string
           description: Tax ID of the merchant
-        MerchantStatus:
+        merchantStatus:
           type: string
+          format: string
           description: Status of the merchant
-          enum: [Active, Inactive, Suspended]
-
+        merchantAddress:
+          type: string
+          format: string
+          description: Physical address of the merchant
+        merchantEmail:
+          type: string
+          format: email
+          description: Contact email of the merchant
+        merchantPhone:
+          type: string
+          format: string
+          description: Contact phone number of the merchant
+        merchantRegistrationDate:
+          type: string
+          format: date-time
+          description: Date when merchant registered on the platform
     Product:
       type: object
       properties:
-        ProductName:
+        productName:
           type: string
+          format: string
           description: Name of the product
-        ProductPrice:
-          type: string
+        productPrice:
+          type: number
+          format: float
           description: Price of the product
-        ProductCurrency:
+        productCurrency:
           type: string
+          format: string
           description: Currency of the product price
-
+        productCategory:
+          type: string
+          format: string
+          description: Category of the product
+        productStock:
+          type: integer
+          format: int32
+          description: Current stock quantity of the product
+        productDescription:
+          type: string
+          format: string
+          description: Detailed description of the product
+        productSku:
+          type: string
+          format: string
+          description: Stock Keeping Unit identifier for the product
     Order:
       type: object
       properties:
-        OrderAmount:
-          type: string
+        orderAmount:
+          type: number
+          format: float
           description: Amount of the order
-        OrderCurrency:
+        orderCurrency:
           type: string
+          format: string
           description: Currency of the order
-        OrderStatus:
+        orderStatus:
           type: string
+          format: string
           description: Status of the order
-          enum: [Pending, Paid, Shipped, Delivered]
-
+        orderDate:
+          type: string
+          format: date-time
+          description: Date when order was placed
+        customerName:
+          type: string
+          format: string
+          description: Name of the customer who placed the order
+        shippingAddress:
+          type: string
+          format: string
+          description: Address where order should be shipped
     Payment:
       type: object
       properties:
-        PaymentAmount:
-          type: string
+        paymentAmount:
+          type: number
+          format: float
           description: Amount of the payment
-        PaymentMethod:
+        paymentMethod:
           type: string
+          format: string
           description: Method of payment
           enum: [CreditCard, PayPal, BankTransfer]
-        PaymentStatus:
+        paymentStatus:
           type: string
+          format: string
           description: Status of the payment
-          enum: [Pending, Completed, Failed]
-
+        paymentDate:
+          type: string
+          format: date-time
+          description: Date when payment was processed
+        paymentTransactionId:
+          type: string
+          format: string
+          description: Unique transaction identifier from payment processor
+        paymentCurrency:
+          type: string
+          format: string
+          description: Currency of the payment
+        paymentFee:
+          type: number
+          format: float
+          description: Processing fee charged for the payment
     MerchantPayout:
       type: object
       properties:
-        PayoutAmount:
-          type: string
+        payoutAmount:
+          type: number
+          format: float
           description: Amount of the payout
-        PayoutMethod:
+        payoutMethod:
           type: string
+          format: string
           description: Method of payout
-          enum: [BankTransfer, PayPal]
-        PayoutStatus:
+        payoutStatus:
           type: string
+          format: string
           description: Status of the payout
-          enum: [Pending, Completed, Failed]
-
-    # Response Objects
-    ECommerceFacilityResponse:
-      type: object
-      properties:
-        TransactionReference:
+        payoutDate:
           type: string
-          description: Reference for the transaction
-        Status:
+          format: date-time
+          description: Date when payout was initiated
+        payoutReference:
           type: string
-          description: Status of the operation
-
-    # Request Objects
+          format: string
+          description: Reference number for the payout transaction
+        payoutCurrency:
+          type: string
+          format: string
+          description: Currency of the payout
+        payoutFee:
+          type: number
+          format: float
+          description: Processing fee deducted from the payout
     InitiateMerchantRequest:
       type: object
       properties:
-        Merchant:
+        merchant: 
           $ref: '#/components/schemas/Merchant'
-
     InitiateProductRequest:
       type: object
       properties:
-        Product:
+        product: 
           $ref: '#/components/schemas/Product'
-
     InitiateOrderRequest:
       type: object
       properties:
-        Order:
+        order: 
           $ref: '#/components/schemas/Order'
-
     InitiatePaymentRequest:
       type: object
       properties:
-        Payment:
+        payment: 
           $ref: '#/components/schemas/Payment'
-
     InitiateMerchantPayoutRequest:
       type: object
       properties:
-        MerchantPayout:
+        merchantPayout: 
           $ref: '#/components/schemas/MerchantPayout'
-
-    # Response Collections
-    RetrieveOrdersResponse:
-      type: object
-      properties:
-        Orders:
-          $ref: '#/components/schemas/Order'
-
-    RetrievePaymentsResponse:
-      type: object
-      properties:
-        Payments:
-          $ref: '#/components/schemas/Payment'
-
     RetrieveMerchantResponse:
       type: object
       properties:
-        Merchant:
+        merchant: 
           $ref: '#/components/schemas/Merchant'
-
-    # Error Response
+    RetrieveProductsResponse:
+      type: object
+      properties:
+        products:
+           $ref: '#/components/schemas/Product'
+    RetrieveOrdersResponse:
+      type: object
+      properties:
+        orders:
+          $ref: '#/components/schemas/Order'
+    RetrievePaymentsResponse:
+      type: object
+      properties:
+        payments:
+          $ref: '#/components/schemas/Payment'
+    RetrieveMerchantPayoutsResponse:
+      type: object
+      properties:
+        merchantPayouts:
+          $ref: '#/components/schemas/MerchantPayout'
     HTTPError:
       type: object
       properties:
@@ -389,158 +448,147 @@ components:
           description: Error message
         code:
           type: integer
+          format: int32
           description: HTTP status code
         details:
           type: string
           description: Additional error details
-
-  # Request Bodies
   requestBodies:
     InitiateMerchantRequest:
       description: Request to initialize a merchant account
       content:
         application/json:
-          schema:
+          schema: 
             $ref: '#/components/schemas/InitiateMerchantRequest'
       required: true
-
     InitiateProductRequest:
       description: Request to initialize a product listing
       content:
         application/json:
-          schema:
+          schema: 
             $ref: '#/components/schemas/InitiateProductRequest'
       required: true
-
     InitiateOrderRequest:
       description: Request to initialize an order
       content:
         application/json:
-          schema:
+          schema: 
             $ref: '#/components/schemas/InitiateOrderRequest'
       required: true
-
     InitiatePaymentRequest:
       description: Request to initialize a payment
       content:
         application/json:
-          schema:
+          schema:   
             $ref: '#/components/schemas/InitiatePaymentRequest'
       required: true
-
     InitiateMerchantPayoutRequest:
       description: Request to initialize a merchant payout
       content:
         application/json:
-          schema:
+          schema: 
             $ref: '#/components/schemas/InitiateMerchantPayoutRequest'
       required: true
-
-  # Responses
   responses:
     InitiateMerchantResponse:
       description: Response for merchant initialization
       content:
         application/json:
-          schema:
-            $ref: '#/components/schemas/ECommerceFacilityResponse'
-
+          schema: 
+            $ref: '#/components/schemas/RetrieveMerchantResponse'
     InitiateProductResponse:
       description: Response for product initialization
       content:
         application/json:
-          schema:
-            $ref: '#/components/schemas/ECommerceFacilityResponse'
-
+          schema: 
+            $ref: '#/components/schemas/RetrieveProductsResponse'
     InitiateOrderResponse:
       description: Response for order initialization
       content:
         application/json:
-          schema:
-            $ref: '#/components/schemas/ECommerceFacilityResponse'
-
+          schema:  
+            $ref: '#/components/schemas/RetrieveOrdersResponse'
     InitiatePaymentResponse:
       description: Response for payment initialization
       content:
         application/json:
-          schema:
-            $ref: '#/components/schemas/ECommerceFacilityResponse'
-
+          schema: 
+            $ref: '#/components/schemas/RetrievePaymentsResponse'
     InitiateMerchantPayoutResponse:
       description: Response for merchant payout initialization
       content:
         application/json:
-          schema:
-            $ref: '#/components/schemas/ECommerceFacilityResponse'
-
-    RetrieveOrdersResponse:
-      description: Response containing list of orders
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/RetrieveOrdersResponse'
-
-    RetrievePaymentsResponse:
-      description: Response containing list of payments
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/RetrievePaymentsResponse'
-
+          schema: 
+            $ref: '#/components/schemas/RetrieveMerchantPayoutsResponse'
     RetrieveMerchantResponse:
       description: Response containing merchant details
       content:
         application/json:
-          schema:
+          schema: 
             $ref: '#/components/schemas/RetrieveMerchantResponse'
-
-    # Standard Error Responses
+    RetrieveProductsResponse:
+      description: Response containing list of products
+      content:
+        application/json:
+          schema: 
+            $ref: '#/components/schemas/RetrieveProductsResponse'
+    RetrieveOrdersResponse:
+      description: Response containing list of orders
+      content:
+        application/json:
+          schema: 
+            $ref: '#/components/schemas/RetrieveOrdersResponse'
+    RetrievePaymentsResponse:
+      description: Response containing list of payments
+      content:
+        application/json:
+          schema: 
+            $ref: '#/components/schemas/RetrievePaymentsResponse'
+    RetrieveMerchantPayoutsResponse:
+      description: Response containing list of merchant payouts
+      content:
+        application/json:
+          schema: 
+            $ref: '#/components/schemas/RetrieveMerchantPayoutsResponse'
     BadRequest:
       description: Bad request error response
       content:
         application/json:
-          schema:
+          schema: 
             $ref: '#/components/schemas/HTTPError'
-
     Unauthorized:
       description: Unauthorized error response
       content:
         application/json:
-          schema:
+          schema: 
             $ref: '#/components/schemas/HTTPError'
-
     Forbidden:
       description: Forbidden error response
       content:
         application/json:
-          schema:
+          schema: 
             $ref: '#/components/schemas/HTTPError'
-
     NotFound:
       description: Not found error response
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/HTTPError'
-
     TooManyRequests:
       description: Too many requests error response
       content:
         application/json:
-          schema:
+          schema: 
             $ref: '#/components/schemas/HTTPError'
-
     InternalServerError:
       description: Internal server error response
       content:
         application/json:
-          schema:
+          schema: 
             $ref: '#/components/schemas/HTTPError'
-
-  # Parameters
   parameters:
-    ecommerceid:
-      name: ecommerceid
+    ecommerceId:
+      name: ecommerceId
       in: path
       required: true
       description: ID of the e-commerce platform instance
