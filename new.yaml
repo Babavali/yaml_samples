@@ -78,10 +78,10 @@ paths:
       tags: [CR - Product]
       summary: Retrieve products
       description: Retrieve products
-      operationId: retrieveProducts
+      operationId: retrieveProduct
       responses:
         '200': 
-          $ref: '#/components/responses/RetrieveProductsResponse'
+          $ref: '#/components/responses/RetrieveProductResponse'
         '400': 
           $ref: '#/components/responses/BadRequest'
         '401':
@@ -122,10 +122,10 @@ paths:
       tags: [CR - Order]
       summary: Retrieve orders
       description: Retrieve orders
-      operationId: retrieveOrders
+      operationId: retrieveOrder
       responses:
         '200': 
-          $ref: '#/components/responses/RetrieveOrdersResponse'
+          $ref: '#/components/responses/RetrieveOrderResponse'
         '400': 
           $ref: '#/components/responses/BadRequest'
         '401':
@@ -166,10 +166,10 @@ paths:
       tags: [CR - Payment]
       summary: Retrieve payments
       description: Retrieve payments
-      operationId: retrievePayments
+      operationId: retrievePayment
       responses:
         '200': 
-          $ref: '#/components/responses/RetrievePaymentsResponse'
+          $ref: '#/components/responses/RetrievePaymentResponse'
         '400': 
           $ref: '#/components/responses/BadRequest'
         '401':
@@ -210,10 +210,10 @@ paths:
       tags: [CR - MerchantPayout]
       summary: Retrieve merchant payouts
       description: Retrieve merchant payouts
-      operationId: retrieveMerchantPayouts
+      operationId: retrieveMerchantPayout
       responses:
         '200': 
-          $ref: '#/components/responses/RetrieveMerchantPayoutsResponse'
+          $ref: '#/components/responses/RetrieveMerchantPayoutResponse'
         '400': 
           $ref: '#/components/responses/BadRequest'
         '401':
@@ -410,22 +410,22 @@ components:
       properties:
         merchant: 
           $ref: '#/components/schemas/Merchant'
-    RetrieveProductsResponse:
+    RetrieveProductResponse:
       type: object
       properties:
         products:
            $ref: '#/components/schemas/Product'
-    RetrieveOrdersResponse:
+    RetrieveOrderResponse:
       type: object
       properties:
         orders:
           $ref: '#/components/schemas/Order'
-    RetrievePaymentsResponse:
+    RetrievePaymentResponse:
       type: object
       properties:
         payments:
           $ref: '#/components/schemas/Payment'
-    RetrieveMerchantPayoutsResponse:
+    RetrieveMerchantPayoutResponse:
       type: object
       properties:
         merchantPayouts:
@@ -491,55 +491,55 @@ components:
       content:
         application/json:
           schema: 
-            $ref: '#/components/schemas/RetrieveProductsResponse'
+            $ref: '#/components/schemas/RetrieveProductResponse'
     InitiateOrderResponse:
       description: Response for order initialization
       content:
         application/json:
           schema:  
-            $ref: '#/components/schemas/RetrieveOrdersResponse'
+            $ref: '#/components/schemas/RetrieveOrderResponse'
     InitiatePaymentResponse:
       description: Response for payment initialization
       content:
         application/json:
           schema: 
-            $ref: '#/components/schemas/RetrievePaymentsResponse'
+            $ref: '#/components/schemas/RetrievePaymentResponse'
     InitiateMerchantPayoutResponse:
       description: Response for merchant payout initialization
       content:
         application/json:
           schema: 
-            $ref: '#/components/schemas/RetrieveMerchantPayoutsResponse'
+            $ref: '#/components/schemas/RetrieveMerchantPayoutResponse'
     RetrieveMerchantResponse:
       description: Response containing merchant details
       content:
         application/json:
           schema: 
             $ref: '#/components/schemas/RetrieveMerchantResponse'
-    RetrieveProductsResponse:
+    RetrieveProductResponse:
       description: Response containing list of products
       content:
         application/json:
           schema: 
-            $ref: '#/components/schemas/RetrieveProductsResponse'
-    RetrieveOrdersResponse:
+            $ref: '#/components/schemas/RetrieveProductResponse'
+    RetrieveOrderResponse:
       description: Response containing list of orders
       content:
         application/json:
           schema: 
-            $ref: '#/components/schemas/RetrieveOrdersResponse'
-    RetrievePaymentsResponse:
+            $ref: '#/components/schemas/RetrieveOrderResponse'
+    RetrievePaymentResponse:
       description: Response containing list of payments
       content:
         application/json:
           schema: 
-            $ref: '#/components/schemas/RetrievePaymentsResponse'
-    RetrieveMerchantPayoutsResponse:
+            $ref: '#/components/schemas/RetrievePaymentResponse'
+    RetrieveMerchantPayoutResponse:
       description: Response containing list of merchant payouts
       content:
         application/json:
           schema: 
-            $ref: '#/components/schemas/RetrieveMerchantPayoutsResponse'
+            $ref: '#/components/schemas/RetrieveMerchantPayoutResponse'
     BadRequest:
       description: Bad request error response
       content:
@@ -576,11 +576,3 @@ components:
         application/json:
           schema: 
             $ref: '#/components/schemas/HTTPError'
-  parameters:
-    ecommerceId:
-      name: ecommerceId
-      in: path
-      required: true
-      description: ID of the e-commerce platform instance
-      schema:
-        type: string
