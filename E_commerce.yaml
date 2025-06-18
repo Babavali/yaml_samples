@@ -11,7 +11,7 @@ paths:
       tags: [CR - Merchant]
       summary: Initialize merchant account
       description: Initialize merchant account
-      operationId: initiateMerchant
+      operationId: InitiateMerchant
       requestBody:
         $ref: '#/components/requestBodies/InitiateMerchantRequest'
       responses:
@@ -34,7 +34,7 @@ paths:
       tags: [CR - Merchant]
       summary: Retrieve merchant details
       description: Retrieve merchant details
-      operationId: retrieveMerchant
+      operationId: RetrieveMerchant
       responses:
         '200':
           $ref: '#/components/responses/RetrieveMerchantResponse'
@@ -55,7 +55,7 @@ paths:
       tags: [CR - Product]
       summary: Initialize product listing
       description: Initialize product listing
-      operationId: initiateProduct
+      operationId: InitiateProduct
       requestBody:
         $ref: '#/components/requestBodies/InitiateProductRequest'
       responses:
@@ -78,7 +78,7 @@ paths:
       tags: [CR - Product]
       summary: Retrieve products
       description: Retrieve products
-      operationId: retrieveProduct
+      operationId: RetrieveProduct
       responses:
         '200': 
           $ref: '#/components/responses/RetrieveProductResponse'
@@ -99,7 +99,7 @@ paths:
       tags: [CR - Order]
       summary: Initialize order
       description: Initialize order
-      operationId: initiateOrder
+      operationId: InitiateOrder
       requestBody:
         $ref: '#/components/requestBodies/InitiateOrderRequest'
       responses:
@@ -122,7 +122,7 @@ paths:
       tags: [CR - Order]
       summary: Retrieve orders
       description: Retrieve orders
-      operationId: retrieveOrder
+      operationId: RetrieveOrder
       responses:
         '200': 
           $ref: '#/components/responses/RetrieveOrderResponse'
@@ -143,7 +143,7 @@ paths:
       tags: [CR - Payment]
       summary: Initialize payment
       description: Initialize payment
-      operationId: initiatePayment
+      operationId: InitiatePayment
       requestBody:
         $ref: '#/components/requestBodies/InitiatePaymentRequest'
       responses:
@@ -166,7 +166,7 @@ paths:
       tags: [CR - Payment]
       summary: Retrieve payments
       description: Retrieve payments
-      operationId: retrievePayment
+      operationId: RetrievePayment
       responses:
         '200': 
           $ref: '#/components/responses/RetrievePaymentResponse'
@@ -187,7 +187,7 @@ paths:
       tags: [CR - MerchantPayout]
       summary: Initialize merchant payout
       description: Initialize merchant payout
-      operationId: initiateMerchantPayout
+      operationId: InitiateMerchantPayout
       requestBody:
         $ref: '#/components/requestBodies/InitiateMerchantPayoutRequest'
       responses:
@@ -210,7 +210,7 @@ paths:
       tags: [CR - MerchantPayout]
       summary: Retrieve merchant payouts
       description: Retrieve merchant payouts
-      operationId: retrieveMerchantPayout
+      operationId: RetrieveMerchantPayout
       responses:
         '200': 
           $ref: '#/components/responses/RetrieveMerchantPayoutResponse'
@@ -243,6 +243,7 @@ components:
           type: string
           format: string
           description: Status of the merchant
+          enum: [Active, Suspended, Inactive, UnderReview]
         merchantAddress:
           type: string
           format: string
@@ -274,10 +275,12 @@ components:
           type: string
           format: string
           description: Currency of the product price
+          enum: [USD, INR, EUR, GBP, JPY, CAD, AUD]
         productCategory:
           type: string
           format: string
           description: Category of the product
+          enum: [Electronics, Clothing, Food, Home, Beauty, Sports, Books, Other]
         productStock:
           type: integer
           format: int32
@@ -301,10 +304,12 @@ components:
           type: string
           format: string
           description: Currency of the order
+          enum: [USD, INR, EUR, GBP, JPY, CAD, AUD]
         orderStatus:
           type: string
           format: string
           description: Status of the order
+          enum: [Pending, Processing, Shipped, Delivered, Cancelled, Returned]
         orderDate:
           type: string
           format: date-time
@@ -328,11 +333,12 @@ components:
           type: string
           format: string
           description: Method of payment
-          enum: [CreditCard, PayPal, BankTransfer]
+          enum: [CreditCard, PayPal, BankTransfer, Crypto, GiftCard]
         paymentStatus:
           type: string
           format: string
           description: Status of the payment
+          enum: [Pending, Completed, Failed, Refunded, PartiallyRefunded]
         paymentDate:
           type: string
           format: date-time
@@ -345,6 +351,7 @@ components:
           type: string
           format: string
           description: Currency of the payment
+          enum: [USD, INR, EUR, GBP, JPY, CAD, AUD]
         paymentFee:
           type: number
           format: float
@@ -360,10 +367,12 @@ components:
           type: string
           format: string
           description: Method of payout
+          enum: [BankTransfer, PayPal, Check, WireTransfer]
         payoutStatus:
           type: string
           format: string
           description: Status of the payout
+          enum: [Pending, Processing, Completed, Failed, Cancelled]
         payoutDate:
           type: string
           format: date-time
@@ -376,6 +385,7 @@ components:
           type: string
           format: string
           description: Currency of the payout
+          enum: [USD, INR, EUR, GBP, JPY, CAD, AUD]
         payoutFee:
           type: number
           format: float
@@ -413,22 +423,22 @@ components:
     RetrieveProductResponse:
       type: object
       properties:
-        products:
-           $ref: '#/components/schemas/Product'
+        product:
+          $ref: '#/components/schemas/Product'
     RetrieveOrderResponse:
       type: object
       properties:
-        orders:
+        order:
           $ref: '#/components/schemas/Order'
     RetrievePaymentResponse:
       type: object
       properties:
-        payments:
+        payment:
           $ref: '#/components/schemas/Payment'
     RetrieveMerchantPayoutResponse:
       type: object
       properties:
-        merchantPayouts:
+        merchantPayout:
           $ref: '#/components/schemas/MerchantPayout'
     HTTPError:
       type: object
