@@ -1,12 +1,12 @@
 openapi: 3.0.1
 info:
-  title: Google Ads
+  title: GoogleAds
   description: API for retrieving Google Ads ad group ad legacy data
   version: 11.0.0
 servers:
   - url: https://google-ads-api.example.com/v1
 paths:
-  '/google-ads/ad-group-ad-legacy/Retrieve':
+  '/GoogleAds/AdGroupAdLegacy/Retrieve':
     get:
       tags: [CR - AdGroupAdLegacy]
       summary: Retrieve Google Ads ad group ad legacy data
