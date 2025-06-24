@@ -34,15 +34,19 @@ components:
       properties:
         customer_id:
           type: string
+          format: string
           description: Google Ads customer ID
         campaign_id:
           type: string
+          format: string
           description: Campaign ID
         ad_group_id:
           type: string
+          format: string
           description: Ad Group ID
         ad_group_ad_ad_id:
           type: string
+          format: string
           description: Ad ID
         metrics_clicks:
           type: integer
