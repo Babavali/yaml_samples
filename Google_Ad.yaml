@@ -1,0 +1,131 @@
+openapi: 3.0.1
+info:
+  title: Google Ads
+  description: API for retrieving Google Ads ad group ad legacy data
+  version: 11.0.0
+servers:
+  - url: https://google-ads-api.example.com/v1
+paths:
+  '/google-ads/ad-group-ad-legacy/Retrieve':
+    get:
+      tags: [CR - AdGroupAdLegacy]
+      summary: Retrieve Google Ads ad group ad legacy data
+      description: Retrieve metrics and information about Google Ads ad group ads
+      operationId: RetrieveAdGroupAdLegacy
+      responses:
+        '200':
+          $ref: '#/components/responses/RetrieveAdGroupAdLegacyResponse'
+        '400': 
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403': 
+          $ref: '#/components/responses/Forbidden'
+        '404': 
+          $ref: '#/components/responses/NotFound'
+        '429': 
+          $ref: '#/components/responses/TooManyRequests'
+        '500': 
+          $ref: '#/components/responses/InternalServerError'
+components:
+  schemas:
+    AdGroupAdLegacy:
+      type: object
+      properties:
+        customer_id:
+          type: string
+          description: Google Ads customer ID
+        campaign_id:
+          type: string
+          description: Campaign ID
+        ad_group_id:
+          type: string
+          description: Ad Group ID
+        ad_group_ad_ad_id:
+          type: string
+          description: Ad ID
+        metrics_clicks:
+          type: integer
+          format: int64
+          description: Number of clicks
+        metrics_impressions:
+          type: integer
+          format: int64
+          description: Number of impressions
+        metrics_conversions:
+          type: number
+          format: float
+          description: Number of conversions
+        metrics_amount_spend:
+          type: number
+          format: float
+          description: Amount spent (currency to be specified separately)
+        metrics_ctr:
+          type: number
+          format: float
+          description: Click-through rate
+        metrics_cost_per_conversion:
+          type: number
+          format: float
+          description: Cost per conversion
+    RetrieveAdGroupAdLegacyResponse:
+      type: object
+      properties:
+        ad_group_ad_legacy:
+            $ref: '#/components/schemas/AdGroupAdLegacy'
+    HTTPError:
+      type: object
+      properties:
+        error:
+          type: string
+          description: Error message
+        code:
+          type: integer
+          format: int32
+          description: HTTP status code
+        details:
+          type: string
+          description: Additional error details
+  responses:
+    RetrieveAdGroupAdLegacyResponse:
+      description: Response containing Google Ads ad group ad legacy data
+      content:
+        application/json:
+          schema: 
+            $ref: '#/components/schemas/RetrieveAdGroupAdLegacyResponse'
+    BadRequest:
+      description: Bad request error response
+      content:
+        application/json:
+          schema: 
+            $ref: '#/components/schemas/HTTPError'
+    Unauthorized:
+      description: Unauthorized error response
+      content:
+        application/json:
+          schema: 
+            $ref: '#/components/schemas/HTTPError'
+    Forbidden:
+      description: Forbidden error response
+      content:
+        application/json:
+          schema: 
+            $ref: '#/components/schemas/HTTPError'
+    NotFound:
+      description: Not found error response
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/HTTPError'
+    TooManyRequests:
+      description: Too many requests error response
+      content:
+        application/json:
+          schema: 
+            $ref: '#/components/schemas/HTTPError'
+    InternalServerError:
+      description: Internal server error response
+      content:
+        application/json:
+          schema: 
+            $ref: '#/components/schemas/HTTPError'
