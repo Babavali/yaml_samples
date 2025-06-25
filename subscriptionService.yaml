@@ -6,113 +6,113 @@ info:
 servers:
   - url: https://virtserver.swaggerhub.com/BIAN-3/BIAN/Subscription/1.0.0
 paths:
-  "/subscriptionService/getDashboard/Retrieve":
+  '/subscriptionService/getDashboard/Retrieve':
     get:
       tags: [CR - Dashboard]
       summary: Retrieve dashboard
       description: Retrieve subscription dashboard data
       operationId: RetrieveDashboard
       responses:
-        "200":
-          $ref: "#/components/responses/RetrieveDashboardResponse"
-        "400":
-          $ref: "#/components/responses/BadRequest"
-        "401":
-          $ref: "#/components/responses/Unauthorized"
-        "403":
-          $ref: "#/components/responses/Forbidden"
-        "404":
-          $ref: "#/components/responses/NotFound"
-        "429":
-          $ref: "#/components/responses/TooManyRequests"
-        "500":
-          $ref: "#/components/responses/InternalServerError"
-  "/subscriptionService/Subscription/Initiate":
+        '200':
+          $ref: '#/components/responses/RetrieveDashboardResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+  '/subscriptionService/Subscription/Initiate':
     post:
       tags: [CR - Subscription]
       summary: Initialize a subscription
       description: Initialize a new subscription
       operationId: InitiateSubscription
       requestBody:
-        $ref: "#/components/requestBodies/InitiateSubscriptionRequest"
+        $ref: '#/components/requestBodies/InitiateSubscriptionRequest'
       responses:
-        "200":
-          $ref: "#/components/responses/InitiateSubscriptionResponse"
-        "400":
-          $ref: "#/components/responses/BadRequest"
-        "401":
-          $ref: "#/components/responses/Unauthorized"
-        "403":
-          $ref: "#/components/responses/Forbidden"
-        "404":
-          $ref: "#/components/responses/NotFound"
-        "429":
-          $ref: "#/components/responses/TooManyRequests"
-        "500":
-          $ref: "#/components/responses/InternalServerError"
-  "/subscriptionService/getSubscription/Retrieve":
+        '200':
+          $ref: '#/components/responses/InitiateSubscriptionResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+  '/subscriptionService/getSubscription/Retrieve':
     get:
       tags: [CR - Subscription]
       summary: Retrieve subscriptions
       description: Retrieve subscription details
       operationId: RetrieveSubscription
       responses:
-        "200":
-          $ref: "#/components/responses/RetrieveSubscriptionResponse"
-        "400":
-          $ref: "#/components/responses/BadRequest"
-        "401":
-          $ref: "#/components/responses/Unauthorized"
-        "403":
-          $ref: "#/components/responses/Forbidden"
-        "404":
-          $ref: "#/components/responses/NotFound"
-        "429":
-          $ref: "#/components/responses/TooManyRequests"
-        "500":
-          $ref: "#/components/responses/InternalServerError"
-  "/subscriptionService/getGeneratedCode/Retrieve":
+        '200':
+          $ref: '#/components/responses/RetrieveSubscriptionResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+  '/subscriptionService/getGeneratedCode/Retrieve':
     get:
       tags: [CR - GeneratedCode]
       summary: Retrieve generated codes
       description: Retrieve subscription generated codes
       operationId: RetrieveGeneratedCode
       responses:
-        "200":
-          $ref: "#/components/responses/RetrieveGeneratedCodeResponse"
-        "400":
-          $ref: "#/components/responses/BadRequest"
-        "401":
-          $ref: "#/components/responses/Unauthorized"
-        "403":
-          $ref: "#/components/responses/Forbidden"
-        "404":
-          $ref: "#/components/responses/NotFound"
-        "429":
-          $ref: "#/components/responses/TooManyRequests"
-        "500":
-          $ref: "#/components/responses/InternalServerError"
-  "/subscriptionService/getSettings/Retrieve":
+        '200':
+          $ref: '#/components/responses/RetrieveGeneratedCodeResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+  '/subscriptionService/getSettings/Retrieve':
     get:
       tags: [CR - Settings]
       summary: Retrieve settings
       description: Retrieve subscription settings
       operationId: RetrieveSettings
       responses:
-        "200":
-          $ref: "#/components/responses/RetrieveSettingsResponse"
-        "400":
-          $ref: "#/components/responses/BadRequest"
-        "401":
-          $ref: "#/components/responses/Unauthorized"
-        "403":
-          $ref: "#/components/responses/Forbidden"
-        "404":
-          $ref: "#/components/responses/NotFound"
-        "429":
-          $ref: "#/components/responses/TooManyRequests"
-        "500":
-          $ref: "#/components/responses/InternalServerError"
+        '200':
+          $ref: '#/components/responses/RetrieveSettingsResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
 components:
   schemas:
     Dashboard:
@@ -248,27 +248,27 @@ components:
       type: object
       properties:
         subscription:
-          $ref: "#/components/schemas/Subscription"
+          $ref: '#/components/schemas/Subscription'
     RetrieveSubscriptionResponse:
       type: object
       properties:
         subscription:
-          $ref: "#/components/schemas/Subscription"
+          $ref: '#/components/schemas/Subscription'
     RetrieveDashboardResponse:
       type: object
       properties:
         dashboard:
-          $ref: "#/components/schemas/Dashboard"
+          $ref: '#/components/schemas/Dashboard'
     RetrieveGeneratedCodeResponse:
       type: object
       properties:
         generatedCode:
-          $ref: "#/components/schemas/GeneratedCode"
+          $ref: '#/components/schemas/GeneratedCode'
     RetrieveSettingsResponse:
       type: object
       properties:
         settings:
-          $ref: "#/components/schemas/Settings"
+          $ref: '#/components/schemas/Settings'
     HTTPError:
       type: object
       properties:
@@ -288,7 +288,7 @@ components:
       content:
         application/json:
           schema:
-            $ref: "#/components/schemas/InitiateSubscriptionRequest"
+            $ref: '#/components/schemas/InitiateSubscriptionRequest'
       required: true
   responses:
     InitiateSubscriptionResponse:
@@ -296,64 +296,64 @@ components:
       content:
         application/json:
           schema:
-            $ref: "#/components/schemas/RetrieveSubscriptionResponse"
+            $ref: '#/components/schemas/RetrieveSubscriptionResponse'
     RetrieveSubscriptionResponse:
       description: Response containing subscription details
       content:
         application/json:
           schema:
-            $ref: "#/components/schemas/RetrieveSubscriptionResponse"
+            $ref: '#/components/schemas/RetrieveSubscriptionResponse'
     RetrieveDashboardResponse:
       description: Response containing dashboard data
       content:
         application/json:
           schema:
-            $ref: "#/components/schemas/RetrieveDashboardResponse"
+            $ref: '#/components/schemas/RetrieveDashboardResponse'
     RetrieveGeneratedCodeResponse:
       description: Response containing generated codes
       content:
         application/json:
           schema:
-            $ref: "#/components/schemas/RetrieveGeneratedCodeResponse"
+            $ref: '#/components/schemas/RetrieveGeneratedCodeResponse'
     RetrieveSettingsResponse:
       description: Response containing settings
       content:
         application/json:
           schema:
-            $ref: "#/components/schemas/RetrieveSettingsResponse"
+            $ref: '#/components/schemas/RetrieveSettingsResponse'
     BadRequest:
       description: Bad request error response
       content:
         application/json:
           schema:
-            $ref: "#/components/schemas/HTTPError"
+            $ref: '#/components/schemas/HTTPError'
     Unauthorized:
       description: Unauthorized error response
       content:
         application/json:
           schema:
-            $ref: "#/components/schemas/HTTPError"
+            $ref: '#/components/schemas/HTTPError'
     Forbidden:
       description: Forbidden error response
       content:
         application/json:
           schema:
-            $ref: "#/components/schemas/HTTPError"
+            $ref: '#/components/schemas/HTTPError'
     NotFound:
       description: Not found error response
       content:
         application/json:
           schema:
-            $ref: "#/components/schemas/HTTPError"
+            $ref: '#/components/schemas/HTTPError'
     TooManyRequests:
       description: Too many requests error response
       content:
         application/json:
           schema:
-            $ref: "#/components/schemas/HTTPError"
+            $ref: '#/components/schemas/HTTPError'
     InternalServerError:
       description: Internal server error response
       content:
         application/json:
           schema:
-            $ref: "#/components/schemas/HTTPError"
+            $ref: '#/components/schemas/HTTPError'
