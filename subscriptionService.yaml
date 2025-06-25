@@ -6,6 +6,27 @@ info:
 servers:
   - url: https://virtserver.swaggerhub.com/BIAN-3/BIAN/Subscription/1.0.0
 paths:
+  "/subscriptionService/getDashboard/Retrieve":
+    get:
+      tags: [CR - Dashboard]
+      summary: Retrieve dashboard
+      description: Retrieve subscription dashboard data
+      operationId: RetrieveDashboard
+      responses:
+        "200":
+          $ref: "#/components/responses/RetrieveDashboardResponse"
+        "400":
+          $ref: "#/components/responses/BadRequest"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "403":
+          $ref: "#/components/responses/Forbidden"
+        "404":
+          $ref: "#/components/responses/NotFound"
+        "429":
+          $ref: "#/components/responses/TooManyRequests"
+        "500":
+          $ref: "#/components/responses/InternalServerError"
   "/subscriptionService/Subscription/Initiate":
     post:
       tags: [CR - Subscription]
@@ -38,27 +59,6 @@ paths:
       responses:
         "200":
           $ref: "#/components/responses/RetrieveSubscriptionResponse"
-        "400":
-          $ref: "#/components/responses/BadRequest"
-        "401":
-          $ref: "#/components/responses/Unauthorized"
-        "403":
-          $ref: "#/components/responses/Forbidden"
-        "404":
-          $ref: "#/components/responses/NotFound"
-        "429":
-          $ref: "#/components/responses/TooManyRequests"
-        "500":
-          $ref: "#/components/responses/InternalServerError"
-  "/subscriptionService/getDashboard/Retrieve":
-    get:
-      tags: [CR - Dashboard]
-      summary: Retrieve dashboard
-      description: Retrieve subscription dashboard data
-      operationId: RetrieveDashboard
-      responses:
-        "200":
-          $ref: "#/components/responses/RetrieveDashboardResponse"
         "400":
           $ref: "#/components/responses/BadRequest"
         "401":
@@ -128,6 +128,7 @@ components:
           description: Total revenue from subscriptions
         mostPopularPlan:
           type: string
+          enum: [Free, Pro, Enterprise]
           description: Name of the most popular subscription plan
         renewalRate:
           type: number
@@ -137,6 +138,25 @@ components:
           type: number
           format: float
           description: Percentage of subscriptions that cancel
+        recentActivities:
+          type: array
+          items:
+            type: object
+            properties:
+              activityType:
+                type: string
+                enum:
+                  [
+                    api_generation,
+                    ui_generation,
+                    subscription_change,
+                    user_invite,
+                  ]
+              description:
+                type: string
+              timestamp:
+                type: string
+                format: date-time
     Subscription:
       type: object
       properties:
@@ -145,6 +165,7 @@ components:
           description: Unique identifier for the subscription
         planName:
           type: string
+          enum: [Free, Pro, Enterprise]
           description: Name of the subscription plan
         status:
           type: string
@@ -170,6 +191,11 @@ components:
           type: string
           enum: [USD, EUR, GBP, JPY, CAD, AUD]
           description: Currency for the subscription price
+        features:
+          type: array
+          items:
+            type: string
+          description: List of features included in this plan
     GeneratedCode:
       type: object
       properties:
@@ -191,6 +217,11 @@ components:
         isUsed:
           type: boolean
           description: Whether the code has been used
+        generatedComponents:
+          type: array
+          items:
+            type: string
+          description: List of UI components generated with this code
     Settings:
       type: object
       properties:
