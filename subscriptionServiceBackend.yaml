@@ -120,7 +120,7 @@ components:
       properties:
         currentPlan:
           type: string
-          format: string
+          enum: [Free, Pro, Enterprise]
           description: User's current subscription plan
         apiGenerations:
           type: integer
@@ -129,21 +129,20 @@ components:
         uiGenerations:
           type: integer
           format: int32
-          description: Number of UI components generated from F/YAML
+          description: Number of UI components generated from Figma/YAML
     Subscription:
       type: object
       properties:
         subscriptionId:
           type: string
-          format: string
           description: Unique identifier for the subscription
         planName:
           type: string
-          format: string
+          enum: [Free, Pro, Enterprise]
           description: Name of the subscription plan
         status:
           type: string
-          format: string
+          enum: [Active, Pending, Cancelled, Expired, Suspended]
           description: Current status of the subscription
         startDate:
           type: string
@@ -155,7 +154,7 @@ components:
           description: Date when subscription ends
         billingCycle:
           type: string
-          format: string
+          enum: [Monthly, Quarterly, Annual, Lifetime]
           description: Billing frequency
         price:
           type: number
@@ -163,22 +162,22 @@ components:
           description: Price of the subscription
         currency:
           type: string
-          format: string
+          enum: [USD, EUR, GBP, JPY, CAD, AUD]
           description: Currency for the subscription price
         features:
-          type: string
-          format: string
+          type: array
+          items:
+            type: string
           description: List of features included in this plan
     GeneratedCode:
       type: object
       properties:
         code:
           type: string
-          format: string
           description: The generated code
         codeType:
           type: string
-          format: string
+          enum: [Promo, Discount, Trial, Gift]
           description: Type of generated code
         expirationDate:
           type: string
@@ -190,30 +189,38 @@ components:
           description: Discount amount or percentage
         isUsed:
           type: string
-          format: string
+          enum: [Yes, No]
           description: Whether the code has been used
         generatedComponents:
-          type: string
-          format: string
+          type: array
+          items:
+            type: string
           description: List of UI components generated with this code
     Settings:
       type: object
       properties:
         autoRenewal:
           type: string
-          format: string
+          enum: [Enabled, Disabled]
           description: Whether auto-renewal is enabled
         notificationPreferences:
           type: object
-          format: string
+          properties:
+            email:
+              type: string
+              enum: [Enabled, Disabled]
+            sms:
+              type: string
+              enum: [Enabled, Disabled]
+            push:
+              type: string
+              enum: [Enabled, Disabled]
           description: User's notification preferences
         billingAddress:
           type: string
-          format: string
           description: Billing address for subscriptions
         defaultPaymentMethod:
           type: string
-          format: string
           description: Default payment method
     InitiateSubscriptionRequest:
       type: object
