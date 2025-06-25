@@ -6,169 +6,146 @@ info:
 servers:
   - url: https://virtserver.swaggerhub.com/BIAN-3/BIAN/Subscription/1.0.0
 paths:
-  '/subscriptionService/getDashboard/Retrieve':
+  "/subscriptionService/getDashboard/Retrieve":
     get:
       tags: [CR - Dashboard]
       summary: Retrieve dashboard
       description: Retrieve subscription dashboard data
       operationId: RetrieveDashboard
       responses:
-        '200':
-          $ref: '#/components/responses/RetrieveDashboardResponse'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  '/subscriptionService/Subscription/Initiate':
+        "200":
+          $ref: "#/components/responses/RetrieveDashboardResponse"
+        "400":
+          $ref: "#/components/responses/BadRequest"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "403":
+          $ref: "#/components/responses/Forbidden"
+        "404":
+          $ref: "#/components/responses/NotFound"
+        "429":
+          $ref: "#/components/responses/TooManyRequests"
+        "500":
+          $ref: "#/components/responses/InternalServerError"
+  "/subscriptionService/Subscription/Initiate":
     post:
       tags: [CR - Subscription]
       summary: Initialize a subscription
       description: Initialize a new subscription
       operationId: InitiateSubscription
       requestBody:
-        $ref: '#/components/requestBodies/InitiateSubscriptionRequest'
+        $ref: "#/components/requestBodies/InitiateSubscriptionRequest"
       responses:
-        '200':
-          $ref: '#/components/responses/InitiateSubscriptionResponse'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  '/subscriptionService/getSubscription/Retrieve':
+        "200":
+          $ref: "#/components/responses/InitiateSubscriptionResponse"
+        "400":
+          $ref: "#/components/responses/BadRequest"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "403":
+          $ref: "#/components/responses/Forbidden"
+        "404":
+          $ref: "#/components/responses/NotFound"
+        "429":
+          $ref: "#/components/responses/TooManyRequests"
+        "500":
+          $ref: "#/components/responses/InternalServerError"
+  "/subscriptionService/getSubscription/Retrieve":
     get:
       tags: [CR - Subscription]
       summary: Retrieve subscriptions
       description: Retrieve subscription details
       operationId: RetrieveSubscription
       responses:
-        '200':
-          $ref: '#/components/responses/RetrieveSubscriptionResponse'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  '/subscriptionService/getGeneratedCode/Retrieve':
+        "200":
+          $ref: "#/components/responses/RetrieveSubscriptionResponse"
+        "400":
+          $ref: "#/components/responses/BadRequest"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "403":
+          $ref: "#/components/responses/Forbidden"
+        "404":
+          $ref: "#/components/responses/NotFound"
+        "429":
+          $ref: "#/components/responses/TooManyRequests"
+        "500":
+          $ref: "#/components/responses/InternalServerError"
+  "/subscriptionService/getGeneratedCode/Retrieve":
     get:
       tags: [CR - GeneratedCode]
       summary: Retrieve generated codes
       description: Retrieve subscription generated codes
       operationId: RetrieveGeneratedCode
       responses:
-        '200':
-          $ref: '#/components/responses/RetrieveGeneratedCodeResponse'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  '/subscriptionService/getSettings/Retrieve':
+        "200":
+          $ref: "#/components/responses/RetrieveGeneratedCodeResponse"
+        "400":
+          $ref: "#/components/responses/BadRequest"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "403":
+          $ref: "#/components/responses/Forbidden"
+        "404":
+          $ref: "#/components/responses/NotFound"
+        "429":
+          $ref: "#/components/responses/TooManyRequests"
+        "500":
+          $ref: "#/components/responses/InternalServerError"
+  "/subscriptionService/getSettings/Retrieve":
     get:
       tags: [CR - Settings]
       summary: Retrieve settings
       description: Retrieve subscription settings
       operationId: RetrieveSettings
       responses:
-        '200':
-          $ref: '#/components/responses/RetrieveSettingsResponse'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
+        "200":
+          $ref: "#/components/responses/RetrieveSettingsResponse"
+        "400":
+          $ref: "#/components/responses/BadRequest"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "403":
+          $ref: "#/components/responses/Forbidden"
+        "404":
+          $ref: "#/components/responses/NotFound"
+        "429":
+          $ref: "#/components/responses/TooManyRequests"
+        "500":
+          $ref: "#/components/responses/InternalServerError"
 components:
   schemas:
     Dashboard:
       type: object
       properties:
-        activeSubscriptions:
-          type: integer
-          format: int32
-          description: Number of active subscriptions
-        revenue:
-          type: number
-          format: float
-          description: Total revenue from subscriptions
-        mostPopularPlan:
+        currentPlan:
           type: string
           enum: [Free, Pro, Enterprise]
-          description: Name of the most popular subscription plan
-        renewalRate:
-          type: number
-          format: float
-          description: Percentage of subscriptions that renew
-        churnRate:
-          type: number
-          format: float
-          description: Percentage of subscriptions that cancel
-        recentActivities:
-          type: array
-          items:
-            type: object
-            properties:
-              activityType:
-                type: string
-                enum:
-                  [
-                    api_generation,
-                    ui_generation,
-                    subscription_change,
-                    user_invite,
-                  ]
-              description:
-                type: string
-              timestamp:
-                type: string
-                format: date-time
+          format: string
+          description: User's current subscription plan
+        apiGenerations:
+          type: integer
+          format: int32
+          description: Number of API codes generated
+        uiGenerations:
+          type: integer
+          format: int32
+          description: Number of UI components generated from F/YAML
     Subscription:
       type: object
       properties:
         subscriptionId:
           type: string
+          format: string
           description: Unique identifier for the subscription
         planName:
           type: string
+          format: string
           enum: [Free, Pro, Enterprise]
           description: Name of the subscription plan
         status:
           type: string
+          format: string
           enum: [Active, Pending, Cancelled, Expired, Suspended]
           description: Current status of the subscription
         startDate:
@@ -181,6 +158,7 @@ components:
           description: Date when subscription ends
         billingCycle:
           type: string
+          format: string
           enum: [Monthly, Quarterly, Annual, Lifetime]
           description: Billing frequency
         price:
@@ -189,21 +167,23 @@ components:
           description: Price of the subscription
         currency:
           type: string
+          format: string
           enum: [USD, EUR, GBP, JPY, CAD, AUD]
           description: Currency for the subscription price
         features:
-          type: array
-          items:
-            type: string
+          type: string
+          format: string
           description: List of features included in this plan
     GeneratedCode:
       type: object
       properties:
         code:
           type: string
+          format: string
           description: The generated code
         codeType:
           type: string
+          format: string
           enum: [Promo, Discount, Trial, Gift]
           description: Type of generated code
         expirationDate:
@@ -215,60 +195,59 @@ components:
           format: float
           description: Discount amount or percentage
         isUsed:
-          type: boolean
+          type: string
+          format: string
+          enum: [Yes, No]
           description: Whether the code has been used
         generatedComponents:
-          type: array
-          items:
-            type: string
+          type: string
+          format: string
           description: List of UI components generated with this code
     Settings:
       type: object
       properties:
         autoRenewal:
-          type: boolean
+          type: string
+          format: string
+          enum: [Enabled, Disabled]
           description: Whether auto-renewal is enabled
         notificationPreferences:
           type: object
-          properties:
-            email:
-              type: boolean
-            sms:
-              type: boolean
-            push:
-              type: boolean
+          format: string
           description: User's notification preferences
         billingAddress:
           type: string
+          format: string
           description: Billing address for subscriptions
         defaultPaymentMethod:
           type: string
+          format: string
           description: Default payment method
     InitiateSubscriptionRequest:
       type: object
       properties:
         subscription:
-          $ref: '#/components/schemas/Subscription'
+          $ref: "#/components/schemas/Subscription"
     RetrieveSubscriptionResponse:
       type: object
       properties:
         subscription:
-          $ref: '#/components/schemas/Subscription'
+          $ref: "#/components/schemas/Subscription"
     RetrieveDashboardResponse:
       type: object
       properties:
         dashboard:
-          $ref: '#/components/schemas/Dashboard'
+          $ref: "#/components/schemas/Dashboard"
     RetrieveGeneratedCodeResponse:
       type: object
       properties:
         generatedCode:
-          $ref: '#/components/schemas/GeneratedCode'
+          $ref: "#/components/schemas/GeneratedCode"
     RetrieveSettingsResponse:
       type: object
       properties:
         settings:
-          $ref: '#/components/schemas/Settings'
+          $ref: "#/components/schemas/Settings"
     HTTPError:
       type: object
       properties:
@@ -288,7 +267,7 @@ components:
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/InitiateSubscriptionRequest'
+            $ref: "#/components/schemas/InitiateSubscriptionRequest"
       required: true
   responses:
     InitiateSubscriptionResponse:
@@ -296,64 +275,64 @@ components:
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/RetrieveSubscriptionResponse'
+            $ref: "#/components/schemas/RetrieveSubscriptionResponse"
     RetrieveSubscriptionResponse:
       description: Response containing subscription details
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/RetrieveSubscriptionResponse'
+            $ref: "#/components/schemas/RetrieveSubscriptionResponse"
     RetrieveDashboardResponse:
       description: Response containing dashboard data
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/RetrieveDashboardResponse'
+            $ref: "#/components/schemas/RetrieveDashboardResponse"
     RetrieveGeneratedCodeResponse:
       description: Response containing generated codes
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/RetrieveGeneratedCodeResponse'
+            $ref: "#/components/schemas/RetrieveGeneratedCodeResponse"
     RetrieveSettingsResponse:
       description: Response containing settings
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/RetrieveSettingsResponse'
+            $ref: "#/components/schemas/RetrieveSettingsResponse"
     BadRequest:
       description: Bad request error response
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/HTTPError'
+            $ref: "#/components/schemas/HTTPError"
     Unauthorized:
       description: Unauthorized error response
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/HTTPError'
+            $ref: "#/components/schemas/HTTPError"
     Forbidden:
       description: Forbidden error response
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/HTTPError'
+            $ref: "#/components/schemas/HTTPError"
     NotFound:
       description: Not found error response
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/HTTPError'
+            $ref: "#/components/schemas/HTTPError"
     TooManyRequests:
       description: Too many requests error response
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/HTTPError'
+            $ref: "#/components/schemas/HTTPError"
     InternalServerError:
       description: Internal server error response
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/HTTPError'
+            $ref: "#/components/schemas/HTTPError"
